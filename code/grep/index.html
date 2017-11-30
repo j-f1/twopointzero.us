@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>$ grep -&thinsp;-&thinsp;cheat ~/hangman</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" charset="utf-8"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" charset="utf-8"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.0.0/jszip.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="//cdn.rawgit.com/Stuk/jszip-utils/dfdd631c4249bc495d0c335727ee547702812aa5/dist/jszip-utils.min.js"></script>
+  <!--
+  Mandatory in IE 6, 7, 8 and 9.
+  -->
+  <!--[if IE]>
+    <script type="text/javascript" src="//cdn.rawgit.com/Stuk/jszip-utils/dfdd631c4249bc495d0c335727ee547702812aa5/dist/jszip-utils-ie.min.js"></script>
+  <![endif]-->
+  <script src="//cdn.rawgit.com/paroga/cbor-js/dca0855fd71ee9e480881e6e1bccce6591ffa67b/cbor.js" charset="utf-8"></script>
+  <script src="api.js" charset="utf-8"></script>
+<style type="text/css">
+body {
+  background: #333;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2.85vmax;
+  font-family: monospace;
+  user-select: none;
+  cursor: default;
+}
+form {
+  margin: 1em;
+  color: #666;
+}
+.input {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font: inherit;
+  text-align: center;
+
+  max-width: 85%;
+  min-width: 7em;
+  box-sizing: border-box;
+  word-break: break-word;
+  white-space: normal;
+  padding: 0 15px;
+  display: inline-block;
+  border-bottom: 1px solid #aaa;
+  color: #ddd;
+  word-break: break-all;
+  transition: border-color 0.2s, color 0.2s;
+  margin-bottom: 1px;
+  user-select: initial;
+  cursor: text;
+}
+.input::selection {
+  background: #aaa;
+  color: #fff;
+}
+.input:focus {
+  border-bottom: 2px solid #fff;
+  outline: none;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+i {
+  font-style: inherit;
+  transition: color 0.2s;
+  /* temp: */
+  display: none;
+}
+i.focus {
+  color: #fff;
+}
+
+form b {
+  color: #999;
+  font-weight: inherit;
+  display: inline-block;
+}
+
+button {
+  appearance: none;
+  padding: 0;
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #eee;
+  text-decoration: none;
+  margin-left: 0.5em;
+  transition: color 0.2s;
+}
+button:active {
+  color: #aaa;
+}
+button:focus {
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+  color: white;
+  max-height: 68vh;
+  overflow: auto;
+}
+div {
+  position: relative;
+}
+div::before {
+  content: attr(data-before);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  color: white;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+label {
+  position: relative;
+  cursor: pointer;
+}
+label::before {
+  content: "";
+  display: inline-block;
+
+  width:  0.5em;
+  height: 0.5em;
+
+  border: 0.1em solid #CCC;
+  border-radius: 0.1em;
+}
+label:active::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+label::after {
+  content: "";
+  border: 0.1em solid;
+  border-top: none;
+  border-right: none;
+  position: absolute;
+  left: 0.18em;
+  top: 0.39em;
+  width: 0;
+  height: 0.25em;
+  transform: rotate(-45deg);
+  border-color: transparent;
+  transition: all 0.25s;
+}
+:checked+label::after {
+  top: 0.15em;
+  left: 0.1em;
+  width: 0.6em;
+  border-color: currentColor;
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #666;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  color: #666;
+  font-size: 1rem;
+}
+
+footer a {
+  color: #AAA;
+}
+
+</style>
+<script type='text/javascript'>//<![CDATA[
+window.RELOAD_WORDS_TOKEN = 1;
+
+function shouldReload() {
+  var res = window.RELOAD_WORDS_TOKEN !== localStorage.reloadToken;
+  localStorage.reloadToken = window.RELOAD_WORDS_TOKEN;
+  return res;
+}
+
+function _base64ToArrayBuffer(base64) {
+  // from http://stackoverflow.com/a/21797381/5244995
+  var binary_string =  window.atob(base64);
+  var len = binary_string.length;
+  var bytes = new Uint8Array( len );
+  for (var i = 0; i < len; i++)        {
+    bytes[i] = binary_string.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+
+
+function uintToString(uintArray) {
+  // from http://stackoverflow.com/a/17192845/5244995
+  var encodedString = String.fromCharCode.apply(null, uintArray),
+      decodedString = decodeURIComponent(escape(encodedString));
+  return decodedString;
+}
+
+var updateHash = function() {
+  window.location.hash = '#' + btoa(($checkbox.checked ? '1' : '0') + '?' + $in.val());
+};
+$(function() {
+  window.$in = $('.input');
+  window.$checkbox = $('input[type]')[0];
+  $(window).on('hashchange', function() {
+    var hashData = atob(window.location.hash.slice(1)).split('?'),
+        flags = hashData.shift(),
+        regex = hashData.join('?');
+    if ($in.val() !== regex) {
+      $in.val(regex);
+    }
+    $checkbox.checked = +flags[0];
+  });
+  $(window).trigger('hashchange');
+  $('button').click(function() {
+    updateHash();
+    findWords($in.val(), $('[type="checkbox"]').is(':checked'), function(matches, _, tooMany) {
+      if (tooMany) {
+        matches.push('Whoa! There’s a lot of matches! You might want to try something a bit more specific. (We limit the matches to avoid freezing your computer.)');
+      }
+      var $ul = $('ul').empty();
+      $ul.parents('div').attr('data-before', $in.val().length ? ((matches.length - !!tooMany) + " match" + (matches.length == 1 ? "" : "es")) : "");
+      $.each(matches, function() {
+        $ul.append($('<li>').text(this));
+      });
+    });
+//    event.preventDefault();
+    return false;
+  });
+  $in.on('keydown', function(event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  }).on('keyup', function(event) {
+    if (event.keyCode == 13) {
+//      $('#regex').val($('span').text());
+
+      $('button').click();
+      return false;
+    }
+  }).on('focus', function() {
+    $('i').addClass('focus');
+  }).on('blur', function() {
+    $('i').removeClass('focus');
+  });
+  $('input[type]').change(function() {$('button').click();});
+});
+//]]>
+</script>
+</head>
+<body>
+<main>
+  <form>
+  $ grep <wbr>
+  <i>^</i><input class="input" placeholder="regex"><i>$</i><wbr>
+    <b>/usr/dict/words
+      <button>&crarr;</button>
+    </b>
+    <br><input type="checkbox" id="a" checked><label for="a"> full word only</label>
+  </form>
+  <div><ul></ul></div>
+</main>
+<footer>Word list from <a href="http://wordlist.aspell.net">SCOWL</a> (size 60, both accents &amp; no accents, US spelling, common variants, hacker list).<br>Converted to CBOR with Python&rsquo;s magic.<br> Some code from <a href="http://stackoverflow.com/">Stack Overflow</a>, view page source for attributions.</footer>
+</body>
+</html>

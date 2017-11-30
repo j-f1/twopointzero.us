@@ -1,0 +1,9 @@
+QUESTION
+Slide open the box cover if you need a hint
+ANSWER
+Select specific amounts of water and nutrients and
+let the model run or evolve.  Observe the results. 
+Reset the system, make new selections, and try again.
+Did it do better?  Keep re-doing it until you find out
+the right combination for the best possible growth.
+END

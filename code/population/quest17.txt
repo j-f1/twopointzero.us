@@ -1,0 +1,32 @@
+QUESTION
+What is the squirrels' birth rate?
+ANSWER
+One simple way to set this up is to introduce two
+squirrels when there is plenty of food so that they can
+increase in numbers without restrictions. One way to do
+that is to have 60 trees and wait until year 75 or more
+to introduce the two squirrels.  Doing exactly this, one
+can see the following population growth in the table:
+
+        YEAR        SQUIRRELS
+        ------         ----------------
+         75                  2
+         76                  5
+         77                 12
+         78                 29
+         79                 71
+
+In analyzing the data in the table, the two squirrels in
+the year 75 have three offspring and the population 
+grows to five.  In year 76 there are 2 couples, if each
+has three offspring, the population would grow to 
+5 + 6 = 11.  The table shows 12.  In year 77 there are 
+6 couples, again, if each couple has three offspring, 
+the population would increase to 12 + (3 x 6) = 30.  
+The table shows 29.  Based on these results one can 
+conclude that the squirrels' birth rate is 3.
+
+NOTE:  The answer to this question could have been 
+figured out by simply looking at the setup in the model 
+where the default squirrels birth rate is set to 3.
+END

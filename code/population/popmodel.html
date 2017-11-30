@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Description of the Population Model</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="Describes the physical system used by the population growth and balance computer model.  The system consists of oak trees, squirrels and red-tailed hawks.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, exponential, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Description of the Population Model">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="Describes the physical system used by the population growth and balance computer model.  The system consists of oak trees, squirrels and red-tailed hawks.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["sprouted"] = new description (
+"Sprouted", "To spring up as new growth or new development.");
+
+descr["canopy"] = new description (
+"Canopy", "The upper layer of branches spreading from the trees.");
+
+descr["shrill"] = new description (
+"Shrill", "A sharp high-pitched tone.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "><TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B>Description 
+of the Population Model</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P><B><A NAME="physical"></A>The 
+Physical System</B>. We will start by describing the physical system that we will 
+be working with. Try to use your imagination to feel that you are part of the 
+system being analyzed. As described before, we will be working in a forest full 
+of oak trees. Imagine yourself in one such forest. You are all alone, walking 
+among some very huge oak trees. You notice that some trees are smaller both in 
+diameter as well as in height. As a matter of fact, some of the trees look like 
+they <a href="javascript:dictionary.startIt('sprouted')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('sprouted')"
+onMouseOut="dictionary.clearIt ()">sprouted</a> not that long ago, as they are 
+almost as tall as you are. As you walk, you step on many leaves that have fallen 
+from the trees and enjoy the sound that you produce as you step on them. As you 
+concentrate on your steps, you notice the feeling of some hard little rocks. As 
+you hunch down to grab one, you realize that they are not little rocks but acorns. 
+You look up to see where they came from and you immediately see many of them hanging 
+from the branches of the oak trees. You continue walking for a few minutes, with 
+oak trees all around you, until you decide to sit down, lean your back on one 
+of the trees, and simply enjoy the great view and wonderful fragrance of the forest. 
+It is so pleasant, so quiet, that you wish you could stay here forever.</P><P>&nbsp;</P><P ALIGN="CENTER"><IMG SRC="images/oaklean.jpg"></P><P ALIGN="CENTER">&nbsp;</P><P ALIGN="CENTER"><IMG SRC="images/oaks.jpg" WIDTH="471" HEIGHT="360"></P><P ALIGN="CENTER">&nbsp;</P><P ALIGN="LEFT">It 
+is a bit dark because the <a href="javascript:dictionary.startIt('canopy')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('canopy')"
+onMouseOut="dictionary.clearIt ()">canopy</a> of the big trees, with its lush 
+branches, leaves very little room for the sun rays to penetrate into the area 
+where you are sitting. All of a sudden you hear a hurried <a href="javascript:dictionary.startIt('shrill')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('shrill')"
+onMouseOut="dictionary.clearIt ()">shrill</a> sound. You quickly turn your head 
+towards the unexpected noise to try to find out where it came from, and see a 
+very cute little gray squirrel going at a very fast speed up the trunk of one 
+of the trees. Within a few seconds the squirrel disappears inside a hole high 
+up in the tree. You keep looking at the hole hoping to see the squirrel again. 
+A few moments later you see the squirrel's head pop out of the hole with one of 
+the acorns in its mouth. </P><P ALIGN="LEFT">After some time of observing all 
+that is going on around you, you notice that squirrels keep coming down the trees, 
+grabbing acorns, and quickly taking them up to their dwellings. You are enjoying 
+seeing them hard at work, when again there is a startling noise. This time it 
+comes from up above in the air. When you see a huge red-tail hawk, you very quickly 
+recognize the noise to be the fluttering of its unexpectedly big wings. Almost 
+at the same time that you see the hawk landing on one of the tree branches, you 
+realize that you are not the only one that noticed it. All the squirrels disappeared 
+as if by magic. They know what the hawk is after!</P><P ALIGN="LEFT"><B>The Population 
+Computer Model</B>. The computer model implemented for this lesson does not exactly 
+represent the forest that was described in the previous section. Even though it 
+attempts to model the real physical system accurately, its main purpose is to 
+promote understanding of the relationship and interdependence of the three species 
+(oak trees, squirrels, and hawks) by allowing you to make choices and decisions 
+on how to set things up to control the model. In using it you will learn interesting 
+facts about the different species. You will learn additional facts from reading 
+the different <A HREF="index.html#facts" TARGET="">fact pages</A>. In this model 
+you begin with a forest; except that it is not a forest because there are no trees 
+at all, so you really start with empty ground that measures 600 feet by 250 feet. 
+You start by deciding three things: the number of oak trees that you want to plant, 
+the amount of water to use for watering (of course, this is rainfall water, not 
+tap water), and the nutrients needed for proper growth. Next, you can decide how 
+many gray squirrels are born or introduced into the area and when. Lastly, you 
+decide how many red-tail hawks are born and when.</P><P ALIGN="LEFT">You make 
+all of these decisions, which in computer model lingo is referred to as defining 
+the initial conditions for the system, and you then let time advance. As time 
+moves forward, you can dynamically see the trees begin to grow as well as the 
+squirrels and hawks appear, reproduce and grow, etc. Depending on the initial 
+conditions you might end up with nothing at all, i.e. none of the species might 
+grow at all. The whole idea is that by interacting with the model and reading 
+the <A HREF="index.html#facts" TARGET="">facts</A>, you will be able to learn 
+what it takes to evolve the forest and its inhabitants into well balanced populations. 
+Since, as mentioned before, the model is not intended to be 100% accurate, throughout 
+the lesson and the facts pages you will also learn some of the real factors and 
+conditions that are not being used by the model.</P><P ALIGN="LEFT">The last step 
+before starting to work with the model is reading the specific instructions on 
+how to use the model. Proceed to the next page to read these instructions. Right 
+after the instructions page you will be able to start working with the model.</P><P>&nbsp;</P><P>&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="models.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="models.html" TARGET="">Population 
+Computer Models</A> </P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="instructions.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="instructions.html" TARGET="">Instructions 
+to use Model</A></P></TD></TR></TABLE></CENTER><DIV ALIGN="LEFT"></DIV><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

@@ -1,0 +1,8 @@
+QUESTION
+How can you determine or measure if the tree is
+doing better or worse?
+ANSWER
+One way to do this is by looking at the color of
+the leaves (green vs. yellow) and at the acorn
+production (the higher the production, the better).
+END

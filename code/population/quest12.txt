@@ -1,0 +1,20 @@
+QUESTION
+What is the effect of varying the number of squirrels
+and the time when they get introduced on the long-term
+size of the population?
+ANSWER
+There is no difference. Are you surprised? Does it make
+sense?  The long-term squirrel size population depends 
+only on the available acorns.  The acorns act as the 
+limiting factor and essentially determine the number of
+squirrels that can be supported in the area or the 
+carrying capacity.  One way to run the experiment is to
+start with 30 trees and introduce two, four, 25, 50,
+and 100 squirrels, all in year 30 and see what the 
+long-term (year 120?) squirrel size population will be.
+You can then introduce 10 squirrels in years 25, 50, 75,
+and 100. Run the experiment and observe what the 
+long-term stable population size will be. In all cases 
+the squirrel population reaches a stable size of about 
+82 squirrels.
+END

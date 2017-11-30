@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Instructions to use the Population Model Program</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="Instructions on how to use the Java applet that implements the Population Model. This model is used to study and analyze the population growth and balance of two different species.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, exponential, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Instructions to use the Population Model Program">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="Instructions on how to use the Java applet that implements the Population Model. This model is used to study and analyze the population growth and balance of two different species.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["immigrate"] = new description (
+"Immigrate", "When an organism moves into an area occupied by an existing population.");
+
+descr["seedling"] = new description (
+"Seedling", "A young and small plant grown from a seed.");
+
+descr["insynch"] = new description (
+"In Synch", "When two or more events happen at the same time. In this case all the data is always updated to show up-to-date information.");
+
+descr["gallons"] = new description (
+"Gallons", "One gallon is equal to 3.785 liters.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+
+
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B>Instructions 
+to Use the Population Model Program</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P><B>Introduction</B> 
+-- </P><P>This program gives you a birds-eye view of a field where you can plant 
+oak trees. By letting time pass the trees will grow to form a forest of trees. 
+You can see the trees evolve and grow from above until they become full grown. 
+You can also incorporate two different animal species, gray squirrels and red-tailed 
+hawks, by deciding both the quantities of each as well as the year when they 
+<a href="javascript:dictionary.startIt('immigrate')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('immigrate')"
+onMouseOut="dictionary.clearIt ()">immigrate</a>
+into the forest area. You can 
+bring up a setup panel to define the conditions for the model and then simply 
+clicks on the different control buttons below the forest field to advance or stop 
+the time and to bring up a table and/or a chart to display the data. </P><P><B>Time 
+resolution</B> -- </P><P>The time resolution is in years, which means that when 
+you advance time it jumps a whole year with each click. It is as if you flew over 
+the forest once a year, took a picture, and counted all the different items as 
+part of the data collection. This data is the one presented in both the table 
+and the graphs described below.</P><P>The following figure shows the image of 
+the complete panel displayed by the model program:</P><P><IMG
+        SRC="images/population.gif" ALIGN="MIDDLE" HSPACE="0"
+        WIDTH="520" HEIGHT="319" NATURALSIZEFLAG="3"></P><P>The brown panel in 
+the figure represents an area of 600 by 250 ft or 150,000 ft<SUP>2</SUP>, which 
+is close to three acres. It is in this piece of land that you can decide how many 
+oak tree <a href="javascript:dictionary.startIt('seedling')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('seedling')"
+onMouseOut="dictionary.clearIt ()">seedlings</a> to plant. Since the spread of 
+the crown of a full-grown oak tree can reach 50 ft in diameter, the maximum number 
+of oak trees that can be planted is 60. The view that you get in this model is 
+what is referred to as a birds-eye view; as if you were high above the field, 
+at about one mile<SUP><A HREF="#note1">1</A></SUP> high. </P><P><B>Scale</B> -- 
+</P><P>Let's talk a little bit about the scale. Computer screens have very small 
+pixels, like little dots, used to paint images and text. If you look at some images 
+very close you might be able to see the individual pixels. The scale used in this 
+program is approximately one pixel for every foot, so the diameter of the crown 
+of the full-grown tree is 50 pixels (or 50 feet). Using this scale you can imagine 
+that the squirrels are going to be very, very small. In fact, they are represented 
+using a single gray pixel. They might be difficult to spot, so watch carefully. 
+The red-tailed hawks, even though also small, are very easy to spot. They are 
+drawn as:</P><DIV ALIGN="CENTER"><TABLE BORDER="0" WIDTH="140" CELLSPACING="4"><TR><TD HEIGHT="15">&nbsp;</TD><TD HEIGHT="15">&nbsp;</TD><TD HEIGHT="15" BGCOLOR="#000000">&nbsp;</TD><TD HEIGHT="15">&nbsp;</TD><TD HEIGHT="15">&nbsp;</TD><TD HEIGHT="15">&nbsp;</TD></TR><TR BGCOLOR="#000000"><TD HEIGHT="10">&nbsp;</TD><TD HEIGHT="10">&nbsp;</TD><TD HEIGHT="10">&nbsp;</TD><TD HEIGHT="10">&nbsp;</TD><TD HEIGHT="10">&nbsp;</TD><TD HEIGHT="10" BGCOLOR="#FFFFFF">&nbsp;</TD></TR><TR><TD HEIGHT="3">&nbsp;</TD><TD HEIGHT="3">&nbsp;</TD><TD HEIGHT="3" BGCOLOR="#FF0000">&nbsp;</TD><TD HEIGHT="3">&nbsp;</TD><TD HEIGHT="3">&nbsp;</TD><TD HEIGHT="3">&nbsp;</TD></TR></TABLE></DIV><P>In 
+the previous figure, each of the seven squares is represented on the program by 
+a single pixel. As a comparison, the squares above are drawn as 23 by 23 pixels 
+squares. Therefore, a hawk's wing span in the model is five feet.</P><P><B><A NAME="controls"></A>Controls</B> 
+-- </P><P>As you can see from the previous picture there are 8 buttons that can 
+be used to control the program. The following table describes the actions associated 
+with each of them:</P><DIV ALIGN="center"></DIV><DIV ALIGN="center"> <CENTER> 
+<TABLE BORDER="3"
+        CELLPADDING="5" WIDTH="473"> <TR> <TH WIDTH="22%"><FONT COLOR="#94005A">Control 
+Button &nbsp;</FONT></TH><TH WIDTH="78%">&nbsp;<FONT COLOR="#94005A">Description</FONT></TH></TR> 
+<TR> <TD ALIGN="center">&nbsp;<IMG
+                SRC="images/setup.gif" WIDTH="58" HEIGHT="54"
+                NATURALSIZEFLAG="3"></TD><TD VALIGN="top"><FONT COLOR="#94005A">Clicking 
+on this <I>setup</I> button will take you to a screen where you define things 
+like number of trees, number of squirrels and year when they immigrate into the 
+area, etc. Detailed descriptions are included in the <A HREF="#setup">Model Setup</A> 
+section below.</FONT></TD></TR> <TR> <TD ALIGN="center">&nbsp;<IMG
+                SRC="images/run.gif" WIDTH="58" HEIGHT="54"
+                NATURALSIZEFLAG="3"></TD><TD VALIGN="top"><FONT COLOR="#94005A">Clicking 
+on this <I>play</I> button will advance time by one year. Right after setting 
+the model conditions the year gets reset to year zero.</FONT></TD></TR> <TR> <TD ALIGN="center">&nbsp;<IMG
+                SRC="images/stop.gif" WIDTH="57" HEIGHT="54"
+                NATURALSIZEFLAG="3"></TD><TD VALIGN="top"><FONT
+                COLOR="#94005A">This <I>stop</I> button will stop time after it 
+gets running with the </FONT><I><FONT COLOR="#94005A">fast forward</FONT></I><FONT COLOR="#94005A"> 
+button ( <IMG
+                SRC="images/fastfwd.gif" WIDTH="18" HEIGHT="16"
+                NATURALSIZEFLAG="3" ALIGN="ABSBOTTOM">). It can then be restarted 
+with either the <I>play</I> or the </FONT><I><FONT COLOR="#94005A">fast forward</FONT></I><FONT COLOR="#94005A"> 
+button.</FONT></TD></TR><TR><TD ALIGN="center"><IMG
+                SRC="images/reset.gif" WIDTH="58" HEIGHT="54"
+                NATURALSIZEFLAG="3"></TD><TD VALIGN="top"><FONT COLOR="#94005A">Use 
+this <I>reset</I> button to reset the time to year zero. That will change the 
+display as well as the table and chart to reflect the system's state at the beginning 
+of time. Clicking on this button when time is continuously running (after using 
+the </FONT><I><FONT COLOR="#94005A">fast forward</FONT></I><FONT COLOR="#94005A"> 
+button <IMG
+                SRC="images/fastfwd.gif" WIDTH="18" HEIGHT="16"
+                NATURALSIZEFLAG="3" ALIGN="ABSBOTTOM"> ) will stop and reset the 
+model. </FONT></TD></TR><TR><TD ALIGN="center"><IMG
+                SRC="images/fastfwd.gif" WIDTH="58" HEIGHT="54"
+                NATURALSIZEFLAG="3"></TD><TD VALIGN="top">The <FONT
+                COLOR="#94005A"></FONT><I><FONT COLOR="#94005A">fast forward</FONT></I><FONT COLOR="#94005A"> 
+button</FONT> is used to get the time running in a continuous mode. It will advance 
+one year every 2 or 3 seconds and will update the <FONT COLOR="#94005A">forest 
+view as well as the table and chart based on the conditions. You can use the <I>stop</I> 
+button to stop the time. The evolution of the simulation stops when it reaches 
+year 270.</FONT></TD></TR><TR><TD ALIGN="center"><IMG
+                SRC="images/chart.gif" WIDTH="58" HEIGHT="54"
+                NATURALSIZEFLAG="3"></TD><TD VALIGN="top">Click on this <I>graphs</I> 
+button to bring up a separate window displaying plots of the data over time. The 
+plots include number of acorns, squirrels and hawks. Clicking on this button again 
+or on the window's <B>X</B> will make the graphs' window go away. The section 
+<A HREF="#graphs" TARGET="">Reading the Graphs</A> below gives you more details 
+on how this window works and how to interpret the different plots.</TD></TR><TR><TD ALIGN="center"><IMG
+                SRC="images/table.gif" WIDTH="57" HEIGHT="54"
+                NATURALSIZEFLAG="3"></TD><TD VALIGN="top">Use this <I>table</I> 
+button to bring up a separate window that presents the data accurately in a nice 
+table format. The table includes the year in the first column followed by the 
+number of acorns, squirrels and hawks. Clicking on this button again or on the 
+window's <B>X</B> will make the table's window go away. The section <A HREF="#table" TARGET="">Reading 
+the Table </A> below gives you more details on how this window works.</TD></TR><TR><TD ALIGN="center"><IMG
+                SRC="images/help.gif" WIDTH="58" HEIGHT="54"
+                NATURALSIZEFLAG="3"></TD><TD VALIGN="top">This <I>help</I> button 
+brings up this exact document into your browser window.</TD></TR><TR><TD ALIGN="center">&nbsp;</TD><TD VALIGN="top">In 
+the lower right corner there is a small white area where the state of the model 
+is always being displayed. By checking the data in that area you can always find 
+out the simulated year (anywhere from zero to 270), and the number of acorns, 
+squirrels, and hawks. </TD></TR> </TABLE></CENTER></DIV><CENTER><DIV ALIGN="LEFT"><P><B><A NAME="setup"></A></B><B>Model 
+Setup</B> -- </P><P>The first thing that you need to do after bringing up the 
+program is to set it up, which means to define the conditions that it will use 
+to run the simulation. After clicking the <I>setup</I> button the following menu 
+will be displayed:</P><P ALIGN="CENTER"><IMG
+                SRC="images/setupmenu.gif" WIDTH="609" HEIGHT="351"
+                NATURALSIZEFLAG="3" BORDER="3"></P><P>You simply need to select 
+options for any or all of the different items, which are:</P></DIV></CENTER><UL><LI><CENTER><DIV ALIGN="LEFT"> 
+number of trees -- choose from zero to 60,</DIV></CENTER></LI><LI><CENTER><DIV ALIGN="LEFT"> 
+amount of water -- selections from zero to 20,000 
+<a href="javascript:dictionary.startIt('gallons')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('gallons')"
+onMouseOut="dictionary.clearIt ()">gallons</a>
+of water per year,</DIV></CENTER></LI><LI><CENTER><DIV ALIGN="LEFT"> 
+nutrients -- select each of the nutrients that you want, </DIV></CENTER></LI><LI><CENTER><DIV ALIGN="LEFT">number 
+of squirrels and year when they <a href="javascript:dictionary.startIt('immigrate')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('immigrate')"
+onMouseOut="dictionary.clearIt ()">immigrate</a> into the area,</DIV></CENTER></LI><LI><CENTER><DIV ALIGN="LEFT"> 
+squirrels birth rate -- don't change until the very end,</DIV></CENTER></LI><LI><CENTER><DIV ALIGN="LEFT">number 
+of hawks and year when they <a href="javascript:dictionary.startIt('immigrate')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('immigrate')"
+onMouseOut="dictionary.clearIt ()">immigrate</a> into the area,</DIV></CENTER></LI><LI><CENTER><DIV ALIGN="LEFT"> 
+hawks birth rate -- don't change until the very end,</DIV></CENTER></LI></UL><P>and 
+click on the <B> <FONT FACE="Courier New, Courier, mono">OK</FONT></B> button 
+to save the selections. That will automatically reset the time to year zero and 
+bring you back to the normal window. This time there will be small seedlings corresponding 
+to the number of trees selected. Once back on this <I>forest-view</I> window you 
+can step forward the time by a single year (with the <I>play</I> button) or get 
+the time running continuously (with the <I>fast forward</I> button) year after 
+year.</P><P>Two other options available within the setup menu are to (a) <B><FONT FACE="Courier New, Courier, mono">Cancel</FONT></B> 
+out, which ignores any changes and gets you back to the normal window without 
+resetting the time and (b) <B><FONT FACE="Courier New, Courier, mono">Reset,</FONT></B> 
+which resets all the selections to its initial state and leaves you in the setup 
+menu where you can click on the <B><FONT FACE="Courier New, Courier, mono">OK</FONT></B> 
+button to go back to the normal window.</P><P>The next three pages in this lesson 
+give directions on how to set it up to be able to model different situations and 
+conditions.</P><CENTER><DIV ALIGN="LEFT"><P><B><A NAME="table"></A>Reading the 
+Table</B> -- </P><P>As described in the <A HREF="#controls">controls table</A> 
+above, clicking on the <I>table</I> button brings up the table with all the data. 
+Clicking on the button again or on the window's X will make the window go away. 
+You can bring the table up and make it go away as needed. The table can also be 
+up as the program is running, and it will be updated accordingly. The table and 
+its data are always kept <a href="javascript:dictionary.startIt('insynch')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('insynch')"
+onMouseOut="dictionary.clearIt ()">in synch</a> with the actual model.</P><P>The 
+main advantage of the table is that it presents the data with precision. You can 
+find out exactly how many acorns were produced or how many squirrels were alive 
+on any given year. The disadvantage is that it is not that easy to visualize how 
+the data evolves or how the different columns relate to each other. That is why 
+graphs, described in the next section, are also included as part of the model.</P><P><B><A NAME="graphs"></A>Reading 
+the Graphs</B> -- </P></DIV></CENTER><P>Everything that was described for the 
+table window in the previous section applies to the graph window. Of course, the 
+big difference is that the graphs only let you read the data approximately, but 
+let you visualize it very easily. You can see the dependency of one curve on the 
+others, see how they each evolve over time, etc.</P><P>Several important things 
+need to be mentioned about the graph. The graphs plot time in years on the X-axis 
+(the horizontal one). One nice feature is that the scale of the X-axis gets automatically 
+readjusted depending on the amount of data. When you have data for a few years 
+on the chart, the dots are spread apart. &nbsp;However, when the amount of data 
+increases, as the model continues evolving in time, the scale changes to bring 
+the points closer together and fit more on the same space.</P><P>On the Y-axis 
+(the vertical one) the graph plots three variables or three sets of data: the 
+number of acorns, squirrels, and hawks. It should be obvious that each of the 
+three variables needs different scales as the numbers of acorns go into the thousands 
+while the number of hawks remains in the low tens. Do you see the problem? A simple 
+way to solve this is to have one scale in percent from the total and annotate 
+the three different totals in the chart. What this means is that the Y-axis goes 
+from 0% to 100% for each of the variables. If you know that 100% of the number 
+of acorns is 7,000 and you see a point representing the number of acorns at about 
+35%, then you can read the number as 7,000 x 0.35 = 2,450 acorns. The next example 
+uses the following graph:</P><P ALIGN="CENTER"><IMG
+                SRC="images/y_axis.gif" WIDTH="215"
+                HEIGHT="221" NATURALSIZEFLAG="3"></P><P ALIGN="LEFT">To figure 
+out how many hawks the single dot on the graph represents, you multiply 30 (which 
+represents 100% of the hawks) by 0.25 (because the point is at 25%) to obtain 
+about 7 or 8 hawks. Of course you can also visually estimate the number.</P><P ALIGN="LEFT">Depending 
+on the browser being used, the window with the graphs might not show the Max values 
+at the bottom initially. If that is the case you simply have to enlarge the window 
+a bit by pulling the bottom margin down.</P><P ALIGN="LEFT">One final note, the 
+curves might sometimes look very steep, i.e. going up or down very rapidly, but 
+remember that each consecutive dot or point in the chart is really one year or 
+365 days apart.</P><P ALIGN="LEFT"><U>Remember these important things</U>:</P><OL><LI>For 
+the exact numbers you can always go to the <A HREF="#table">table</A>. </LI><LI>Each 
+of the three different curves has a <I>different scale</I> as indicated by the 
+Max values. If the point for the hawks is very close to the point for the acorns, 
+that doesn't mean that the values are close!</LI><LI>The purpose of having the 
+three curves on the same graph is to see how they relate to each other and how 
+they evolve over time.</LI></OL><P>&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="70%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="popmodel.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR> <A HREF="popmodel.html">Description 
+of our Population Model</A></P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents </A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="oaks.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="oaks.html">Get 
+Acquainted with&nbsp;Model</A></P></TD></TR></TABLE></CENTER><DIV ALIGN="LEFT"><HR ALIGN="CENTER" WIDTH="50%"><P>&nbsp;</P><P><A NAME="note1"></A>[Note 
+1] -- If you think that the height to be able to see this field as you see it 
+in this program is not one mile, please let me know.</P></DIV><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

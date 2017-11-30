@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+  <style type="text/css">
+/*<![CDATA[*/
+    body {
+  height: 100vh;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+    
+  font-size: 3vmax;
+  background: #333;
+  color: white;
+  text-align: center;
+  }
+
+  body:not(.ready) .message {
+  margin: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  }
+  body.ready .loading {
+  margin: 0;
+  height: 0;
+  opacity: 0;
+  }
+
+  .message,.loading {
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  }
+
+  .loading {
+  font-family: monospace;
+  font-size: 1.5em;
+  }
+
+  .message {
+  margin: 3em;
+  font-family: sans-serif;
+  }
+
+  .message span {
+  font-weight: bold;
+  padding: .1em 0;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  border-radius: 5px;
+  display: inline-block;
+  }
+
+  .message span:hover {
+  background: #ccc;
+  color: black;
+  }
+
+  .message span:active {
+  background: #aaa;
+  }
+
+  button {
+  cursor: pointer;
+  margin-top: 1em;
+  font-family: monospace;
+  padding: .3em 1em;
+  padding-top: .5em;
+  background: #eee;
+  border-radius: 5px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: inherit;
+  }
+
+  button:focus {
+  outline: none;
+  padding: calc(.3em - 1px) calc(1em - 1px);
+  padding-top: calc(.5em - 1px);
+  border: 1px solid white;
+  }
+
+  button:hover {
+  background: #ccc;
+  }
+
+  button:active {
+  top: 1px;
+  position: relative;
+  background: #aaa;
+  }
+
+  /*]]>*/
+  </style>
+
+  <title></title>
+  <script type='text/javascript'>
+//<![CDATA[
+  function getData() {
+    $('body').removeClass('ready');
+    $.get('http://twopointzero.us/code/story_ideas/data.json', function(data) {
+      window.story = JSON.parse(data);
+      $('body').addClass('ready');
+      $('button').click();
+    });
+  }
+  function pickRandom(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
+  function generateStory() {
+    var res = {};
+    for (var key in story) {
+      if (Object.prototype.hasOwnProperty.call(story, key)) {
+        res[key] = pickRandom(story[key]);
+      }
+    }
+    return res;
+  }
+  $(function() {
+    getData();
+    $('button').click(function() {
+      var data = generateStory();
+      for (var key in data) {
+        if (Object.prototype.hasOwnProperty.call(data, key)) {
+          $('.message .' + key).html(data[key]);
+        }
+      }
+    });
+
+    $('span').click(function() {
+      var $this = $(this);
+      $this.html(pickRandom(story[$this.attr('class')]));
+    });
+  });
+
+  window.applicationCache.addEventListener('updateready', getData);
+  if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
+    getData();
+  }
+  //]]> 
+
+  </script>
+</head>
+
+<body>
+  <div class="loading">
+    L O A D I N G . . .
+  </div>
+
+  <div class="message">
+    <span class="character" role="button">_</span>, who is
+    <span class="negative" role="button" title="Show how this comes out. Don&rsquo;t just say, &ldquo;He/she was _______.&rdquo;">_</span> but
+    <span class="positive" role="button" title="Show this trait. How is it discovered?">_</span>, is
+    <!-- <span class="action" role="button">_</span> --> in <span class="setting" role="button">_</span>,
+    <span class="solution" role="button">_</span> and
+    <span class="conclusion" role="button">_</span> at the end.<br />
+    <button>RANDOMIZE ALL</button>
+  </div>
+</body>
+</html>

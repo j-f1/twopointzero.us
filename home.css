@@ -1,0 +1,28 @@
+.columns {
+    max-width:450px;
+    width:90%;
+    margin:auto;
+    text-align:left;
+}
+.websites-wrapper>ul {
+    margin-top:0px;
+    padding-left:10px;
+    list-style-position:inside;
+    list-style-type:square;
+    list-style-image:url(bullet-small.png)
+}
+.websites-wrapper>ul>li {
+    margin-bottom:1em;
+}
+.websites-wrapper>h2 {
+/* 				border-left:1px solid #CCC; */
+    padding-left:11px;
+    margin-bottom:0px;
+    padding-bottom:10px;
+}
+.columns td {
+    border-right:1px solid #CCC;
+}
+.columns td:last-child {
+    border:none;
+}

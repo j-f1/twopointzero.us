@@ -1,0 +1,10 @@
+QUESTION
+Open this box by clicking with the mouse on the
+tab, holding it down, and moving it to the right
+ANSWER
+You will find boxes like this throughout the 
+lesson. The boxes could be setup to require a 
+special key before one could open them.  Let me 
+know if you think that it might be a good idea  
+to "lock" some of the boxes.
+END

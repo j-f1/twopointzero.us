@@ -1,0 +1,15 @@
+QUESTION
+Can you come up with the mathematical equation that
+relates the yearly acorn production A to the age of the
+Oak tree Y in years?  Make sure that you cover years 0
+through 200.
+ANSWER
+The equation for the portion of time when the production
+is increasing, that is, between the years 23 and 117
+is A = -483 + 23Y.  The complete and formal solution
+covering the complete year range is:
+
+        A = 0                   when Y < 22
+        A = -483 + 23Y     when 22 <= Y <= 116
+        A = 2200              when Y > 116
+END

@@ -1,0 +1,16 @@
+QUESTION
+What is the life expectancy of the red-tail hawks?
+ANSWER
+One experiment to figure this out is to start with 20
+trees and introduce four squirrels in year 30.  You 
+then wait until the squirrel population size grows to
+a good level and introduce one single hawk, which can
+not reproduce, in year 85.  After running this 
+experiment you'll notice in the table that the hawk is
+no longer in the forest by the year 105.  Hawks can 
+only die because of the lack of squirrels (their prey)
+or old age.  In this experiment one can see that the
+single hawk does not affect the squirrel population,
+so one can conclude that the hawk died because of old
+age at an age of 20.
+END

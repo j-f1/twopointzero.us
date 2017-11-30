@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"></script>
+  <style type="text/css">
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center;
+}
+
+input {
+  border: 1px solid #ccc;
+}
+
+input:invalid {
+  background: #ffeeee;
+  border-color: #eecccc;
+}
+
+form>div {
+  display: flex;
+}
+
+form>div>fieldset {
+  appearance: none;
+  border: none;
+  flex: 1;
+  background: #f0f0f0;
+  margin: 0 1em;
+  padding: 0 1em;
+}
+
+form>button {
+  display: block;
+  height: 5em;
+  width: calc(100% - 2em);
+  margin: 1em;
+}
+
+select[multiple] {
+  height: calc(9em + 1px);
+}
+  </style>
+  <title></title>
+</head>
+
+<body>
+<h1>Setup the Model</h1>
+<form>
+  <div>
+    <fieldset>
+      <h2>Oak Trees</h2>
+      <p>
+        Total number of oak trees:
+        <br>
+        <input type="number" min="0" max="60" value="1" required name="oak[count]">
+      </p>
+      <p>
+        Gallons of water per tree:
+        <br>
+        <input type="number" min="0" max="20000" value="0" step="50" required name="oak[water]">
+      </p>
+      <p>
+        Nutrients needed:
+        <br>
+        <select multiple title="Hold down Ctrl or Command to select multiple" name="oak[nutrients][]">
+          <option value="Ca">Calcium</option>
+          <option value="CO2">Carbon Dioxide</option>
+          <option value="Mg">Magnesium</option>
+          <option value="N">Nitrogen</option>
+          <option value="P">Phosphorus</option>
+          <option value="K">Potassium</option>
+          <option value="S">Sulfur</option>
+        </select>
+      </p>
+    </fieldset>
+    <fieldset>
+      <h2>Squirrels</h2>
+      <p>
+        Birth Rate:
+        <br>
+        <input type="number" min="1" max="4" value="3" required name="squirrels[rate]">
+      </p>
+      <h3>Migration to the model</h3>
+      <p>
+        Number:
+        <br>
+        <input type="number" min="0" max="200" value="1" required name="squirrels[count]">
+      </p>
+      <p>
+        Year:
+        <br>
+        <input type="number" min="0" max="270" value="1" required name="squirrels[year]">
+      </p>
+    </fieldset>
+    <fieldset>
+      <h2>Hawks</h2>
+      <p>
+        Birth Rate:
+        <br>
+        <input type="number" min="1" max="4" value="3" required name="hawks[rate]">
+      </p>
+      <h3>Migration to the model</h3>
+      <p>
+        Number:
+        <br>
+        <input type="number" min="0" max="200" value="1" required name="hawks[count]">
+      </p>
+      <p>
+        Year:
+        <br>
+        <input type="number" min="0" max="270" value="1" required name="hawks[year]">
+      </p>
+    </fieldset>
+  </div>
+  <button type="submit">DONE</button>
+</form>
+<script>
+//<![CDATA[
+$(function() {
+  $('form').on('submit', function() {
+    saveData($(this).serializeObject());
+    window.close();
+    return false;
+  });
+  $('form *').on('change', function() {
+    saveData($(this).parents('form').serializeObject());
+    return false;
+  })
+  $(window).unload(function() {
+      saveData($('form').serializeObject())
+  });
+});
+// ]]>
+</script>
+</body>
+</html>

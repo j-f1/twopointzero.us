@@ -1,0 +1,14 @@
+QUESTION
+What is the purpose for obtaining an equation such as
+this?  (Think a little before opening the box)
+ANSWER
+Having an equation or formula that describes the
+behavior of a system allows you to predict what will
+happen. For example, you can easily and accurately
+figure out the number of acorns produced on any given
+year. If you had an equation that related acorn
+production to a specific nutrient and the acorn
+production was lower than expected you could use the
+equation to figure out how much nutrient could be added
+to increase production to a normal level. 
+END

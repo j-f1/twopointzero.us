@@ -1,0 +1,8 @@
+QUESTION
+How does the yearly acorn production look?
+ANSWER
+In the model, acorn production starts with 23 acorns on
+year 22, increases by 23 every year until year 117 when
+it reaches a yearly production of 2200 acorns, and stays
+at that level from then on.
+END

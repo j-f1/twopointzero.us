@@ -1,0 +1,12 @@
+QUESTION
+How many squirrels can a single Oak tree sustain?
+ANSWER
+Again, based on the number of the previous experiment,
+if 30 full-grown trees can produce 66,000 acorns per
+year, then each tree produces 66,000/30 = 2,200 acorns
+per year. Since each squirrel needs about 825 acorns
+each year, we can conclude that each tree can sustain
+2,200 / 825 = 2.66 squirrels.  Since you can not have 
+portions (0.66) of a squirrel, we can say that each tree
+can sustain somewhere between two and three squirrels.
+END

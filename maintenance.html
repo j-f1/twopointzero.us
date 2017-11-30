@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Maintenance Mode</title>
+  <style>
+  .flex {
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+
+    background-color:#DDDDCC;
+  	font-family:'Helvetica Neue Light', sans-serif;
+  	color:#444433;
+
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+
+    -webkit-box-pack:center;
+    -webkit-justify-content:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+    -ms-flex-align:center;
+    align-items:center;
+  }
+  h1 {
+    text-shadow:-1px -1px white;
+  }
+
+  .progress {
+    position: relative;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+    margin: auto;
+    margin-top: 2em;
+    padding: 5px;
+    height: 26px;
+
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+  .progress:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .progress .bar {
+    width: 00%;
+
+    height: 26px;
+    left: 5px;
+    position: absolute;
+    border-radius: 5px;
+    background: inherit;
+  }
+  </style>
+</head>
+<body class="flex">
+  <main>
+    <h1>We’re down for maintenance.</h1>
+    (We’ll be back ASAP)
+    <div class="progress flex">
+      <div class="bar"></div>
+      0%
+    </div>
+  </main>
+</body>
+</html>

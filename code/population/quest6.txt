@@ -1,0 +1,8 @@
+QUESTION
+Slide open the box cover only if you need a hint
+ANSWER
+Make sure that you set up the model for the ideal 
+growth conditions and simply look at the graph that
+it produces.  The results from the previous 
+experiment define the "ideal growth conditions".
+END

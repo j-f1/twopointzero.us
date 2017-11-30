@@ -1,0 +1,58 @@
+body {
+    font-size:2em;
+    font-family:sans-serif;
+    -webkit-user-select:none;
+    user-select:none;
+}
+
+a {
+  color: #00e;
+}
+
+@media print {
+    .no-print, .no-print * {
+        display:none !important;
+    }
+}
+[contenteditable], .select {
+    -webkit-user-select:initial;
+    user-select:initial;
+}
+.fact {
+    margin-right:1.5em;
+    margin-bottom:1em;
+}
+td:last-child .fact {
+    margin-right:0;
+}
+tr:last-child .fact {
+    margin-bottom:0;
+}
+.number {
+    padding-right:.5em;
+    text-align:right;
+}
+.number:empty::before {
+    color:lightgray;
+    content:"_";
+}
+.operator:empty::before {
+    color:gray;
+    content:"+";
+}
+.bar {
+    border-top:.1em solid black;
+}
+
+.operator .others {
+  display: inline-block;
+  margin-left: 2em;
+}
+
+.operator .others a {
+  text-decoration: none;
+}
+
+.spaced :not(:last-child) {
+  margin-right: 1em;
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Discover Population Balance Through Hands-on Experiments</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="Experiments using the population growth and balance computer model to be able to work and analyze a squirrel population in an oak forest.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, exponential, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Discover Population Balance Through Hands-on Experiments">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="Experiments using the population growth and balance computer model to be able to work and analyze a squirrel population in an oak forest.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+<SCRIPT LANGUAGE="JavaScript">
+function popWindow (url, winname, features)  {
+    window.open (url, winname, features);
+}
+
+var descr = new Array ();
+
+descr["gallons"] = new description (
+"Gallons", "One gallon is equal to 3.785 liters.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B>Discover 
+Population Balance Through Hands-on Experiments</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P>&nbsp; 
+</P><TABLE BORDER="0" WIDTH="85%"><TR VALIGN="TOP"><TD WIDTH="18%"> <A HREF="javascript:popWindow ('population.html', 'populationApplet', 'width=633,height=380,scrollbars,toolbar')"> 
+<IMG SRC="images/modelicon.gif" WIDTH="48"
+HEIGHT="23" NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></A></TD><TD WIDTH="82%">At 
+this point you should have used the population model enough to feel comfortable 
+with it. In this section we will introduce and do experiments with the gray squirrels.</TD></TR></TABLE><P>The 
+population model assumes that squirrels only eat acorns and depend on them for 
+survival. Similarly, it assumes that the hawks depend on a minimal amount of squirrels 
+for their own survival. Of course, nature is more complicated than this with complex 
+<A HREF="facts_foodchain.html#foodwebs" TARGET="">food webs</A> and lots of interdependencies 
+between the different populations. In the model there are <A HREF="facts_squirrels.html#deaths" TARGET="">three 
+reasons</A> for the death of squirrels: lack of food, old age, and being eaten 
+by hawks. Hawks only have <A HREF="facts_hawks.html#deaths">two causes</A> of 
+death: not enough squirrels to eat and old age. </P><P>From the experiments in 
+the previous page we learned what the optimal conditions for the oak trees, and 
+therefore for acorn production are. In all future experiments you should use those 
+conditions to make sure that there are plenty of acorns which form the base of 
+the <A HREF="facts_foodchain.html#pyramid" TARGET="">food chain pyramid</A>.</P><P><IMG
+                SRC="images/exp_4.gif" WIDTH="325"
+                HEIGHT="40" NATURALSIZEFLAG="3" BORDER="0" ALIGN="MIDDLE"><B><I><FONT SIZE="+2"> 
+-- Long term size of the squirrel population</FONT></I></B></P><TABLE BORDER="1" WIDTH="90%" CELLPADDING="3"><TR><TD WIDTH="20" VALIGN="TOP"><IMG
+                SRC="images/observation.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>We now have 
+a forest with plenty of trees and we want to introduce gray squirrels. The question 
+that we pose is, does it make a difference how many squirrels we introduce? What 
+is the long-term difference in the size of the squirrel population if we introduce 
+only two squirrels (a male and a female) as compared to introducing say, 100, 
+squirrels? Another question is, does it make a difference if the squirrels are 
+introduced early vs. late?</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/hypothesis.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>What do you 
+think will happen? Should there be a difference? Think about it for a while and 
+come up with your own hypothesis.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/experiment.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Now setup 
+an experiment where you only vary the number of squirrels that you introduce to 
+the area, run it, and observe the results. Follow that up with an experiment where 
+you vary the time (or year) when you introduce to the area the exact same number 
+of squirrels. Introduce them very early on (of course when there is food available), 
+and then introduced them much later on.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/theory.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="330"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest12.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR></TABLE><P><B>COMMENT:</B> If you look at the chart you 
+can see how both the number of acorns and the number of squirrels grow and stabilize 
+in very similar ways. Does this make sense? Yes it does. You can see very clearly 
+how the supply of food (the acorns) is directly tied to the number of squirrels 
+(the consumer). If the number of acorns would go up and down over the years, so 
+would the number of squirrels. One final comment. Even though in all the different 
+experiments the final number of squirrels stabilized at the same level, what was 
+different among the experiments? Think about that.</P><P><A NAME="exp5"></A><IMG
+                SRC="images/exp_5.gif" WIDTH="325"
+                HEIGHT="40" NATURALSIZEFLAG="3" BORDER="0" ALIGN="MIDDLE"><B><I><FONT SIZE="+2"> 
+-- Number of acorns needed per squirrel</FONT></I></B></P><P>&nbsp;</P><TABLE BORDER="1" WIDTH="90%" CELLPADDING="3"><TR><TD WIDTH="20" VALIGN="TOP"><IMG
+                SRC="images/observation.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>How many acorns 
+per year does a single squirrel need to survive? In addition, how many squirrels 
+can a single oak tree support? </TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/hypothesis.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Come up with 
+your hypotheses for both questions.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/experiment.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Set up an 
+experiment to prove your hypotheses. You can probably also come up with answers 
+based on the results of the previous experiments.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/theory.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="177"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest13.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET><BR><BR><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="194"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest14.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET><BR><BR>Are you surprised by the answer? Think about it. It takes 
+about 25 years before an oak tree starts producing acorns. During all that time 
+there has to be plenty of nutrients available and many 
+<a href="javascript:dictionary.startIt('gallons')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('gallons')"
+onMouseOut="dictionary.clearIt ()">gallons</a>
+of water. You would 
+have to wait much longer before the tree becomes full grown and yearly production 
+of acorns grows to a level where it can sustain a couple of little squirrels. 
+It is so easy to break this delicate balance and therefore impact the squirrel 
+population! </TD></TR></TABLE><P><IMG
+                SRC="images/exp_6.gif" WIDTH="325"
+                HEIGHT="40" NATURALSIZEFLAG="3" BORDER="0" ALIGN="MIDDLE"><B><I><FONT SIZE="+2"> 
+-- Squirrels life expectancy</FONT></I></B></P><TABLE BORDER="1" WIDTH="90%" CELLPADDING="3"><TR><TD WIDTH="20" VALIGN="TOP"><IMG
+                SRC="images/observation.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>We would now 
+like to figure out how many years a squirrel normally lives.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/hypothesis.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>This is more 
+a guess than anything else, but come up with a guess of the number of years. </TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/experiment.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Define and 
+run an experiment to figure this out.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/theory.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="194"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest15.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR></TABLE><P><B>COMMENT:</B> To obtain a more scientific 
+measure of squirrels' life expectancy, you would need to study large populations 
+of squirrels in the wild for many years. Some squirrels die younger and some older. 
+After observing many squirrels go through their life cycle, you would analyze 
+the data and obtain some type of average. The number used in the model is based 
+on such studies and analysis. You can now see a nice advantage of a model such 
+as this. In a mater of minutes you can figure out the answer.</P><P><IMG
+                SRC="images/exp_7.gif" WIDTH="325"
+                HEIGHT="40" NATURALSIZEFLAG="3" BORDER="0" ALIGN="MIDDLE"><B><I><FONT SIZE="+2"> 
+-- Squirrels Birth Rate</FONT></I></B></P><TABLE BORDER="1" WIDTH="90%" CELLPADDING="3"><TR><TD WIDTH="20" VALIGN="TOP"><IMG
+                SRC="images/observation.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Let's now 
+try to figure out the squirrels' birth rate in the model, which means the number 
+of baby squirrels that each female squirrel will give birth to every year.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/hypothesis.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>You can look 
+at the graphs or tables in the previous experiments to come up with a hypothesis. 
+</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/experiment.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>As in all 
+previous cases, come up with an experiment that will allow you to figure out the 
+birth rate.<BR><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="126"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest16.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/theory.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="534"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest17.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR></TABLE><P><B>COMMENT:</B> The process used to figure 
+out the birth rate is a simplified one. A more scientific one with a bit more 
+involved mathematics can be checked in the <A HREF="facts_math.html#birthrate" TARGET=""> 
+Facts about Population Growth Mathematical Models</A> page. Make sure to check 
+it because it is a more formal process with an interesting and general result.</P><P><B>NOTE:</B> 
+In reality the birth rate of squirrels is not always what the model uses. Make 
+sure to check the <A HREF="facts_squirrels.html#births">Facts about Squirrels</A> 
+page to find out the more common birth rate.</P><P ALIGN="CENTER">&nbsp;</P><P ALIGN="CENTER">&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="oaks.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="oaks.html" TARGET="">Get 
+Acquainted with Model</A> </P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="hawks.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="hawks.html" TARGET=""> 
+The Impact of&nbsp;Predators</A></P></TD></TR></TABLE></CENTER><DIV ALIGN="LEFT"></DIV><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

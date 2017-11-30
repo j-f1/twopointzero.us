@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Interesting Facts about Population Growth Mathematical Models</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="Description of the evolution of mathematical models for population models, interesting aspects of the basic logistic equation, and calculation of squirrels birth rate.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, exponential, immigration, emigration, conservation, environment protection, mathematical models, difference equation, logistic difference equation, logistic equation, logistic, logistic growth, sigmoid">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Interesting Facts about Population Growth Mathematical Models">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="Description of the evolution of mathematical models for population models, interesting aspects of the basic logistic equation, and calculation of squirrels birth rate.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["blue"] = new description (
+"Blue", "A color whose hue is that of the clear sky or that of the portion of the color spectrum lying between green and violet.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B><I>Interesting</I> 
+Facts about Population Growth Mathematical Models</B></FONT> </TD></TR></TABLE><BLOCKQUOTE><P>Scientists, 
+engineers, and musicians are examples of people that normally make progress in 
+their corresponding specialties by studying and learning all they can about their 
+area of interest and making small incremental contributions. Many times these 
+can be <I><B>very important contributions</B></I>. In other words, these people 
+use the past and present knowledge as a stepping stone for the advancement of 
+the state-of-the-art in their fields of interest.</P><P>The evolution of the mathematical 
+models used to describe population growth and balance is a great example of how 
+this field has evolved over the years. This page starts with a quick and simple 
+description of this evolution and then presents <A HREF="#interesting">interesting 
+and fascinating aspects</A> of some of them. Following that there is one more 
+section with the detailed calculations of the <A HREF="#birthrate">Squirrels' 
+Birth Rate</A> based on the population model.</P><P><B><FONT SIZE="4">1) Population 
+Growth Mathematical Models</FONT></B></P><P><B><A NAME="unlimited"></A>Unlimited 
+Growth</B>. The first mathematical model, referred to as the classical Malthusian 
+scheme for population growth, is based on the work by Thomas R. Malthus (1766-1834). 
+In <I>The Principle of Population</I> essay that he published in 1798, Malthus 
+explained in fundamental and brilliantly simple terms his theories of human population 
+growth and the connection between <A HREF="#note1">over-population and misery<SUP>1</SUP></A>. 
+One of the fundamental concepts that he brought up is that of unlimited population 
+growth.</P><P>The mathematical model based on this idea is that the population 
+size for one generation depends on the size of the previous generation, and it 
+is a multiple. This is expressed mathematically by the following equation:</P><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><IMG SRC="images/image42.gif" WIDTH="80" HEIGHT="24"></TD><TD ALIGN="RIGHT">(1)</TD></TR></TABLE><P>where:</P><DIV ALIGN="CENTER"><TABLE BORDER="0" WIDTH="93%"><TR><TD WIDTH="9%" VALIGN="TOP">t</TD><TD WIDTH="91%">represents 
+the time period (which could be minutes, weeks, years, etc. depending on the species 
+being considered),</TD></TR><TR><TD WIDTH="9%" VALIGN="TOP">p<SUB>t</SUB></TD><TD WIDTH="91%">represents 
+the population size at time t. The units of time could be hours, days, years, 
+etc.,</TD></TR><TR><TD WIDTH="9%" VALIGN="TOP">p<SUB>t+1</SUB></TD><TD WIDTH="91%">represents 
+the population size at the next time period. Again, it could be the next hour, 
+next day, next year, etc., and</TD></TR><TR><TD WIDTH="9%" VALIGN="TOP">r</TD><TD WIDTH="91%">referred 
+to as the Malthusian factor, is the multiple that determines the growth rate.</TD></TR></TABLE><P ALIGN="LEFT">This 
+type of equation is called a <I>difference equation</I> because it allows you 
+to find out the value of <I>p</I> at different <I>discrete</I> time intervals 
+-- say at years 3, 4, 5, etc. You couldn’t use this to find out the size of <I>p</I> 
+when <I>t = 3.578 </I><A HREF="#note2"><SUP>2</SUP></A>, because <I>t = 3.578</I> 
+does not represent a <I>discrete</I> time.</P></DIV><P>The value <I>r</I> in the 
+previous equation has a strong impact on how fast the population will grow. To 
+help you understand how this works, get your calculator and try this simple formula. 
+Start with an initial value for the population size (say <I>p<SUB>0</SUB></I> 
+= 5) and one of <I>r</I> (say <I>r</I> = 3). Substitute the numbers to obtain 
+<I>p<SUB>1 </SUB></I>, then <I>p<SUB>2 </SUB></I>, etc. Notice how quickly the 
+population can grow. To help you visualize this, the following graph shows several 
+population growths, all of which start with an initial population size of 2, i.e.</P><P ALIGN="CENTER"><IMG SRC="images/image43.gif" WIDTH="45" HEIGHT="24"></P><P>and 
+different values of <I>r</I>,</P><P ALIGN="CENTER"><A NAME="expgraph"></A><IMG
+                SRC="images/math0.gif" NATURALSIZEFLAG="3" BORDER="0" WIDTH="345" HEIGHT="245"></P><P>As 
+you can see, all the different curves have a similar shape. They are referred 
+to as J-shaped curves. Graph the data from your own calculations. It should also 
+produce a J-shaped curve. Notice that the difference in the value of <I>r</I> 
+between the yellow and blue curves is only 0.02, but the population size is exactly 
+double (4,000 vs. 2,000) after 40 time steps. The mathematical name for this type 
+of growth is <B>exponential growth</B><A HREF="#note3"><SUP>3</SUP></A>.</P><P>This 
+growth equation can be used in cases where there is truly this type of growth. 
+For example, when a new species arrives to an island where there is plentiful 
+of food, perfect conditions for reproduction, and no predators, or when a scientist 
+starts growing bacteria under perfect conditions, one can certainly observe this 
+(almost perfect) type of growth; although, not forever. That is why other mathematical 
+models were developed.</P><P><B>Natural Equilibrium</B>. Robert H. McArthur and 
+Edward O. Wilson helped found the field of <I>population biology </I>during the 
+50’s and 60’s. Robert McArthur felt that mathematical models should be developed 
+to describe the patterns that he found in nature instead of just providing simple 
+textual descriptions. Their work started with the analysis of ant and bird population 
+data. Through the analysis of a lot of experimental data they observed that the 
+population size remained steady, even though the exact species varied. They were 
+able to develop a very intricate mathematical model for this equilibrium that 
+was published in 1962 (not presented here). Their conclusion after all their work 
+with many different species and many different experiments was that:</P><BLOCKQUOTE><P><I><CITE>Nature 
+has this great tendency of balancing things out and reaching a very harmonious 
+equilibrium. If nature were left alone, equilibrium would exist and populations 
+would remain close to them.</CITE></I></P></BLOCKQUOTE><P><B>Limited growth</B>. 
+The problem with the equation (1) model is that the population continues to grow 
+unlimited over time. A major contribution came from Pierre Francois Verhulst, 
+a scientist interested in population growth. Verhulst was born in 1804 in Brussels, 
+Belgium. He showed in 1846 that the population growth not only depends on the 
+population size but also on how far this size is from its upper limit. </P><P>Let's 
+look at the mathematics behind this. Do you remember the definition of carrying 
+capacity introduced in the <A HREF="popintro.html#carrying">fundamentals of population</A> 
+section? Carrying capacity is the maximum population size that a given habitat 
+can support. We’ll denote that as <I>K</I>. If the population is far below <I>K</I>, 
+it would tend to grow rapidly, but as it approaches <I>K,</I> the growth would 
+slow down. If the population size would exceed its upper limit <I>K,</I> the growth 
+would actually be negative!<A HREF="#note4"><SUP>4</SUP></A>. &nbsp;In order to 
+model this, Verhulst modified equation (1) to make the population size proportional 
+to both the previous population and a new term:</P><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><I><FONT SIZE="2"><IMG SRC="images/image44.gif" WIDTH="62" HEIGHT="42"></FONT></I></TD><TD ALIGN="RIGHT">(2)</TD></TR></TABLE><P ALIGN="CENTER"></P><P>This 
+term reflects how far the population is from its maximum limit. Let's assume that 
+the carrying capacity <I>K</I> is 2000. If the population is just starting with 
+a small value (say 50 or less), then this new term will be very close to one. 
+However, as the population value grows and gets closer to <I>K</I>, this new term 
+will become very small and get to zero or even negative, providing the right feedback 
+to limit the population growth. The following table shows values for this term 
+for different values of <I>p<SUB>t</SUB></I> when <I>K</I> is 2000:</P><DIV ALIGN="CENTER"><TABLE BORDER="BORDER" CELLSPACING=1 CELLPADDING=3 WIDTH=41%> 
+<TR ALIGN="CENTER"><TD WIDTH="28%" VALIGN="TOP" ALIGN="CENTER"> <B><I>p<SUB>t</SUB></I></B></TD><TD WIDTH="72%" VALIGN="TOP" ALIGN="CENTER"> 
+<B><I>(K-p<SUB>t </SUB>) / K</I></B></TD></TR> <TR><TD WIDTH="28%" VALIGN="TOP" ALIGN="CENTER"> 
+0<FONT SIZE="2"></FONT></TD><TD WIDTH="72%" VALIGN="TOP" ALIGN="CENTER">&nbsp; 
+1.000</TD></TR> <TR><TD WIDTH="28%" VALIGN="TOP" ALIGN="CENTER"> 10<FONT SIZE="2"></FONT></TD><TD WIDTH="72%" VALIGN="TOP" ALIGN="CENTER">&nbsp; 
+0.995 </TD></TR> <TR><TD WIDTH="28%" VALIGN="TOP" ALIGN="CENTER"> 50<FONT SIZE="2"></FONT></TD><TD WIDTH="72%" VALIGN="TOP" ALIGN="CENTER">&nbsp; 
+0.975 </TD></TR> <TR><TD WIDTH="28%" VALIGN="TOP" ALIGN="CENTER"> 200<FONT SIZE="2"></FONT></TD><TD WIDTH="72%" VALIGN="TOP" ALIGN="CENTER">&nbsp; 
+0.900 </TD></TR><TR><TD WIDTH="28%" VALIGN="TOP" ALIGN="CENTER">1000</TD><TD WIDTH="72%" VALIGN="TOP" ALIGN="CENTER">0.500</TD></TR> 
+<TR><TD WIDTH="28%" VALIGN="TOP" ALIGN="CENTER"> 1990<FONT SIZE="2"></FONT></TD><TD WIDTH="72%" VALIGN="TOP" ALIGN="CENTER">&nbsp; 
+0.005 </TD></TR> </TABLE><DIV ALIGN="LEFT"></DIV></DIV><P>So the equation using 
+this new term and named after Verhulst is:</P><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><I><FONT SIZE="2"><IMG SRC="images/image45.gif" WIDTH="118" HEIGHT="26"></FONT></I></TD><TD ALIGN="RIGHT">(3)</TD></TR></TABLE><P><A NAME="sigmoid"></A>This 
+equation is also known as a <I>logistic difference equation</I>. Comparing it 
+with equation (1) it is nonlinear in the sense that one can’t simply multiply 
+the previous population by a factor. In this case the population <I>p<SUB>t</SUB></I> 
+on the right of the equation is being multiplied by itself. One of the nice things 
+about this equation is that it is relatively easy to solve and it is also easy 
+to see how it behaves by looking at a chart produced by it. The following chart 
+was produced with <I>K</I> = 1000, <I>r</I> = 1.3, and an initial value <I>p<SUB>0</SUB></I> 
+of 0.1:</P><P ALIGN="CENTER"><A NAME="sgraph"></A><IMG
+                SRC="images/math1.gif" NATURALSIZEFLAG="3" BORDER="0"></P><P>The 
+curve produced by the logistic equation resembles an S. That is why it is called 
+an S-shaped curve or a Sigmoid. As you can see, when the population starts to 
+grow, it does go through an exponential growth phase, but as it gets closer to 
+the carrying capacity (approximately when the time step reaches 37), the growth 
+slows down and it reaches a stable level. There are many examples in nature that 
+show that when the environment is stable the maximum number of individuals in 
+a population fluctuates near the carrying capacity of the environment. However, 
+if the environment becomes unstable, the population size can have dramatic changes.</P><P>The 
+logistic growth equation is a useful model for demonstrating the effects of density-dependent 
+mechanisms in population growth. However, its utility in real populations is limited 
+because the dynamics of populations are complex and because it is difficult to 
+come up with the real value for <I>K</I> in a given habitat. In addition, <I>K</I> 
+is not a fixed number over time; it is always changing depending on many conditions. 
+In the following sections we’ll briefly describe other factors and models to better 
+model population growth.</P><P><B>Age Structure Dependencies</B>. Up until now 
+we assumed that the size of the population in the next time period depends, using 
+one factor, on the whole size of the current population. It does not take into 
+account the fact that not all members of the population will reproduce and that 
+reproduction depends on the individuals age. In essence it uses a simplistic probability 
+average. Equation (1) could be expressed as a function as follows:</P><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><IMG SRC="images/image46.gif" WIDTH="85" HEIGHT="24"></TD><TD ALIGN="RIGHT">(4)</TD></TR></TABLE><P>Equation 
+(4) simply says that the population for the next time period is a function (or 
+depends) on the present population. To take into account the age structure dependencies, 
+equation (4) becomes:</P><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><IMG SRC="images/image47.gif" WIDTH="185" HEIGHT="24"></TD><TD ALIGN="RIGHT">(5)</TD></TR></TABLE><P>This 
+means that the population is now a function of the current population, the population 
+the year before, the year before that, etc. Please note that <I>f</I> implies 
+a generic function and it is different in equation (4) and (5). Also, the function 
+for each of the previous populations could be very different. Equation (5) can 
+become very complicated and difficult to solve!</P><P><B>Competition</B>. One 
+other aspect that we have not taken into account in the previous equations is 
+that of competing species. Of course, one could say that the r factor takes that 
+into account, and it does, but it is difficult to accurately model real populations 
+that way. </P><P>Lets assume that there are two species competing for the same 
+resource and that we can use the logistic equation to model their independent 
+growth. We can essentially use the same equation (3) for each of the two populations 
+<I>p</I> and <I>q</I> after adding a new term to get:</P><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><IMG SRC="images/image48.gif" WIDTH="144" HEIGHT="29"></TD><TD ALIGN="RIGHT">(6)</TD></TR></TABLE><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><IMG SRC="images/image49.gif" WIDTH="144" HEIGHT="29"></TD><TD ALIGN="RIGHT">(7)</TD></TR></TABLE><P>The 
+sub-indexes 1 and 2 are used to indicate that <I>r<SUB>1 </SUB></I>, <I>K<SUB>1 
+</SUB></I>, and <I>c<SUB>1</SUB></I> are different from <I>r<SUB>2 </SUB></I>, 
+<I>K<SUB>2 </SUB></I>, and <I>c<SUB>2 </SUB></I>, each set reflecting the characteristics 
+of <I>p</I> and <I>q</I> respectively. The new term in equation (6) <I>c<SUB>1 
+</SUB>q<SUB>t</SUB></I> (and equivalently in equation (7) <I>c<SUB>2 </SUB>p<SUB>t 
+</SUB></I>) is the one that takes care of the competition factor. As the population 
+of the other species increases, this new term increases, and as it is subtracting, 
+it slows down the growth of <I>p</I>. One could say that the carrying capacity 
+under this scenario depends on the other population and becomes <I>K<SUB>1</SUB> 
+– c<SUB>1 </SUB>q<SUB>t</SUB></I>. A very interesting thing is that this carrying 
+capacity in this set of coupled equations becomes dynamic. Instead of being a 
+constant, it is a value that changes over time. Something else to notice is that 
+if both <I>c</I>’s are zero, then equations (6) and (7) have the exact form as 
+equation (3).</P><P><B>A predator and prey model</B>. Trying to take into account 
+two populations where one is the prey and the other the predator is similar to 
+the previous case. The difference is that the species are at different <A HREF="facts_foodchain.html#trophic">trophic</A> 
+levels. As there are more predators, the prey population starts decreasing. On 
+the other hand, as the number of prey increases, the predator population benefits 
+and increases as well. The equations to model this behavior look like this:</P><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image50.gif" WIDTH="200" HEIGHT="32"></FONT></TD><TD ALIGN="RIGHT">(8)</TD></TR></TABLE><TABLE BORDER="0" WIDTH="80%"><TR><TD>&nbsp;</TD><TD ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image51.gif" WIDTH="220" HEIGHT="36"></FONT></TD><TD ALIGN="RIGHT">(9)</TD></TR></TABLE><P>These 
+equations were discovered independently by the American Alfred Lotka (in 1925) 
+and the Italian Vito Volterra (in 1926) and are known as the Lotka-Volterra equations. 
+You will notice that essentially the prey population <I>p</I> increases, just 
+as before, based on the term:</P><P ALIGN="CENTER"><IMG SRC="images/image52.gif" WIDTH="78" HEIGHT="28"></P><P ALIGN="LEFT">but 
+is destroyed dependent on the term:</P><P ALIGN="CENTER"><IMG SRC="images/image53.gif" WIDTH="81" HEIGHT="24"></P><P>Similarly, 
+the predator population <I>q</I> decreases based on the term:</P><P ALIGN="CENTER"><IMG SRC="images/image54.gif" WIDTH="93" HEIGHT="36"></P><P>but 
+increases based on the term:</P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image55.gif" WIDTH="70" HEIGHT="24"></FONT></P><P>It 
+is interesting to note that the last two terms on both equations (8) and (9) are 
+dependent on both the prey and predator populations. The Lotka-Volterra equations 
+have evolved and there are many different versions of equations based on the concepts 
+introduced 75 years ago.</P><P>In conclusion, several different concepts and models 
+were described in the previous paragraphs, but each of them separate. A real and 
+accurate population model would need to consider most of them at the same time. 
+Imagine an ecosystem where one is trying to model many interdependent species, 
+and it is easy to see how the mathematical models can get quite complicated.</P><P><B><FONT SIZE="4"><A NAME="interesting"></A>2) 
+Interesting and complex aspects of the basic logistic equation</FONT></B><FONT SIZE="4">.</FONT> 
+</P><P>We will now describe and show some very interesting aspects of the <I>logistic 
+difference equation, </I>equation (3). Most of this work was collected for the 
+first time by Robert May in a classic article published in Nature in June of 1976. 
+Robert May started his career as a physicist but then did his post-doctoral work 
+in applied mathematics. He became very interested in the mathematical explanations 
+of what enables competing species to coexist and then in the mathematics behind 
+populations growth. </P><P>When people started working with this equation they 
+noticed an interesting behavior depending on the value of <I>r</I>. We will illustrate 
+their findings with graphs produced by running the equation with different values 
+of <I>r</I> starting with <I>r</I> = 0. Unless mentioned otherwise, will use a 
+value of <I>K</I> = 1000 in the following graphs.</P><P> <B>Decline to Zero</B>. 
+When the value of <I>r</I> if between 0 and 1, the population will eventually 
+decrease to zero. This is illustrated in the following graph where we used an 
+initial population of 500 individuals or <I>p<SUB>0</SUB></I> = 500:</P><P ALIGN="CENTER"><IMG
+                SRC="images/math2.gif" NATURALSIZEFLAG="3" BORDER="0"></P><P>As 
+you can see, the population of 500 will decrease to zero. Increasing the value 
+of <I>r</I> towards the value of one slows down the decline, but nevertheless 
+the population goes to zero.</P><P><B>Normal Population Growth.</B> When the value 
+of <I>r</I> is between 1 and 3, the population will increase following the sigmoid 
+curve towards a stable value. Here is the graph that illustrates this:</P><P ALIGN="CENTER"><IMG
+                SRC="images/math3.gif" NATURALSIZEFLAG="3" BORDER="0"></P><P>In 
+this case the initial population is <I>P<SUB>0</SUB></I> = 0.01 and the three 
+cases show very different speeds towards achieving their stable values. Their 
+stable values also differ considerably between 200, 500 and 636.3636. One more 
+thing to notice is that when the value of <I>r</I> is larger than 2.4, the equation 
+shows an oscillation which is larger as it gets closer to 3.0, but in all cases 
+the oscillation dies down and the population value settles down to its steady 
+value.</P><P>One very interesting aspect of the logistic equation is that the 
+long-term value<A HREF="#note5"><SUP>5</SUP></A> of the population will be the 
+same regardless of where it starts. This is shown in the next graph where we have 
+repeated the same setup as used for the previous graph except for the starting 
+population values. As you can see, with very different <I>p(0)</I>'s the long 
+term stable values are exactly the same, 200, 500 and 636.3636. Here is the chart:</P><P ALIGN="CENTER"><IMG
+                SRC="images/math4.gif" NATURALSIZEFLAG="3" BORDER="0"></P><P><B>Multiple 
+stable values.</B> When the value of <I>r</I> reaches the <I>magic</I> value of 
+3, something strange happens. The population does not reach one steady value. 
+It gets to a point where it oscillates between two steady values! This means that 
+the population does very well one season and increases in size dramatically. The 
+following season there is overpopulation scrambling for the same resources and 
+many die decreasing the size. The population size goes up and down between two 
+values. </P><P>As we continue increasing the value of <I>r</I>, we reach a point 
+when <I>r</I> is 3.4495 where instead of the population switching on and off between 
+two values, it switches between four values! This effect can be seen several more 
+times when the oscillation happens between eight values (when <I>r</I> = 3.56), 
+sixteen values (when <I>r</I> = 3.596), etc. The following charts shows three 
+graphs of this behavior:</P><P ALIGN="CENTER"><IMG
+                SRC="images/math5.gif" NATURALSIZEFLAG="3" BORDER="0"></P><P ALIGN="CENTER"><IMG
+                SRC="images/math6.gif" NATURALSIZEFLAG="3" BORDER="0" WIDTH="419" HEIGHT="266"></P><P>One 
+might think that the last chart is really oscillating randomly, but it is jumping 
+up and down between 8 values. Will this continue as we increase the values of 
+<I>r</I>? &nbsp;Lets see the next section.</P><P> <B>Chaos.</B> As we continue 
+to increase the value of <I>r</I> we reach another <I>magic</I> point, when <I>r 
+</I>reaches a value of 3.7. At that point it looks like the population jumps in 
+a very random and unpredictable way, and it behaves this way until it reaches 
+a value 4.0. This behavior that looks very much like random, but really isn't, 
+is called <B>chaos</B><A HREF="#note6"><SUP>6</SUP></A>. Look at the following 
+graph where we used a value of <I>r</I> = 3.725:</P><P ALIGN="CENTER"><IMG
+                SRC="images/math7.gif" NATURALSIZEFLAG="3" BORDER="0" WIDTH="418" HEIGHT="264"></P><P>Even 
+though there seems to be some pattern, if you look closely, it is really not repeating 
+the values from one period to the next. Isn’t it amazing that such a simple formula, 
+which was working in a simple way, describes so many different behaviors reaching 
+all the way to the complexities of chaos? Even though the changes from period 
+to period seem absolutely random, there is clearly some regularity to the oscillations.</P><P>The 
+deterministic logistic equation, meaning an equation which can predict the same 
+values over time, produces what looks like random behavior. The last aspect to 
+notice regarding this chaotic phenomena is how sensitive the behavior is to the 
+values of <I>r</I>. It behaves so differently by simply varying the values between 
+0 and 4.0 and <I>very small changes can produce quite different results!</I></P><P><B>Boom-and-Bust 
+Curve</B>. Some populations go through periods where their sizes suddenly increase 
+dramatically for a few generations and then go back to their normal stable numbers. 
+Insects are a common species that go through a tremendous growth for a few weeks, 
+followed by a sudden collapse. Some species can increase their number even more 
+than a thousand times. As you can see in the next graph, the growth starts exponentially 
+but is quickly followed by a sudden collapse.</P><P ALIGN="CENTER"><IMG
+                SRC="images/math8.gif" NATURALSIZEFLAG="3" BORDER="0" WIDTH="344" HEIGHT="199"></P><P ALIGN="LEFT"> 
+An example of this behavior is a pest in the Swiss&nbsp;Alps known as the larch 
+bud moth which goes through 8 or 9 year cycles during which its numbers multiply 
+up to 100,000 times!<A HREF="#note7"><SUP>7</SUP></A></P><P><FONT SIZE="4"><B>3) 
+Complexity of the mathematical models</B></FONT></P><P>By now you probably got 
+the idea that the mathematical models of population growth, when incorporating 
+many of the issues described in the previous sections, can become quite complex, 
+especially as the models need to map to real physical characteristics of the natural 
+world. Just imagine a predator that switches prey from time to time. It can be 
+very challenging but when one finds a mathematical model that works, it is <I>very 
+rewarding!</I> Here follows an interesting example.</P><P>Maria J. Milicich, an 
+Ecologist, has studied a very colorful fish found in the Great Barrier Reef in 
+Australia known as damselfish<A HREF="#note8"><SUP>8</SUP></A>. These damselfish 
+lay their eggs at the reef's bottom. The full moon causes the larvae to hatch 
+and come out about once a month. The larvae leave the reef and about 20 days later 
+return as mature larvae. Milicich was working with data consisting of eggs released 
+from nests, number of larvae that hatched, and the number of mature larvae that 
+return to the reef.</P><P>In looking specifically at the data for the mature larvae, 
+Milicich expected the numbers to be close to an equilibrium point; however, she 
+found that the numbers varied dramatically. Some months she found only a few larvae 
+and in others she found thousands of them! The feeling was that these fluctuations 
+were random and attributed to weather changes, unknown diseases, sampling errors, 
+or what is referred to as environmental noise (unknown causes in the environment).</P><P>Milicich 
+used linear models, which did not work very well, so decided to model the numbers 
+of mature larvae using a non-linear model. Her approach was to compare the linear 
+and the non-linear models to see which one predicted the numbers more accurately. 
+She and her team<A HREF="#note8"><SUP>8</SUP></A> played with hundreds and hundreds 
+of environment variables to try to improve the predictability of the non-linear 
+model. They finally came up with a model that took into account: (a) the moon's 
+phase, (b) the water turbulence around the reef, and (c) the wind speed. This 
+non-linear model proved to be significantly better than the previous linear model. 
+Not only that, but these three physical variables made perfect ecological sense. 
+They were able to better understand the roles that the moon, water turbulence 
+and wind have on the overall damselfish population process. When the three combine 
+positively, the larvae reach maturity in great numbers, but when they work against 
+each other, their numbers are very small.</P><P><B><FONT SIZE="4"><A NAME="birthrate"></A>4) 
+Calculation of the Squirrels Birth Rate</FONT></B></P><P>If you run an experiment 
+several times to observe the squirrel’s population growth, you might notice that 
+the growth is not always the same. The reason is that there is some variability. 
+Squirrels will not always have the exact same number of offspring, and some might 
+die because of some other causes. The model attempts to model this behavior. By 
+setting up the model with 60 trees and introducing two squirrels in year 75, the 
+results of five consecutive runs were:</P><DIV ALIGN="CENTER"><TABLE BORDER="BORDER" CELLSPACING=1 CELLPADDING=3 WIDTH=80%> 
+<TR><TD WIDTH="14%" VALIGN="TOP" ALIGN="CENTER"> <B>Year</B></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2"><B>Run 1</B></FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2"><B>Run 2</B></FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2"><B>Run 3</B></FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2"><B>Run 4</B></FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2"><B>Run 5</B></FONT></TD><TD WIDTH="18%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2"><B>Average</B></FONT></TD></TR> <TR><TD WIDTH="14%" VALIGN="TOP" ALIGN="CENTER"> 
+<P ALIGN="CENTER"><FONT SIZE="2">75</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">2</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">2</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">2</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">2</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">2</FONT></TD><TD WIDTH="18%" VALIGN="TOP">&nbsp;</TD></TR> 
+<TR><TD WIDTH="14%" VALIGN="TOP" ALIGN="CENTER"> <P ALIGN="CENTER"><FONT SIZE="2">76</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">6</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">5</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">6</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">4</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">5</FONT></TD><TD WIDTH="18%" VALIGN="TOP">&nbsp;</TD></TR> 
+<TR><TD WIDTH="14%" VALIGN="TOP" ALIGN="CENTER"> <P ALIGN="CENTER"><FONT SIZE="2">77</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">16</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">11</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">16</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">9</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">11</FONT></TD><TD WIDTH="18%" VALIGN="TOP">&nbsp;</TD></TR> 
+<TR><TD WIDTH="14%" VALIGN="TOP" ALIGN="CENTER"> <P ALIGN="CENTER"><FONT SIZE="2">78</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">40</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">27</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">41</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">21</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">27</FONT></TD><TD WIDTH="18%" VALIGN="TOP">&nbsp;</TD></TR> 
+<TR><TD WIDTH="14%" VALIGN="TOP" ALIGN="CENTER"> <P ALIGN="CENTER"><FONT SIZE="2">79</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">101</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">67</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">100</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">52</FONT></TD><TD WIDTH="13%" VALIGN="TOP"> <P ALIGN="CENTER"><FONT SIZE="2">67</FONT></TD><TD WIDTH="18%" VALIGN="TOP"> 
+<P ALIGN="CENTER"><FONT SIZE="2">77.4</FONT></TD></TR> </TABLE></DIV><P>Running 
+it several times is equivalent to making observations in different locations, 
+under different conditions, in different periods of times, etc. It makes the results 
+more general and valid. That means that the results are not only valid for a specific 
+group of squirrels in a specific location. The conclusions or results can be then 
+applied to squirrels in general.</P><P>The average squirrel population in year 
+79 after five runs is 77.4 squirrels. This is the number that will be used in 
+this example. Now, let's try to come up with the mathematical growth model. Let's 
+assume that <I>n</I><SUB>i</SUB> represents the number of squirrels on year I 
+and <I>f</I> represents the birth rate. Then <I>n</I><SUB>1 </SUB>represents the 
+number of squirrels in year one and <I>n</I><SUB>2</SUB> represents the number 
+of squirrels in year two (or the following year). <I>n</I><SUB>2 </SUB>can then 
+be expressed as:</P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image30.gif" WIDTH="170" HEIGHT="41"></FONT></P><P>Let's 
+see what this formula represents. The term <I>n</I><SUB>1</SUB>/2 represents the 
+number of couples (if there are 6 squirrels it is assumed that there are 3 couples). 
+Multiplying the number of couples by <I>f</I> (the birth rate) will give the number 
+of squirrels that will be born. Adding this to the current population (<I>n</I><SUB>1</SUB>) 
+gives you the expected population on the following year. Now lets write the equivalent 
+equation for <I>n</I><SUB>3</SUB>:</P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image31.gif" WIDTH="176" HEIGHT="41"></FONT></P><P>and 
+substitute the value of <I>n</I><SUB>2</SUB> from the previous equation to produce:</P><P ALIGN="CENTER"><IMG SRC="images/image32.gif" WIDTH="290" HEIGHT="41"></P><P>Similarly, 
+you can now write the equations for <I>n</I><SUB>4</SUB> and then <I>n</I><SUB>5 
+</SUB>as:</P><P ALIGN="CENTER"><IMG SRC="images/image34.gif" WIDTH="98" HEIGHT="41"></P><P ALIGN="CENTER"><IMG SRC="images/image33.gif" WIDTH="98" HEIGHT="41"></P><P>Now 
+we'll substitute the values that we know on this last equation. From the table 
+we know that <I>n</I><SUB>5</SUB> is 77.4 and <I>n</I><SUB>1</SUB> is equal to 
+2, so the last equation will become:</P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image36.gif" WIDTH="120" HEIGHT="41"></FONT></P><P>Solving 
+the equation for <I>f</I></P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image35.gif" WIDTH="102" HEIGHT="41"></FONT></P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image37.gif" WIDTH="122" HEIGHT="45"></FONT></P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image39.gif" WIDTH="101" HEIGHT="45"></FONT></P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image38.gif" WIDTH="135" HEIGHT="53"></FONT></P><P>By 
+doing the arithmetic operations one can finally obtain the value of <I>f</I>:</P><P ALIGN="CENTER"><FONT SIZE="2"><I><FONT SIZE="+1">f 
+</FONT></I><FONT SIZE="+1">= 2.988</FONT></FONT></P><P>which gets rounded to 3, 
+giving us the final answer of:</P><P ALIGN="CENTER"><FONT SIZE="+1">Birth Rate 
+of 3</FONT></P><P>As was indicated at the beginning of this section, when you 
+do multiple relevant experiments combining the data in a logical way and following 
+a formal mathematical method to find out the result, the answer is more accurate 
+and provides a more valid portrayal of the real birth rate.</P><P><B><FONT SIZE="4">5) 
+General Growth Rate Equation</FONT></B></P><P>From the work on the previous section 
+we can write a general formula that models the growth rate:</P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image40.gif" WIDTH="105" HEIGHT="41"></FONT></P><P>where 
+<I>p<SUB>0</SUB></I> represents the initial population, <I>n</I> the number of 
+years, <I>f</I> the birth rate, and <I>p<SUB>n</SUB></I> the population in year 
+n. For our case, where <I>f</I> is equal to 3, the formula becomes simply:</P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image41.gif" WIDTH="91" HEIGHT="25"></FONT></P><P ALIGN="CENTER">&nbsp;</P><P> 
+<HR ALIGN="CENTER" WIDTH="50%"><P>&nbsp;</P><P><B>References and Notes</B></P><P><FONT SIZE="2"><A NAME="note1"></A></FONT>[Note 
+1] -- The Core Principles of Malthus are:</P><OL><LI>Food is necessary for human 
+existence.</LI><LI>Human population tends to grow faster than the power in the 
+earth to produce subsistence, and that </LI><LI>The effects of these two unequal 
+powers must be kept equal.</LI><LI>Since humans tend not to limit their population 
+size voluntarily, population reduction tends to be accomplished through the "positive" 
+checks of famine, disease, poverty and war.<FONT SIZE="2"> </FONT></LI></OL><P><FONT SIZE="2"><A NAME="note2"></A></FONT>[Note 
+2] -- Depending on the species that one is trying to model, a difference equation 
+might be accurate enough. However, when the model requires an equation that can 
+find out the size of the population at any point in time, you would need to use 
+what is called a <I>differential equation</I>. The name sounds very similar, but 
+the mathematics behind the differential equations is more complicated.</P><P><A NAME="note3"></A>[Note 
+3] -- It is called exponential growth because there is another growth equation, 
+based on the <I>e</I> constant elevated to the exponent<I> rt</I>, which produces 
+the same curve shape:</P><P ALIGN="CENTER"><FONT SIZE="2"><IMG SRC="images/image56.gif" WIDTH="66" HEIGHT="25"> 
+</FONT></P><P><FONT SIZE="2"></FONT></P><P><FONT SIZE="2"><A NAME="note4"></A></FONT>[Note 
+4] -- The Verhulst’s equation also applies to the theories of learning. What is 
+learned depends on the amount of information learned before. Learning first increases, 
+but after some time the learner becomes saturated, so that more effort is required 
+to acquire more knowledge.</P><P><B><FONT SIZE="4"><A NAME="note5"></A></FONT></B>[Note 
+5] -- The steady values where the population settles in the long run are referred 
+to as attractors because regardless of where the population starts, above or below 
+the final stable value, the population size will be <I>attracted</I> to this value.</P><P><B><FONT SIZE="4"><A NAME="note6"></A></FONT></B>[Note 
+6] -- The word &quot;chaos&quot; was coined as a mathematical term by James A. 
+Yorke and Tien Yien Li in their classic paper "Period Three Implies Chaos" [American 
+Mathematical Monthly <B>82</B>, no. 10, pp. 985-992, 1975]</P><P><B><FONT SIZE="4"><A NAME="note7"></A></FONT></B>[Reference 
+7] -- C. Zimmer, <I>Science</I><B> 283</B>,83&nbsp;(1999)</P><P><B><FONT SIZE="4"><A NAME="note8"></A></FONT></B>[Reference 
+8] -- P. A. Dixon, Maria J.&nbsp;Milicich, and G. Sugihara, <I>Science</I> <B>284</B>, 
+1528 (1999) </P><P><B><FONT SIZE="4"><A NAME="note9"></A></FONT></B>[Reference 
+9] -- <A HREF="http://mathworld.wolfram.com">http://mathworld.wolfram.com</A> 
+- &quot;<I>A convenient, comprehensive, and interactive mathematics encyclopedia 
+intended for students, educators, math enthusiasts, and researchers.</I>&quot;</P><P>&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="facts_foodchain.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="facts_foodchain.html" TARGET="">Facts 
+about Food Chains</A></P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="facts_oaks.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="facts_oaks.html" TARGET="">Facts 
+about Oak Trees</A></P></TD></TR></TABLE></CENTER><DIV ALIGN="LEFT"></DIV><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

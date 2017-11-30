@@ -1,0 +1,118 @@
+<!-- If you’re supporting browsers that don’t support
+     Shadow DOM (http://caniuse.com/#feat=shadowdom,
+     as of 2016, you should be): -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="../src/n.css" charset="utf-8">
+<script src="../src/n.js" charset="utf-8"></script>
+<style>
+  main {
+    font-family: sans-serif;
+  }
+  h1 small {
+    font-size: 50%;
+    font-weight: bolder;
+    opacity: 0.75;
+  }
+  body {
+    /*background: url('./ref2.png') no-repeat top right;*/
+    height: 100vh;
+    margin: 0;
+  }
+
+
+  /************************************************************************/
+  notification-center {
+    position: fixed;
+    top: 17px;
+    right: 17px;
+    text-align: right;
+  }
+  notification-center notification-box {
+    text-align: left;
+  }
+</style>
+<form onsubmit="return false;">
+  <h2>Make your own:</h2>
+  <input id="icon" type="text" placeholder="Icon URL"><br>
+  <input id="title" type="text" placeholder="Title"><br>
+  <input id="subtitle" type="text" placeholder="Subtitle"><br>
+  <input id="text" placeholder="Text"><br>
+  <label><input type="checkbox" id="minimal"> Minimal Buttons</label><br>
+  <textarea id="actions" placeholder="eval()'d actions (key = title, value = callback)" style="font-family: monospace;"></textarea><br>
+  <button id="button" type="submit">GO!</button>
+</form>
+<notification-center id="center"></notification-center>
+<script>
+  var $ = document.getElementById.bind(document);
+  function once(f) {
+    var done = false;
+    var result;
+    return function() {
+      if (done) return result;
+      result = setTimeout(f, 1000);//f.call(this, arguments);
+      done = true;
+      return result;
+    };
+  }
+  $('button').onclick = function () {
+    var actions;
+    try {
+      /* jshint -W061 */ // "eval is evil"
+      actions = eval('('+$('actions').value+')');
+      /* jshint +W061 */
+    } catch (e) {}
+    $('center').addNotification({
+      title: $('title').value || undefined,
+      subtitle: $('subtitle').value || undefined,
+      text: $('text').value || undefined,
+      icon: $('icon').value || undefined,
+      minimal: $('minimal').checked,
+      actions: actions
+    });
+  };
+  var ready = once(function() {
+    if (typeof NotificationCenter === "undefined") return;
+    var center = $('center');
+    center.defaultIcon = "logo.png";
+    center.defaultActions = {
+      "Close": null,
+      "Show": function() {
+        center.addNotification({
+          title: "Getting data failed",
+          actions: {
+            "Cancel": null,
+            "Retry": function() {
+              alert("Here’s the data!");
+            }
+          }
+        });
+      }
+    };
+    center.addNotification({
+      text: "Message",
+    });
+    center.addNotification({
+      title: "Title",
+      text: "Message",
+    });
+    center.addNotification({
+      title: "Title",
+      subtitle: "Subtitle",
+      text: "Message",
+    });
+    center.addNotification({
+      title: "Title",
+    });
+    center.addNotification({
+      title: "Title",
+      subtitle: "Subtitle",
+    });
+    setTimeout(function() {
+      center.addNotification({
+        text: "Minimal actions (hover to view)",
+        minimal: true
+      });
+    }, 1000);
+  });
+  window.onload = ready;
+</script>

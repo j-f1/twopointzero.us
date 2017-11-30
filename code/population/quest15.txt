@@ -1,0 +1,12 @@
+QUESTION
+What is the life expectancy of a squirrel?
+ANSWER
+One experiment to figure this out is to place a single
+squirrel, which can not reproduce and have baby
+squirrels, at a point in time when there are enough
+acorns for it to survive.  Since the population model
+assumes that a newly introduced squirrel was just born,
+by advancing the time and checking when the squirrel is
+no longer alive you can determine how many years it
+lived.  In the model squirrels live 12 years.
+END

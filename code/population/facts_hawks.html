@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Interesting Facts about Red-tailed Hawks</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="This page contains interesting facts about red-tailed hawks.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tailed hawk, food chain, exponential, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Interesting Facts about Red-tailed Hawks">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="This page contains interesting facts about red-tailed hawks.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["prey"] = new description (
+"Prey", "In this sense it means that the bird siezes and devours other animals.");
+
+descr["plumage"] = new description (
+"Plumage", "The entire clothing of feathers of a bird.");
+
+descr["soar"] = new description (
+"Soar", "To fly without flapping the wings, usually at a great height.");
+
+descr["hover"] = new description (
+"Hover", "To remain suspended over a specific place.");
+
+descr["kite"] = new description (
+"Kite", "To kite means to ascend or rise quickly.");
+
+descr["larvae"] = new description (
+"Larvae", "An immature and wingless stage of an insect's life, between egg and pupa (right before the adult) stage.");
+
+descr["carrion"] = new description (
+"Carrion", "Flesh or meat of a dead animal that is in the process of decomposing");
+
+descr["nestling"] = new description (
+"Nestling", "The newly-hatched young birds that have not abandoned the nest.");
+
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<!--#exec cgi="counter.cgi" --><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B><I>Interesting</I> 
+Facts about Red-tailed Hawks</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P> In addition 
+to interesting facts about Red-tailed Hawks, this page includes a description 
+of the differences between the assumptions made in the population model applet 
+and the real thing. At the end of the page you'll find references to other sites 
+to learn more about Red-tailed Hawks.</P><P ALIGN="CENTER"><IMG
+                SRC="images/hawk2.gif" WIDTH="120"
+                HEIGHT="163" NATURALSIZEFLAG="3" BORDER="5"></P><P><B>Names and 
+definitions</B> -- The Hawk's scientific name is <I>Buteo jamaicensis</I>. The 
+genus <I>Buteo</I> is from the Latin buteo (broad rounded wings). The specific 
+name <I>jamaicensis</I> is named for Jamaica, the country, and from the Latin 
+­ensis (which means belonging to a place). This refers to the range of the hawk, 
+extending from Alaska to the West Indies. The Hawk is a bird of <a href="javascript:dictionary.startIt('prey')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('prey')"
+onMouseOut="dictionary.clearIt ()">prey</a> and those types of birds are called 
+raptors. The young ones, when they have their first complete <a href="javascript:dictionary.startIt('plumage')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('plumage')"
+onMouseOut="dictionary.clearIt ()">plumage</a>, are called immature.</P><P><B>Sizes</B> 
+-- Their length is 17 to 22 inches with an average of 19 inches. Their wingspread, 
+depending on the species, ranges from 43 to 56 inches. Their weight ranges from 
+1.5 to 3.3 pounds, averaging 2.4 pounds.</P><P ALIGN="LEFT"><B>Colors</B> -- Adults 
+are typically dark brown and the immature ones are gray brown. There are five 
+different species of Hawks in the United states and several more around the world. 
+Their colors vary slightly. They have a quite noticeable shade of red on their 
+tail end. A few species are black, but it is rare.</P><P ALIGN="LEFT"><B>Where 
+do they live?</B> &nbsp;Hawks are a very common type of bird that can be found 
+in every habitat in North America except in the high arctic and in extensive tracts 
+of dense forests. The ones that live in the far north migrate south in autumn 
+(when the cool days begin). They can get down all the way to Mexico and South 
+America. They don't stay in the snow and ice. They return in the spring, which 
+is the breeding season. Hawks live in both open and wooded areas, particularly 
+wood edges. They are often seen perched conspicuously on a treetop.</P><P ALIGN="LEFT"><B>Reproduction</B> 
+-- Hawks start breeding when they are one year old. The breeding season is in 
+the spring, and the eggs are laid six to eight weeks later. The mother keeps the 
+eggs warm for about a month before they are born in the late spring. There are 
+normally three eggs in a <A HREF="javascript:dictionary.startIt('nestling')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('nestling')"
+ONMOUSEOUT="dictionary.clearIt ()">nestling</A>. Weasels sometimes attack the 
+nest, killing and/or eating the nestling.</P><P ALIGN="LEFT"><B>Flight</B> -- 
+Active flight is with slow, steady, and deep wing beats. Hawks <a href="javascript:dictionary.startIt('soar')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('soar')"
+onMouseOut="dictionary.clearIt ()">soar</a> with wings raised slightly above horizontal. 
+They <a href="javascript:dictionary.startIt('hover')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('hover')"
+onMouseOut="dictionary.clearIt ()">hover</a> and <a href="javascript:dictionary.startIt('kite')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('kite')"
+onMouseOut="dictionary.clearIt ()">kite</a> on moderate wind. </P><P ALIGN="LEFT"><B><A NAME="eating"></A>Eating</B> 
+-- While still young and living in the nest, hawks will eat worms and beetles. 
+They will also eat frogs, mice and snakes. As they get older, hawks prey mainly 
+on rodents but also on insects and their <a href="javascript:dictionary.startIt('larvae')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('larvae')"
+onMouseOut="dictionary.clearIt ()">larvae</a>, fish, and larger mammals such a 
+rabbits, hares, and <I>squirrels</I>. They will also eat <a href="javascript:dictionary.startIt('carrion')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('carrion')"
+onMouseOut="dictionary.clearIt ()">carrion</a>.</P><P ALIGN="LEFT">If a hawk finishes 
+a meal with their crop bulging, it may not hunt again for a day or two. The crop 
+is a pouch halfway between the mouth and the stomach, where food is stored and 
+gradually released to the stomach. The crop maintains the steady flow of food 
+needed to sustain these big birds.</P><TABLE BORDER="0" WIDTH="85%" ALIGN="LEFT"><TR><TD WIDTH="7%" VALIGN="TOP"><IMG SRC="images/arrow.gif" WIDTH="19" HEIGHT="13" ALIGN="TOP" BORDER="0"></TD><TD WIDTH="93%">One 
+assumption made in the program is that each hawk eats three squirrels per year, 
+that is, it needs at least three to survive. This is a BIG assumption because 
+hawks eat many other things and if they don't find food in an area they move until 
+they find it. It is also interesting to know that hawks might attack and kill 
+a squirrel but only eat small portions of it. The three squirrels per year assumption 
+was added to have a strong relationship and dependency between the two species. 
+In reality there is a relationship, but it is much more complex -- that involves 
+many more species.</TD></TR></TABLE><P>&nbsp;</P><P>&nbsp;</P><P>&nbsp;</P><P>&nbsp;</P><P>&nbsp;</P><P><B>Vision</B> 
+-- Hawk's vision is much better than humans. They can see spiders and beetles 
+from afar. Hawks can see a mouse from a height of one mile.</P><P><B>How old do 
+they live?</B> -- The hawk's average life span in the wild is 20 years.</P><TABLE BORDER="0" WIDTH="85%" ALIGN="LEFT"><TR><TD WIDTH="7%" VALIGN="TOP"><IMG SRC="images/arrow.gif" WIDTH="19" HEIGHT="13" ALIGN="TOP" BORDER="0"></TD><TD WIDTH="93%">In 
+the program, hawks die of old age (when they reach 20 years) or from lack of food 
+(that is, less than three squirrels per year).</TD></TR></TABLE><P>&nbsp;</P><P>&nbsp;</P><P><B><A NAME="deaths"></A>Predators</B> 
+-- They have few, if any, natural predators, but they have enemies such as pollution, 
+particularly from pesticides, and habitat destruction from developments. In short, 
+humans are their main predators.</P><P><B>Causes of death</B> -- In addition to 
+their predators, young hawks can die from learning to fly or eating big snakes.</P><P ALIGN="LEFT"><B>References</B> 
+-- </P><UL><LI><A HREF="http://www.raptor.cvm.umn.edu/raptor/rfacts/redt.html">http://www.raptor.cvm.umn.edu/raptor/rfacts/redt.html</A> 
+- The Raptor Center is an international medical facility for birds of prey.</LI><LI><A HREF="http://www.ovcnet.uoguelph.ca/vth/wildbird/red-tail.htm">http://www.ovcnet.uoguelph.ca/vth/wildbird/red-tail.htm</A> 
+- A nice page dedicated to the red-tailed hawk with great pictures, descriptions, 
+and stories.</LI><LI><A HREF="http://inkido.indiana.edu/w310work/kehle/rthawk.htm">http://inkido.indiana.edu/w310work/kehle/rthawk.htm</A> 
+- Another red-tailed hawk site.</LI><LI><A HREF="http://www.tulsawalk.com/birding/redtail.html">http://www.tulsawalk.com/birding/redtail.html</A> 
+- Another red-tailed hawk site.</LI><LI><A HREF="http://www.desertusa.com/aug96/du_hawk.html">http://www.desertusa.com/aug96/du_hawk.html</A> 
+- Another red-tailed hawk page with very interesting information.</LI><LI><A HREF="http://www.ai-design.com/stargig/raptor/global/content/report/RedTailed.html">http://www.ai-design.com/stargig/raptor/global/content/report/RedTailed.html</A> 
+- Yet another one.</LI><LI><A HREF="http://www.hawkcreek.org/bf-redtail.htm">http://www.hawkcreek.org/bf-redtail.htm</A> 
+- This one has a great picture of a red-tailed hawk </LI><LI><A HREF="http://www.golden-eagle.org">http://www.golden-eagle.org</A> 
+- This site contains <I>very beautiful</I> pictures of hawks and other raptor 
+birds. </LI></UL><P ALIGN="CENTER">&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="facts_squirrels.html" TARGET=""><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="facts_squirrels.html" TARGET="">Facts 
+about Squirrels</A></P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="facts_foodchain.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="facts_foodchain.html" TARGET="">Facts 
+about Food Chains </A></P></TD></TR></TABLE></CENTER><P>&nbsp;</P><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

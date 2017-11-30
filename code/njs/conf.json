@@ -1,0 +1,25 @@
+{
+  "source": {
+    "include": "src"
+  },
+  "plugins": [
+    "plugins/markdown",
+    "plugins/underscore"
+  ],
+  "templates": {
+    "cleverLinks": true,
+    "default": {
+      "staticFiles": {
+        "include": [
+          "static/"
+        ]
+      }
+    }
+  },
+  "opts": {
+    "destination": "doc/",
+    "recurse": true,
+    "tutorials": "tutorials/",
+    "readme": "README.md"
+  }
+}

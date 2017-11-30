@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <style> /* MIN.CSS http://mincss.com/download.html */
+  body,textarea,input,select{background:0;border-radius:0;font:16px sans-serif;margin:0}.addon,.btn-sm,.nav,textarea,input,select{outline:0;font-size:14px}.smooth{transition:all .2s}.btn,.nav a{text-decoration:none}.container{margin:0 20px;width:auto}@media(min-width:1310px){.container{margin:auto;width:1270px}}.btn,h2{font-size:2em}h1{font-size:3em}.btn{background:#999;border-radius:6px;border:0;color:#fff;cursor:pointer;display:inline-block;margin:2px 0;padding:12px 30px 14px}.btn:hover{background:#888}.btn:active,.btn:focus{background:#777}.btn-a{background:#0ae}.btn-a:hover{background:#09d}.btn-a:active,.btn-a:focus{background:#08b}.btn-b{background:#3c5}.btn-b:hover{background:#2b4}.btn-b:active,.btn-b:focus{background:#2a4}.btn-c{background:#d33}.btn-c:hover{background:#c22}.btn-c:active,.btn-c:focus{background:#b22}.btn-sm{border-radius:4px;padding:10px 14px 11px}.nav,.nav .current,.nav a:hover{background:#000;color:#fff}.nav{height:24px;padding:11px 0 15px}.nav a{color:#aaa;padding-right:1em;position:relative;top:-1px}.nav .pagename{font-size:22px;top:1px}.btn.btn-close{background:#000;float:right;font-size:25px;margin:-54px 7px;display:none}@media(max-width:500px){.btn.btn-close{display:block}.nav{overflow:hidden}.pagename{margin-top:-11px}.nav:active,.nav:focus{height:auto}.nav div:before{background:#000;border-bottom:10px double;border-top:3px solid;content:'';float:right;height:4px;position:relative;right:3px;top:14px;width:20px}.nav a{display:block;padding:.5em 0;width:50%}}.row{margin:1% 0;overflow:auto}.col{float:left}.table,.c12{width:100%}.c11{width:91.66%}.c10{width:83.33%}.c9{width:75%}.c8{width:66.66%}.c7{width:58.33%}.c6{width:50%}.c5{width:41.66%}.c4{width:33.33%}.c3{width:25%}.c2{width:16.66%}.c1{width:8.33%}@media(max-width:870px){.row .col{width:100%}}
+  </style>
+  <style type="text/css">
+  body,
+  .parallax .hero.layer {
+    background: #576BFC;
+  }
+
+  /* from http://keithclark.co.uk/articles/pure-css-parallax-websites/demo2/ */
+
+  .parallax {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 1px;
+    perspective: 1px;
+  }
+
+  .parallax .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .parallax .base.layer {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  .parallax .back.layer {
+    -webkit-transform: translateZ(-1px) scale(2);
+    transform: translateZ(-1px) scale(2);
+  }
+
+
+  /* end from */
+
+  @-webkit-keyframes slideshow {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+      height: initial;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideshow {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .parallax .description.layer {
+    margin-top: 400px;
+    bottom: initial;
+    background: white;
+    box-shadow: 0 -12px 13px rgba(0, 0, 0, 0.25);
+  }
+
+  .parallax .navbar.layer {
+    z-index: 1;
+    bottom: initial;
+  }
+
+  .parallax .hero.layer {
+    color: white;
+    padding-top: 25px;
+    height: 400px;
+  }
+
+  .navbar {
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .col {
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  img.app.store {
+    max-width: 180px;
+  }
+
+  .nav a {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  @media screen and (max-width: 500px) {
+    .hero .container {
+      width: 95% !important;
+      padding-top: 40px;
+    }
+    .hero {
+      text-align: center;
+    }
+    .hero h1 {
+      padding-top: 0 !important;
+      font-size: 40px !important;
+    }
+    .hero h2 {
+      padding-top: 0 !important;
+      font-size: 20px !important;
+    }
+    .app.icon {
+      max-height: 150px !important;
+    }
+  }
+
+  .screens {
+    overflow: hidden;
+  }
+
+  .screens .item {
+    position: absolute;
+    opacity: 0;
+    -webkit-animation: slideshow 8s infinite;
+    animation: slideshow 8s infinite;
+  }
+
+  .screens .item:nth-of-type(1) {
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+  }
+
+
+  /* no number 2. who's number 1? */
+
+  .screens .item:nth-of-type(3) {
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+  }
+
+  .screens .item:nth-of-type(4) {
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+  }
+
+  .hero .container {
+    max-width: 750px;
+    margin: auto;
+  }
+
+  .app.icon {
+    border-radius: 19%;
+    max-width: 100%;
+  }
+
+  /* iPhone */
+
+  .iOS {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 230px;
+    position: relative;
+  }
+
+  .iOS .UIDevice {
+    background-size: cover;
+    /* position: absolute; */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+  }
+
+  .UIScreen img {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  /* from http://stackoverflow.com/a/29194256/5244995 */
+  .iOS[iPhone="6"] .UIDevice {
+    padding-bottom: calc(100% * 1255 / 613);
+  }
+  /* end from */
+
+  /* for any digit N, \3N is the CSS escape for the digit. */
+  .iOS[iPhone="6"] .UIDevice {
+    background-image: url(http://twopointzero.us/ios/frame.png);
+  }
+
+  .UIDevice .UIScreen {
+    position: absolute;
+    top: 12.37%;
+    left: 6.7%;
+    width: 86.6%;
+    height: 75.26%;
+  }
+
+  .UIDevice .UIScreen::before {
+    content: "";
+    width: 100%;
+    height: 3.5%;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+  }
+
+  [iPhone] .UIScreen::before {
+    background-image: url(http://twopointzero.us/ios/statusbar-black.png);
+  }
+
+  [iPhone] .UIScreen[statusbar-color="white"]::before {
+    background-image: url(http://twopointzero.us/ios/statusbar-white.png);
+  }
+  /* end iPhone */
+  </style>
+  <title></title>
+</head>
+<body>
+  <section class="navbar">
+    <nav class="nav" tabindex="-1" onclick="this.focus()">
+      <div class="container">
+        <a class="pagename current" href="#"> <img alt="Name2Face" src="http://is2.mzstatic.com/image/thumb/Purple1/v4/30/be/cf/30becf43-4199-9690-c187-e5196a95a97e/source/512x512bb.jpg" height="32" class="app icon">
+        </a>
+        <a href="https://itunes.apple.com/app/id944700485?ct=null&amp;pt=null&amp;mt=8" target="_blank">Download from App Store</a>
+        <a href="#">Support</a>
+      </div>
+    </nav>
+    <button class="btn-close btn btn-sm">×</button>
+  </section>
+  <div id="public-landing-page" class="template-2color parallax">
+    <section class="back layer hero">
+      <div class="container">
+        <div class="row">
+          <div class="col c5" style="text-align: center;">
+            <img src="http://is2.mzstatic.com/image/thumb/Purple1/v4/30/be/cf/30becf43-4199-9690-c187-e5196a95a97e/source/512x512bb.jpg" class="app icon">
+          </div>
+          <div class="col c7">
+            <h1>Name2Face</h1>
+            <h2></h2>
+            <a href="https://itunes.apple.com/app/id944700485?ct=null&amp;pt=null&amp;mt=8" class="app-store-badge" target="_blank">
+              <img src="https://d2kfjaekmjmy1l.cloudfront.net/images/websites/public/app-store-black-on-color@2x-vd3eb32e86e4d.png" class="app store">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="base layer description">
+      <div class="container">
+        <div class="row">
+          <div class="col c5" style="float: right">
+            <div iPhone="6" class="iOS" portrait>
+              <!-- sets width -->
+              <div class="UIDevice">
+                <!-- Device Frame -->
+                <div class="UIScreen">
+                  <!-- Insets + Status Bar -->
+                  <div class="screens">
+                    <img src="http://a3.mzstatic.com/us/r30/Purple5/v4/7f/15/87/7f158725-ea9e-2cf0-edb4-cf1e6eba644b/screen1136x1136.jpeg" class="item screenshot" alt="Screenshot of Name2Face">
+                    <img src="http://a1.mzstatic.com/us/r30/Purple1/v4/17/43/19/174319e5-6e8e-d83e-c688-eeafe4ecb0df/screen1136x1136.jpeg"
+                    class="item screenshot" alt="Screenshot of Name2Face">
+                    <img src="http://a4.mzstatic.com/us/r30/Purple1/v4/96/89/bd/9689bd62-2736-21db-b797-6e0d3fde408f/screen1136x1136.jpeg"
+                    class="item screenshot" alt="Screenshot of Name2Face">
+                    <img src="http://a1.mzstatic.com/us/r30/Purple5/v4/b1/12/61/b1126140-1297-8d59-ca98-96d8a424a557/screen1136x1136.jpeg"
+                    class="item screenshot" alt="Screenshot of Name2Face">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col c7 description-text">
+            <p>Name2Face is a tool to help you learn new faces.</p>
+            <ul>
+              <li>You can use Name2Face to create a set of faces and names to quiz yourself with.</li>
+              <li>Name2Face keeps track of your success and displays the faces you have the most difficulty identifying.</li>
+              <li>Name2Face strengthens retention by requiring you to type the name in.</li>
+              <li>Name2Face was originally designed to be used by teachers to learn the names of students in their class.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+</body>
+
+</html>

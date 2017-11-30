@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Fundamentals of Populations and Population Growth</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="This page describes the fundamental issues related to population growth and balance and covers issues like exponential growth, limiting factors and more.  It is part of the introduction to the population growth and balance computer model.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, exponential, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Fundamentals of Populations and Population Growth">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="This page describes the fundamental issues related to population growth and balance and covers issues like exponential growth, limiting factors and more.  It is part of the introduction to the population growth and balance computer model.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["environment"] = new description (
+"Environment", "All of the physical surroundings in which animals and plants live.");
+
+descr["interd"] = new description (
+"Interdependency", "When there are several elements and each of them depends on the others.");
+
+descr["confines"] = new description (
+"Confines", "Is synonym with bounds and it means to define the limits.");
+
+descr["immigration"] = new description (
+"Immigration", "The movement of organisms into an area occupied by an existing population.");
+
+descr["emigration"] = new description (
+"Emigration", "The movement of organisms out of an area occupied by a population.");
+
+descr["biotic"] = new description (
+"Biotic", "Relating to life, caused by living organisms.");
+
+descr["idealsit"] = new description (
+"Things were perfect", "Perfect things for a population would be when the environment has unlimited resources and space and where there are no diseases or predators.");
+
+descr["growthrate"] = new description (
+"Growth rate", "The increase in the number of members of the population, expressed as a percentage, over time. For example, for a population of 50 individuals that grows to 60 in one year, the growth rate can be expressed as (60-50)/50 x 100 or 20% per year.");
+
+descr["predators"] = new description (
+"Predator", "A living organism that feeds upon other organisms that are smaller and weaker than itself. An example is bobcats who eat rabbits.  Another example is man when fishing.");
+
+descr["prey"] = new description (
+"Prey", "A living organism taken by another organism, usually stronger, as food.  For example, a sheep eaten by a wolf is the wolf's prey.");
+
+descr["ecoli"] = new description (
+"E. coli", "E. coli is the abbreviated name of the bacterium named Escherichia coli. It belongs to the Family Enterobacteriaceaea of Genus Escherichia and Species coli.  The E. Coli bacteria, which is so small that it is not visible to the naked eye, normaly exists in our intestins, but some strains can be harmful.");
+
+descr["petridish"] = new description (
+"Petri dish ", "A small shallow dish of thin glass with a loose cover used to grow bacteria. This was invented by the bacteriologist Julius Petri in 1921.");
+
+descr["populations"] = new description (
+"Populations", "All populations includes all of us, the human species!");
+
+descr["populationdens"] = new description (
+"Population density", "The number of individuals in a population per area at a given time, for example if there are 250 fish in a pond that holds 500 cubic miles of water, the population density would be 250/500 = 0.5 fish/mi<SUP>3</SUP> or 1 fish per 2 cubic miles.");
+
+descr["abiotic"] = new description (
+"Abiotic", "Related to physical or non-living environment.");
+
+descr["dwelling"] = new description (
+"Dwelling", "A shelter used by animals as a house to protect themselves from the weather and other animals.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B>Fundamentals 
+of Populations and Population Growth</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P> 
+In this section we will give a <I>brief</I> introduction to the fundamentals of 
+populations, their growth, and the balance amongst different populations. Population 
+ecologists study and analyze every aspect of populations and the factors that 
+can impact their numbers in a given ecological system.</P><BLOCKQUOTE><DIV ALIGN="CENTER"><TABLE BORDER="0" WIDTH="75%" CELLSPACING="3"><TR><TD HEIGHT="64"><I>&quot;A 
+thing is right when it tends to preserve the integrity, stability, and beauty 
+of the biotic community. It is wrong when it does otherwise.&quot;</I></TD></TR><TR><TD><I>"Conservation 
+is a state of harmony between men and land"</I></TD></TR><TR><TD ALIGN="RIGHT"><I><B>Aldo 
+Leopold</B></I></TD></TR></TABLE></DIV></BLOCKQUOTE><P><B><A NAME="ecosystem"></A>Lets 
+start by describing what an ecosystem, which is short for ecological system, is</B>. 
+Imagine yourself standing in the middle of a forest observing <I><B>everything</B></I> 
+around you. You will see a group of plants, animals, soil, sunlight, air, water, 
+minerals, and nutrients<SUP><A HREF="#note1">1</A></SUP>. The plants and animals 
+in that forest depend on each other for survival. What is more difficult to see 
+are the interrelationships between the living organisms (some which can't be seen 
+without a microscope) and the <a href="javascript:dictionary.startIt('environment')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('environment')"
+onMouseOut="dictionary.clearIt ()">environment</a>. The dependencies between all 
+of these elements can be very complex. Complex systems like this, with different 
+organisms and their interrelationships with the physical environment and contained 
+in a specific unit of space (or area) are called ecosystems. &quot;Contained in 
+a specific unit of space&quot; means that all the elements in the ecosystem might 
+have intricate and complex <A href="javascript:dictionary.startIt('interd')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('interd')"
+onMouseOut="dictionary.clearIt ()">interdependencies</A> between each other but 
+only within the <a href="javascript:dictionary.startIt('confines')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('confines')"
+onMouseOut="dictionary.clearIt ()">confines</a> of that space and independent 
+from anything outside the area. Of course, things like the energy radiated by 
+the sun or the climate and air are special cases. Ecologists are scientists that 
+study complex ecosystems with the fine and interesting dependencies amongst all 
+the different elements. Their objective is to understand what every element brings 
+into the system and what every element needs from the system. They try to understand, 
+from a scientific point of view, what keeps everything living and existing in 
+a balanced and stable way for very long periods of time. By the time you finish 
+this lesson you will have gained a good appreciation of this. </P><P><B>What is 
+a population?</B> Very simply, a population is a group of organisms of the same 
+species that live in a particular area. The number of organisms in a population 
+changes over time because of the following: births, deaths, <a href="javascript:dictionary.startIt('immigration')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('immigration')"
+onMouseOut="dictionary.clearIt ()">immigration</a>, and <a href="javascript:dictionary.startIt('emigration')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('emigration')"
+onMouseOut="dictionary.clearIt ()">emigration</a>. Of course, births and immigration 
+increase the size of the population; whereas, deaths and emigration decrease the 
+size. The increase in the number of organisms in a population is referred to as 
+population growth. There are factors that can help populations grow and others 
+than can slow down and even prevent populations from growing. Factors that limit 
+population growth are called limiting factors. However, before we go into the 
+limiting factors, let's talk about the <a href="javascript:dictionary.startIt('biotic')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('biotic')"
+onMouseOut="dictionary.clearIt ()">biotic</a> potential of a population.</P><P>If 
+<a href="javascript:dictionary.startIt('idealsit')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('idealsit')"
+onMouseOut="dictionary.clearIt ()">things were perfect</A> for a population and 
+all the individuals in the population survived and reproduced at the maximum rate, 
+that <a href="javascript:dictionary.startIt('growthrate')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('growthrate')"
+onMouseOut="dictionary.clearIt ()">growth rate</a> is called the biotic potential. 
+The biotic potential is used as a reference when looking at growth rates of populations. 
+Are the growth rates close to the biotic potential or far from it and how far? 
+That type of analysis helps population ecologists understand if the conditions 
+for the population are adequate.</P><P>It is certainly not common for a population 
+to grow at its biotic potential for a considerable period of time; however, there 
+are situations where this can happen. For example, when fish are introduced into 
+a lake where there is plenty of food and space and there are no <a href="javascript:dictionary.startIt('predators')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('predators')"
+onMouseOut="dictionary.clearIt ()">predators</a>, the fish can reproduce at their 
+biotic potential, but not for a long time. Another example is when a scientist 
+grows <a href="javascript:dictionary.startIt('ecoli')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('ecoli')"
+onMouseOut="dictionary.clearIt ()"><I>E. coli</I></a><SUP><A HREF="#note2">2</A></SUP> 
+on a <a href="javascript:dictionary.startIt('petridish')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('petridish')"
+onMouseOut="dictionary.clearIt ()">petri dish</a> with ideal nutrients. The bacteria 
+will reproduce and grow at its biotic potential, which for E. coli means that 
+the population doubles in size every 20 minutes!. The graph of a population growing 
+at its biotic potential, which is called exponential, can be very steep. The <A HREF="facts_math.html#expgraph">graph</A> 
+and the mathematical equations, which represent this kind of growth, are included 
+in the <A HREF="facts_math.html#unlimited" TARGET="">Facts about Population Growth 
+Mathematical Models</A> page.</P><P>For the two previous examples as well as for 
+all <a href="javascript:dictionary.startIt('populations')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('populations')"
+onMouseOut="dictionary.clearIt ()">populations</a>, there are factors that will 
+limit their growth. Some of these factors depend on the <a href="javascript:dictionary.startIt('populationdens')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('populationdens')"
+onMouseOut="dictionary.clearIt ()">population density</a>. The most common density-dependent 
+factors that limit population growth are:</P><UL><LI><B>Food and water supplies</B> 
+- A given supply of food and water might be enough for a small population density. 
+However, that same supply might not be enough for a high-density population, and 
+competition among the individuals of the population would develop.</LI><LI><B>Light</B> 
+- Light is a very common resource needed by plants. A plant density increases 
+those plants that don't get enough light will not grow strong enough and might 
+even die. </LI><LI><B>Space</B> - This is an obvious limiting factor, especially 
+if you think of fish in a lake, bacteria in a petri dish, or plants in a forest.</LI><LI><B>Predators</B> 
+- Higher densities of a <a href="javascript:dictionary.startIt('prey')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('prey')"
+onMouseOut="dictionary.clearIt ()">prey</a> population attract more predators 
+and as the number of prey increases, so does the number of predators. On the other 
+hand, if the number of prey decreases, so does the number of predators.</LI><LI><B>Diseases</B> 
+- Diseases can certainly have an impact on birth rate and thus affect growth rate. 
+Since many diseases are contagious, they are therefore dependent on density.</LI><LI><B>Parasitism</B> 
+- Parasitism is a relationship where one organism (the parasite) feeds on the 
+tissues or body fluids of another organism (the host). In this type of relationship 
+the parasite benefits and the host is harmed, sometimes to the point of killing 
+the host. Like diseases, since parasites spread easier in a high-density host, 
+their impact depends on the density.</LI></UL><P>There are also limiting factors 
+that don't depend on the population density. These density-independent factors 
+are <a href="javascript:dictionary.startIt('abiotic')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('abiotic')"
+onMouseOut="dictionary.clearIt ()">abiotic</a> factors such as weather storms, 
+fires, earthquakes, or floods. Any of these factors can have a severe impact on 
+population sizes regardless of density. </P><P><A NAME="carrying"></A>To conclude 
+this section, we will describe the carrying capacity of an ecosystem. The area 
+occupied by a population does not have unlimited resources such as food, water, 
+and supplies to build and keep a <a href="javascript:dictionary.startIt('dwelling')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('dwelling')"
+onMouseOut="dictionary.clearIt ()">dwelling</a>. These factors limit the population 
+growth and many times bring about death rates that equal the birth rates. When 
+this happens, the population size reaches a stable balance. So one could say that 
+there is a certain number of individuals of the population that can be supported 
+by the environmental resources in a given ecosystem. That is called the carrying 
+capacity of that ecosystem. The graph of a population that grows until it reaches 
+a stable size based on the carrying capacity of the ecosystem is called an S-shaped 
+curve. The <A HREF="facts_math.html#sgraph">graph</A> and the mathematical equations, 
+which represent this kind of growth, are included in the <A HREF="facts_math.html#sigmoid" TARGET="">Facts 
+about Population Growth Mathematical Models</A> page.</P><P>&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="introduction.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="introduction.html" TARGET="">Back 
+to Introduction</A> </P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="models.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="models.html" TARGET="">Population 
+Computer Models</A></P></TD></TR></TABLE></CENTER><HR ALIGN="CENTER" WIDTH="50%"><P>&nbsp;</P><P><A NAME="note1"></A>[Note 
+1] -- One can not see the air, although one sees it through the things (such as 
+leaves or tree branches) that the air moves. Minerals and nutrients can also not 
+be seen although one knows that they are there.</P><P><A NAME="note2"></A>[Note 
+2] -- You can visit the <A HREF='http://falcon.cc.ukans.edu/~jbrown/ecoli.html'>What 
+the Heck is an <I>E. coli?</I> site</A> for lots of interesting information on 
+the <I>E. coli</I> bacteria.</P><DIV ALIGN="LEFT"></DIV><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

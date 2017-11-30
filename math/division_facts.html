@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Division Fact Creator</title>
+
+  <script type='text/javascript' src='//code.jquery.com/jquery-2.1.4.min.js'></script>
+  <link rel="stylesheet" href="style.css" charset="utf-8">
+  <script type='text/javascript'>//<![CDATA[
+    function generateList(firstNumbers, secondNumbers) {
+      var result = [];
+      for (var i = 0; i < firstNumbers.length; i++) {
+        for (var j = 0; j < secondNumbers.length; j++) {
+          result.push([firstNumbers[i], secondNumbers[j]]);
+        }
+      }
+      return result;
+    }
+    function fillFact ($this, fact) {
+      $this.find('.first.number').text(parseInt(fact[0])*parseInt(fact[1]));
+      $this.find('.second.number').text(fact[1]);
+    }
+    //]]>
+    </script>
+    <script src="facts.js" charset="utf-8"></script>
+  </head>
+  <body class="no-select">
+    <form class="no-print" style="font-size:1rem;" onsubmit="return false;">
+      <span class="first">
+        <label class="firstLabel">Answer:</label>
+        <label><input type="checkbox" class="check1" />1</label>
+        <label><input type="checkbox" class="check2" />2</label>
+        <label><input type="checkbox" class="check3" />3</label>
+        <label><input type="checkbox" class="check4" />4</label>
+        <label><input type="checkbox" class="check5" />5</label>
+        <label><input type="checkbox" class="check6" />6</label>
+        <label><input type="checkbox" class="check7" />7</label>
+        <label><input type="checkbox" class="check8" />8</label>
+        <label><input type="checkbox" class="check9" />9</label>
+        <label><input type="checkbox" class="check0" />0</label>
+      </span><br />
+      <span class="second">
+        <label class="secondLabel">Second number:</label>
+        <label><input type="checkbox" class="check1" />1</label>
+        <label><input type="checkbox" class="check2" />2</label>
+        <label><input type="checkbox" class="check3" />3</label>
+        <label><input type="checkbox" class="check4" />4</label>
+        <label><input type="checkbox" class="check5" />5</label>
+        <label><input type="checkbox" class="check6" />6</label>
+        <label><input type="checkbox" class="check7" />7</label>
+        <label><input type="checkbox" class="check8" />8</label>
+        <label><input type="checkbox" class="check9" />9</label>
+        <label><input type="checkbox" class="check0" />0</label>
+      </span><br />
+      <span class="operator">
+        <label>Operator:
+          <select disabled>
+            <option>÷</option>
+          </select>
+        </label>
+        <div class="spaced others">
+          <a href="facts.html">Addition &amp; Multiplication</a>
+          <a href="subtraction_facts.html">Subtraction</a>
+        </div>
+      </span><br />
+      <label><input type="checkbox" class="repeats" checked /> Allow facts to repeat if there aren&rsquo;t enough to fill the page</label>
+      <div class="spaced">
+        <button class="update">Update!</button>
+        <input type="reset">
+      </div>
+    </form>
+    <hr class="no-print" />
+    <table class="worksheet">
+      <tr>
+        <td><img src="//twopointzero.us/logo-square.png" style="width:2em;" /></td>
+        <td colspan="2">Name:</td>
+        <td colspan="2">Date:</td>
+      </tr>
+      <tr>
+        <td class="bar" colspan="5"></td>
+      </tr>
+      <tr>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="fact">
+            <tr>
+              <td contenteditable="plaintext-only" colspan="2" class="first number"></td>
+            </tr>
+            <tr>
+              <td contenteditable="plaintext-only" class="operator"></td>
+              <td contenteditable="plaintext-only" class="second number"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="bar"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+
+  </body>
+
+  </html>

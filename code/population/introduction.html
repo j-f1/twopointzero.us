@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Population Growth and Balance - Introduction</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="Introduction to population growth and balance lesson which includes a java applet population model, complete description of the ecosystem and the species in the model and all the mathematics behind it.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational,
+interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, 
+math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, exponential, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Population Growth and Balance - Introduction">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="Introduction to population growth and balance lesson which includes a java applet population model, complete description of the ecosystem and the species in the model and all the mathematics behind it.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["blue"] = new description (
+"Blue", "A color whose hue is that of the clear sky or that of the portion of the color spectrum lying between green and violet.");
+
+descr["underline"] = new description (
+"Underline", "To place a horizontal line underneath something, in this case a word.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B>Population 
+Growth and Balance -- Introduction</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P><B><FONT SIZE="+1">Introduction</FONT></B> 
+-- </P><P><B>The main purpose of this lesson</B> is to learn about population 
+growth and balance. However, in presenting this topic other very interesting and 
+relevant topics will also be covered, giving a broad picture of issues related 
+to the study of population growth. The main topics that you'll be learning about 
+are: </P><UL><LI><B>Population Balance</B> - You'll be using an actual computer 
+model, implemented as a Java applet<SUP><A HREF="#note1">1</A></SUP>, to do hands-on 
+control of an ecosystem, </LI><LI><B>Mathematical and Computer Models</B> - The 
+importance of both mathematical and computer models in the study of population 
+growth will be described and analyzed to gain a good understanding of the tools 
+used by Population Ecologists, </LI><LI><B>Facts About the Populations</B> - In 
+order to understand the interaction between different populations, interesting 
+facts about them will be discovered and learned, </LI><LI><B>Nature Conservation</B> 
+- One of the goals of this lesson is, as you become more aware of the delicate 
+balance of ecosystems and population growths, you'll become a strong supporter 
+of nature and the environment. </LI></UL><P><B>The system</B> that we will be 
+working with is an <B>oak tree</B> forest where <B>gray squirrels</B> live together 
+with <B>red-tail hawks</B>. The gray squirrels live off of the acorns produced 
+by the oak trees, and the red-tail hawks' subsistence depends on the squirrels 
+on which they prey. Here are a few pictures of the elements that you will be working 
+with:</P><DIV ALIGN="CENTER"><TABLE BORDER="0" CELLPADDING="10" WIDTH="22%"
+        HEIGHT="107" CELLSPACING="10"> <TR VALIGN="MIDDLE" ALIGN="CENTER"><TD VALIGN="MIDDLE" WIDTH="23%" HEIGHT="102" ALIGN="CENTER"><IMG
+                SRC="images/oaktree.jpg" NATURALSIZEFLAG="3" WIDTH="108"
+                HEIGHT="108"></TD><TD VALIGN="MIDDLE" WIDTH="77%" HEIGHT="102" ALIGN="CENTER"><IMG
+                SRC="images/acorn.jpg" NATURALSIZEFLAG="3"></TD></TR><TR><TD VALIGN="MIDDLE" WIDTH="23%" HEIGHT="102" ALIGN="CENTER"><IMG
+                SRC="images/squirrel.jpg" NATURALSIZEFLAG="3"></TD><TD VALIGN="MIDDLE" WIDTH="77%" HEIGHT="102" ALIGN="CENTER"><IMG
+                SRC="images/hawk.jpg" NATURALSIZEFLAG="3"></TD></TR> </TABLE></DIV><P><B>The 
+method</B> used to understand and learn the different concepts will follow the 
+<I>scientific method</I> that consists of: </P><OL><LI><B>Observation</B> - A 
+problem or an observation that requires an explanation will be presented </LI><LI><B>Hypothesis</B> 
+- You will propose a reason or an explanation to describe what or why it is happening 
+</LI><LI><B>Experiments</B> - You will then design an experiment to test your 
+theory and will use the computer model to verify it </LI><LI><B>Theory</B> - After 
+running the experiment several times and proving the hypothesis, you'll be able 
+to explain why the experiments give the results that they give. </LI></OL><P ALIGN="CENTER"><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="370" HEIGHT="160"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="TOP"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest1.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></P><P><B><FONT SIZE="+1">Lesson Outline</FONT></B> --</P><P>The 
+lesson starts by describing the basic concepts of populations and ecosystems and 
+then describes mathematical and computer models as background information. These 
+topics are important to allow you to better understand the rest of the lesson. 
+Next, the actual population model used in the last three sections is described 
+followed by the specific instructions on how to use it. The three sections that 
+follow are the actual hands-on sections where you will work on 10 experiments 
+using the Java population model. The lesson concludes with a quiz that you should 
+do as a self-assessment of your understanding of the concepts that are presented 
+in this lesson.</P><P><B><FONT SIZE="+1">A few technicalities before we get started</FONT></B> 
+--</P><OL><LI>One of the objectives of this lesson is to present many concepts 
+as close to the real facts as possible. However, some issues will be presented 
+which are not 100% accurate. Every effort has been made to point out those issues. 
+</LI><LI>Special pages with many facts and definitions can be accessed to find 
+out information or clarifications. You'll have to access these to be able to answer 
+some of the questions throughout the lesson. </LI><LI>Throughout the lesson you 
+will see words that are <a href="javascript:dictionary.startIt('blue')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('blue')"
+onMouseOut="dictionary.clearIt ()">blue</a>. Putting the cursor over those words 
+will bring up a small window with the description or meaning of the word. Older 
+web browsers might show the words as normal links, that is, blue and <a href="javascript:dictionary.startIt('underline')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('underline')"
+onMouseOut="dictionary.clearIt ()">underlined</a>, but they work the same. Let 
+me know if any word should be added to this on-line dictionary. </LI><LI><TABLE BORDER="0" WIDTH="78%" CELLSPACING="0" CELLPADDING="0"><TR><TD HEIGHT="35" WIDTH="84%">The 
+population model can be started on a separate window by clicking on this symbol 
+anywhere throughout the lesson (except here). This will start the model on a separate 
+window. Note that if the model is already running it will not start it again.</TD><TD HEIGHT="35" VALIGN="MIDDLE" WIDTH="16%" ALIGN="RIGHT"><IMG
+                SRC="images/modelicon.gif" WIDTH="48"
+                HEIGHT="23" NATURALSIZEFLAG="3" ALIGN="TOP"></TD></TR></TABLE></LI></OL><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="index.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A> </P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="popintro.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="popintro.html" TARGET="">Population 
+Fundamentals</A></P></TD></TR></TABLE><P>&nbsp;</P><HR ALIGN="CENTER" WIDTH="50%"></CENTER><DIV ALIGN="LEFT"> 
+<P><A NAME="note1"></A>[Note 1] -- A Java applet is simply a computer program 
+written in the Java computer language. One of the good features of a program written 
+in Java is that it can be downloaded from the web and run on almost any computer.</P></DIV><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

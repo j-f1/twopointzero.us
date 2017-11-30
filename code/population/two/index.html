@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+  <style type="text/css">
+    .population {
+  font-family: sans-serif;
+  width: 602px;
+  height: 315px;
+  background: #636363;
+  background-image: url('http://twopointzero.us/code/population/images/population.gif');
+  padding: 2px; }
+  .population > * {
+    border: 1px solid black;
+    width: 100%; }
+    .population * {
+      box-sizing: border-box; }
+      .population canvas {
+        display: block;
+        height: 252px;
+        line-height: normal;
+        text-align: center; }
+        .population .bottom {
+          border: none;
+          line-height: initial;
+          position: relative;
+          margin-top: 3px;
+          height: 60px; }
+          .population .bottom .buttons {
+            width: 503px;
+            padding: 2px 5px 2px 6px;
+            white-space: none;
+            font-size: 0; }
+            .population .bottom .buttons, .population .bottom .buttons * {
+              border: 1px solid black;
+              height: 100%;
+              display: inline-block; }
+              .population .bottom .buttons button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                font-size: initial;
+                width: 58px;
+                background: transparent;
+                margin-right: 4px;
+                padding: 0;
+                cursor: pointer; }
+                .population .bottom .buttons button.s {
+                  width: 57px; }
+                  .population .bottom .buttons button:last-child {
+                    margin-right: 0; }
+                    .population .bottom .buttons button:active {
+                      background: rgba(0, 0, 0, 0.25); }
+                      .population .bottom .buttons button:focus {
+                        outline: none; }
+          .population .bottom .status {
+            float: right;
+            width: 96px;
+            margin-left: 3px;
+            display: inline-block;
+            height: 60px;
+            border-collapse: collapse;
+            padding: 2px; }
+            .population .bottom .status * {
+              display: initial; }
+              .population .bottom .status tr {
+                display: table-row;
+                line-height: 12px;
+                font-size: 0.9em; }
+                .population .bottom .status td {
+                  display: table-cell; }
+                  .population .bottom .status td:first-child {
+                    text-align: right; }
+
+  </style>
+  <title></title>
+</head>
+<body>
+  <div class="population">
+  <canvas width="600" height="250">Sorry, your browser doesn’t support canvas. Please try the <a href="/code/population/population.html">Java version</a>.</canvas>
+  <div class="bottom">
+    <div class="buttons">
+      <button aria-label="setup"></button>
+      <button aria-label="reset"></button>
+      <button aria-label="step"></button>
+      <button class="s" aria-label="stop"></button>
+      <button aria-label="play"></button>
+      <button aria-label="graph"></button>
+      <button class="s" aria-label="chart"></button>
+      <button aria-label="help"></button>
+    </div>
+    <table class="status">
+      <tbody><tr><td>Year:</td><td class="year">0</td></tr>
+      <tr><td>Acorns:</td><td class="acorns">0</td></tr>
+      <tr><td>Squirrels:</td><td class="squirrels">0</td></tr>
+      <tr><td>Hawks:</td><td class="hawks">0</td></tr>
+    </tbody></table>
+  </div>
+</div>
+<script type="text/javascript">//<![CDATA[
+
+Function.prototype.b = Function.prototype.bind;
+
+function getRandom(limit) {
+    if (limit == 1) {
+        return Math.ceil(Math.random() * 3.0) - 2;
+    }
+    return Math.ceil(Math.random() * 5.0) - 3;
+}
+
+
+window.AnimalModel = (function() {
+  function AnimalModel(startYear, startNumber) {
+  	if (!(this instanceof AnimalModel)) {
+    	return new AnimalModel(startYear, startNumber);
+    }
+    this.startYear = startYear || 0;
+    this.startNumber = startNumber || 0;
+    this.reset();
+  }
+  AnimalModel.prototype.reset = function() {
+    this.birthRate = 3;
+    this.population = 0;
+  };
+  return AnimalModel;
+})();
+
+window.Model = (function() {
+	function Model() {
+  	if (!(this instanceof Model)) {
+    	return new Model();
+    }
+    this.squirrels = new AnimalModel();
+    this.hawks = new AnimalModel();
+    this.reset();
+  }
+  Model.prototype.reset = function() {
+  	this.years = [new Year()];
+    this.sustainPopulations = false;
+    this.lockedPopulations = false;
+    this.sustainedHawkTarget = 0;
+    this.cycleYear = 10 + getRandom(2);
+    this.cycleYearCtr = 0;
+    this.cycleUp = true;    
+    this.yearSecondGrowth = 140 + (Math.round(Math.random() * 30.0) - 15);
+    this.oakStrength = this.oakNumber > 0 ? 0 : -1;
+  };
+  return Model;
+})();
+
+window.Year = (function() {
+	function Year(year, acorns, squirrels, hawks) {
+  	if (!(this instanceof Year)) {
+    	return new Year(year, acorns, squirrels, hawks)
+    }
+    this.year      = year || this.year;
+    this.acorns    = year || this.acorns;
+    this.squirrels = year || this.squirrels;
+    this.hawks     = year || this.hawks;
+  }
+  $.extend(Year.prototype, {
+  	year: 0,
+    acorns: 0,
+    squirrels: 0,
+    hawks: 0
+  });
+	return Year;
+})();
+
+window.PopulationFactory = function() {
+	function resize($canvas) {
+    $canvas.each(function() {
+      this.width = $(this).width();
+      this.height = $(this).height();
+    });
+  }
+  var Population = {};
+
+  var updateTimer = -1;
+  var evolving = false;
+  Population.debug = false;
+
+  Population.init = function($container) {
+    this.$canvas = $container.find('canvas');
+    resize(this.$canvas);
+    this.graphics = this.$canvas[0].getContext('2d');
+    this.buttons = {};
+    $.each(['setup', 'reset', 'step', 'stop', 'play', 'graph', 'chart', 'help'], function(_, name) {
+    	this.buttons[name] = $container.find('button[aria-label="'+name+'"]');
+      var self = this;
+      this.buttons[name].click(function(e) {
+      	(self[name] || $.noop)(this, e);
+      });
+    }.b(this));
+
+    this.model = new Model();
+  };
+  Population.reset = function() {
+  	this.model.reset();
+  }
+  Population.evolveSystem = function() {
+      if (this.oakNumber > 0) {
+          ++this.yearNumber;
+          if (this.oaksTakenCareOff && ++this.oakStrength >= 51) {
+              --this.oakStrength;
+          }
+          if (this.sustainPopulations) {
+              this.calculateSustainedGrowth();
+              if (this.yearNumber == this.yearSecondGrowth && Math.random() <= 0.2) {
+                  this.sustainPopulations = false;
+                  this.hawkBornFactor = 0.8;
+                  this.hawkSecondGrowth = true;
+              }
+          } else {
+              this.calculateNormalGrowth();
+          }
+          if (this.yearNumber == this.squirrelStartYear) {
+              this.squirrelNumber = this.squirrelStartNumber;
+              this.bornSquirrelStack.addElement(this.squirrelStartNumber);
+          }
+          if (this.yearNumber == this.hawkStartYear) {
+              this.hawkNumber = this.hawkStartNumber;
+              this.bornHawkStack.addElement(this.hawkStartNumber);
+              if (this.hawkNumber >= 0.5 * this.squirrelNumber) {
+                  this.squirrelBornFactor = 1.5;
+              } else if (this.squirrelNumber >= 60) {
+                  this.sustainPopulations = true;
+                  this.squirrelDeathFactor = 0.5;
+                  this.hawkDeathFactor = 0.5;
+              }
+          }
+//          this.table.addLine(" " + this.yearNumber + "\t" + this.acornNumber + "\t" + this.squirrelNumber + "\t" + this.hawkNumber);
+//          this.chart.addDataPoint(this.yearNumber, this.points);
+//          this.chart.repaint();
+          if (this.evolvingOn && this.yearNumber > 270) {
+              this.evolvingOn = false;
+              clearInterval(updateTimer)
+          }
+      }
+  }
+  return Population;
+};
+
+window.Population = window.PopulationFactory();
+Population.init($('.population'));
+
+Population.setup = function() {
+  var setupWin = window.open("setup.html", "Setup", "width=600,height=600,location=no,dependent=yes,dialog=yes");
+  setupWin.saveData = function(data) {
+    console.log(data);
+  }
+}
+//]]> 
+
+</script>
+</body></html>

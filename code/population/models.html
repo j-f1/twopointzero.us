@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Population Computer Models</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="General description of mathematical and computer models as an introduction to use the population growth and balance model.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, exponential, immigration, emigration, conservation, environment protection, simulator">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Population Computer Models">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="General description of mathematical and computer models as an introduction to use the population growth and balance model.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+</HEAD>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="100%" ALIGN="LEFT" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="4%"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="96%" ALIGN="CENTER"><FONT SIZE="+2"><B>Population 
+Computer Models</B></FONT></TD></TR></TABLE><P>&nbsp;</P><BLOCKQUOTE><P>&nbsp;</P><P>In this 
+section we describe in simple terms what mathematical and computer models are. 
+These models are the basis for the program or computer model that you'll be using 
+in the last sections of the lesson. Models are also basic tools used by Population 
+Ecologists in the study and analysis of populations.</P><P><B>Mathematical models</B>. 
+Scientists have always tried to come up with models that will behave, as close 
+as possible, to the actual problem that they are trying to understand and analyze. 
+When these models can accurately describe a system's behavior, in addition to 
+helping provide an explanation of how the system works, they can also be used 
+to predict how the system will work under different conditions. Before there were 
+computers the models developed by scientists were entirely mathematical. Some 
+models use pretty simple equations, while others can be very complex. </P><P>To 
+better understand what is meant by a mathematical model, let's do a simple example. 
+Let's assume that the problem that we are trying to analyze and understand is 
+that of the growth of a squirrel population. Assume that there is a special cabin 
+in the woods that you visit once a year and that squirrels live around the cabin. 
+Let's also assume that since you've always been fascinated with the squirrels, 
+every year you visit this nice cabin you count the total number of squirrels and 
+keep good notes in your yearly visits diary. After several years, you go over 
+the data that you collected and you pose yourself a problem by asking, &quot;How 
+quickly does the squirrel population grow? How many squirrels will I find this 
+coming summer when I go back to the cabin?&quot; In order to try to answer these 
+questions you first look at the data that you've collected over the last five 
+years: </P><DIV ALIGN="CENTER"><TABLE BORDER="2" CELLPADDING="3"><TR><TD ALIGN="CENTER" WIDTH="88"><FONT SIZE="+1">Year</FONT></TD><TD ALIGN="RIGHT" WIDTH="132"><FONT SIZE="+1">Number 
+of Squirrels</FONT></TD></TR><TR><TD ALIGN="CENTER" WIDTH="88">1995</TD><TD ALIGN="RIGHT" WIDTH="132">5</TD></TR><TR><TD ALIGN="CENTER" WIDTH="88">1996</TD><TD ALIGN="RIGHT" WIDTH="132">10</TD></TR><TR><TD ALIGN="CENTER" WIDTH="88">1997</TD><TD ALIGN="RIGHT" WIDTH="132">20</TD></TR><TR><TD ALIGN="CENTER" WIDTH="88">1998</TD><TD ALIGN="RIGHT" WIDTH="132">40</TD></TR><TR><TD ALIGN="CENTER" WIDTH="88">1999</TD><TD ALIGN="RIGHT" WIDTH="132">80</TD></TR></TABLE><DIV ALIGN="LEFT"><P>After 
+observing the data and looking for a pattern, you suddenly realize that the squirrel 
+population is doubling every year, i.e. the population of any given year is twice 
+that of the previous year. The thing to do at this point is to write this mathematically, 
+that is, with a formula or equation. In order to do this we need to use variables 
+to represent the different quantities. The following table shows the variables 
+that we will use:</P></DIV></DIV><DIV ALIGN="CENTER"><TABLE BORDER="2" CELLPADDING="3" WIDTH="80%"><TR VALIGN="BOTTOM"><TD ALIGN="LEFT" WIDTH="61" VALIGN="BOTTOM">Variable</TD><TD ALIGN="LEFT" WIDTH="91" VALIGN="TOP">What 
+it represents</TD><TD ALIGN="LEFT" WIDTH="263">Examples and explanations</TD></TR><TR><TD ALIGN="LEFT" WIDTH="61" VALIGN="TOP">n</TD><TD ALIGN="LEFT" WIDTH="91" VALIGN="TOP">The 
+year </TD><TD ALIGN="LEFT">n can represent any year, for example n can have a 
+value of 1998. This can be written as n = 1998, or it can have a value of 1995 
+or n = 1995<BR><BR>If n is equal to 1998, then n - 1 represents the previous year 
+or 1997</TD></TR><TR><TD ALIGN="LEFT" WIDTH="61" VALIGN="TOP">p</TD><TD ALIGN="LEFT" WIDTH="91" VALIGN="TOP">The 
+squirrel population</TD><TD ALIGN="LEFT">p can have a value of 40. This can be 
+written as p = 40 squirrels, or a value of 5 or p = 5 squirrels</TD></TR><TR><TD ALIGN="LEFT" WIDTH="61" VALIGN="TOP">p(n)</TD><TD ALIGN="LEFT" WIDTH="91" VALIGN="TOP">The 
+squirrel population on a given year</TD><TD ALIGN="LEFT">This special notation 
+(or way of writing) is used to indicate the population on year n. Remember that 
+n can represent any given year and that is why they are called variables. To indicate 
+the population on a specific year such as 1998, one can write p(1998) = 40 squirrels</TD></TR></TABLE><P ALIGN="LEFT">Once 
+the concepts introduced with the previous table are well understood, it is very 
+simple to write the equation that describes the squirrel population growth:</P></DIV><P ALIGN="CENTER"> 
+p(n) = p(n-1) x 2 </P><P ALIGN="CENTER"><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="92"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="TOP"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest2.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></P><P>To conclude this example, this mathematical model (or formula) 
+does indeed describe how quickly the population grows; it doubles every year. 
+It can also be used to predict the expected population next year, year 2000.</P><P ALIGN="CENTER"><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="126"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="TOP"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest3.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></P><P><B>Computer models</B>. The mathematical model used in the 
+previous section is a very simple one; however, some models can be very complex. 
+In those cases a computer model can be very helpful in implementing the mathematical 
+model. A computer model is essentially a computer program that contains the mathematical 
+model and uses it to calculate solutions to given problems. In the early days 
+of computers, the computer models or programs would read in a set of numbers, 
+do their calculations, and print out the results. The computers of today are much 
+more powerful and can do much more. A computer model can display the results graphically 
+as it does the calculations, and it can also take the input through a nice user 
+interface (by pointing and clicking with the mouse). These are advantages, but 
+a more important advantage is that they can handle more complex mathematical models 
+that better reflect the reality of the system being modeled.</P><P>Computer models 
+can be developed for many different systems. A few examples are: </P><UL><LI>Car 
+traffic patterns on a given freeway </LI><LI>Weather prediction </LI><LI>Operation 
+of a fast food restaurant </LI><LI>Population growth and balance</LI></UL><P>Since 
+we are dealing with a population growth model in this lesson, from here on that 
+is the system that we will be describing; however, remember that many of the concepts 
+apply to other systems.</P><P>There are three general ways to develop computer 
+models:</P><OL><LI>By taking known nature rules and using them to develop the 
+model. For example, if it is known that a certain species has 5 to 7 offspring 
+every year and that it eats 50 pounds of food every month, one would use those 
+numbers in the model.</LI><LI>By analyzing and sampling nature, doing tables and 
+charts, coming up with mathematical equations that can produce the charts as accurately 
+as possible, and then using those equations in the model.</LI><LI>A combination 
+of both.</LI></OL><P><B>Why use computer models?</B> There are many advantages 
+to using computer models. Here are some of the most important ones. If you can 
+think of others, let me know and I might include them here.</P><OL><LI>To gain 
+a good understanding of the system being modeled -- In order to come up with an 
+accurate model, one needs to understand how the real physical system behaves. 
+Many times one needs to do many observations, collect data, graph data, come up 
+with a first attempt to describe the model (that is, write an initial formula 
+or mathematical model), do more observations, compare the initial model against 
+the observations, improve the model, etc. etc. One needs to get very involved 
+into understanding the real system's behavior in order to develop a good model.</LI><LI>To 
+discover special behaviors of the system -- In general terms, models don't reflect 
+the physical system 100%. One could say that there is always room for improvement. 
+Here is a typical example. There are many cases where you have your real system 
+and a model of it, and they are not identical. You do tons of observations and 
+measurements on the real system followed by comparisons against the computer model 
+to find out that they correlate (match or agree) most of the time. However, there 
+might be a few places or conditions under which they disagree. These might be 
+very interesting, surprising, and challenging situations. To be able to explain 
+the differences one might have to do more and different kinds of observations, 
+lots of analysis, lots of study, lots of exchange of information with other scientists, 
+etc., to be able to come up with a reasonable explanation. Once there is a sensible 
+explanation, one that several people agree with, the model can be refined or improved 
+to reflect this new condition. The model will now reflect the realities of the 
+physical system more accurately. The important aspect here is that scientists 
+might think that they have a reasonable understanding of the physical system. 
+After going through the whole exercise to refine the model, what they are really 
+doing is discovering new mechanisms or behaviors of the system as well as coming 
+up with explanations for these.</LI><LI>To predict behavior under different conditions 
+-- A common use of models is to use them to attempt to predict what the system 
+will do if some of the conditions change. For example, when dealing with a population 
+model of several species, one may want to try to figure out what would happen 
+if, say:<BR><BR><UL><LI>one of the species grows faster or slower than normal, 
+or</LI><LI>the reproduction rate changes for one of the species, or</LI><LI>one 
+of the primary food supplies decreases, or</LI><LI>a new predator comes to the 
+area, etc. </LI></UL></LI><P>If the model can handle these changes and accurately 
+predict what would happen under any of these new conditions, it can be very helpful 
+to scientists.</P><LI> Last but not least, to learn about the physical system 
+-- A computer model can also be very useful for people to interact with it and 
+gain a good understanding of the behavior of the physical system. This is essentially 
+the objective of this lesson, for you <I><B>to interact and control a population 
+growth and balance computer model to learn and appreciate how species interact 
+and depend on each other</B></I>. The next section describes the model that will 
+be used in the rest of this lesson.</LI></OL><P>&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="popintro.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="popintro.html" TARGET="">Population 
+Fundamentals</A> </P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="popmodel.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="popmodel.html">Description 
+of our Population Model</A></P></TD></TR></TABLE></CENTER><DIV ALIGN="LEFT"></DIV><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

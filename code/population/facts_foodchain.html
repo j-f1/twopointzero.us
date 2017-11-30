@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Interesting Facts about Food Chains</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="This page contains a description of food chains, food webs, and ecological pyramids.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, food web, ecological pyramids, exponential, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Interesting Facts about Food Chains">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="This page contains a description of food chains, food webs, and ecological pyramids.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["inorganic"] = new description (
+"Inorganic", "Matter other than plant or animal.  Inorganic matter is not alive and does not contain the basic element Carbon.");
+
+descr["organic"] = new description (
+"Organic", "Refers to living matter such as plants or animals.  Organic matter contains Carbon which is a basic element.");
+
+descr["bacteria"] = new description (
+"Bacteria", "Single cell microscopic organisms that often group together to form colonies. They can reproduce on their own and their shapes can be round, rod like, spiral, or filamentous.  Only a few bacteria are harmful to humans.");
+
+descr["fungi"] = new description (
+"Fungi", "Fungi, the singular of fungus, means <I>food robbing</I>.  The fungus organisms lack Chlorophyll and therefore depend on other organisms for food.  Fungus have both animal and plant characteristics.");
+
+descr["trophic"] = new description (
+"Trophic", "The word trophic comes from the Greek and it means food or to feed.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B><I>Interesting</I> 
+Facts about Food Chains</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P>This section 
+contains a brief description of the food chains and food webs in an <A HREF="popintro.html#ecosystem"><U>ecosystem</U>.</A> 
+</P><P><FONT SIZE="4"><B>Introduction</B></FONT></P><P>In an ecosystem, plants 
+capture the sun's energy and use it to convert <U><A HREF="javascript:dictionary.startIt('inorganic')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('inorganic')"
+ONMOUSEOUT="dictionary.clearIt ()">inorganic</A></U> compounds into energy-rich 
+<U><A HREF="javascript:dictionary.startIt('organic')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('organic')"
+ONMOUSEOUT="dictionary.clearIt ()">organic</A></U> compounds<A HREF="#note1"><SUP>1</SUP></A>. 
+This process of using the sun's energy to convert minerals (such as magnesium 
+or nitrogen) in the soil into green leaves, or carrots, or strawberries, is called 
+photosynthesis.</P><P>Photosynthesis is only the beginning of a chain of energy 
+conversions. There are many types of animals that will eat the products of the 
+photosynthesis process. Examples are deer eating shrub leaves, rabbits eating 
+carrots, or worms eating grass. When these animals eat these plant products, food 
+energy and organic compounds are transferred from the plants to the animals. These 
+animals are in turn eaten by other animals, again transferring energy and organic 
+compounds from one animal to another. Examples would be lions eating deer, foxes 
+eating rabbits, or birds eating worms.</P><P>This chain of energy transferring 
+from one species to another can continue several more times, but it eventually 
+ends. It ends with the dead animals that are broken down and used as food or nutrition 
+by <U><A HREF="javascript:dictionary.startIt('bacteria')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('bacteria')"
+ONMOUSEOUT="dictionary.clearIt ()">bacteria</A></U> and <A HREF="javascript:dictionary.startIt('fungi')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('fungi')"
+ONMOUSEOUT="dictionary.clearIt ()">fungi</A>. As these organisms, referred to 
+as decomposers, feed from the dead animals, they break down the complex organic 
+compounds into simple nutrients. Decomposers play a very important role in this 
+world because they take care of breaking down (cleaning) many dead material. There 
+are more than 100,000 different types of decomposer organisms! These simpler nutrients 
+are returned to the soil and can be used again by the plants. The energy transformation 
+chain starts all over again.</P><P>Here is a figure showing one such food and 
+energy chain: </P><P ALIGN="CENTER"><IMG
+                SRC="images/food_chain.jpg" NATURALSIZEFLAG="3" BORDER="0"></P><P><FONT SIZE="4"><B>Names 
+and word definitions</B></FONT></P><P><B>Producers.</B> Organisms, such as plants, 
+that produce their own food are called autotrophs. The autotrophs, as mentioned 
+before, convert inorganic compounds into organic compounds. They are called producers 
+because all of the species of the ecosystem depend on them.</P><P><B>Consumers.</B> 
+All the organisms that can not make their own food (and need producers) are called 
+heterotrophs. In an ecosystem heterotrophs are called consumers because they depend 
+on others. They obtain food by eating other organisms. There are different levels 
+of consumers. Those that feed directly from producers, i.e. organisms that eat 
+plant or plant products are called primary consumers. In the figure above the 
+grasshopper is a primary consumer.</P><P>Organisms that feed on primary consumers 
+are called secondary consumers. Those who feed on secondary consumers are tertiary 
+consumers. In the figure above the snake acts as a secondary consumer and the 
+hawk as a tertiary consumer. Some organisms, like the squirrel are at different 
+levels. When the squirrel eats acorns or fruits (which are plant product), it 
+is a primary consumer; however, when it eats insects or nestling birds, is it 
+is a tertiary consumer.</P><P>Consumers are also classified depending on what 
+they eat.</P><P><B>Herbivores</B> are those that eat only plants or plant products. 
+Example are grasshoppers, mice, rabbits, deer, beavers, moose, cows, sheep, goats 
+and groundhogs.</P><P><B>Carnivores,</B> on the other hand, are those that eat 
+only other animals. Examples of carnivores are foxes, frogs, snakes, hawks, and 
+spiders.</P><P><B><A NAME="sq_omni"></A>Omnivores</B> are the last type and eat 
+both plants (acting a primary consumers) and meat (acting as secondary or tertiary 
+consumers). Examples of omnivores are:</P><UL><LI> Bears --They eat insects, fish, 
+moose, elk, deer, sheep as well as honey, grass, and sedges.</LI><LI>Turtles -- 
+They eat snails, crayfish, crickets, earthworms, but also lettuce, small plants, 
+and algae.</LI><LI>Monkeys -- They eat frogs and lizards as well as fruits, flowers, 
+and leaves.</LI><LI>Squirrels -- They eat insects, moths, bird eggs and nestling 
+birds and also seeds, fruits, acorns, and nuts.</LI></UL><B><A NAME="trophic"></A>Trophic 
+level.</B> The last word that is worth mentioning in this section is <A HREF="javascript:dictionary.startIt('trophic')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('trophic')"
+ONMOUSEOUT="dictionary.clearIt ()">trophic</A> level, which corresponds to the 
+different levels or steps in the food chain. In other words, the producers, the 
+consumers, and the decomposers are the main trophic levels.<P><B><FONT SIZE="4"><A NAME="foodwebs"></A>Food 
+Webs</FONT></B></P><P>In looking at the previous picture, the concept of food 
+chain looks very simple, but in reality it is more complex. Think about it. How 
+many different animals eat grass? And from the <A HREF="facts_hawks.html">Facts 
+about Red-tailed Hawks</A> page, how many different foods does the hawk eat? One 
+doesn't find simple independent food chains in an ecosystem, but many interdependent 
+and complex food chains that look more like a web and are therefore called food 
+webs. A food web that shows the energy transformations in an ecosystem looks like 
+this<A HREF="#note2"><SUP>2</SUP></A>: </P><P ALIGN="CENTER"><IMG
+                SRC="images/food_web.jpg" NATURALSIZEFLAG="3" BORDER="0"></P><P>As 
+you can see from this picture, food webs, with all their dependencies, can be 
+very complex, but somehow nature balances things out so that food webs last a 
+long time. Many species share the same habitat, their populations survive for 
+many years, and they all live <I>happily</I> together.</P><P><FONT SIZE="4"><B><A NAME="pyramid"></A>The 
+Ecological Pyramid</B></FONT></P><P>We described in the previous sections how 
+energy and organic compounds are passed from one trophic level to the next. What 
+was not mentioned is the efficiency of the transfer. In a highly efficient transfer 
+almost all of the energy would be transferred -- 80% or more. In a low efficiency 
+transfer very little energy would be transferred -- less than 20%. In a typical 
+food chain, not all animals or plants are eaten by the next trophic level. In 
+addition, there are portions or materials (such as beaks, shells, bones, etc.) 
+that are also not eaten. That is why the transfer of matter and energy from one 
+trophic level to the next is not an efficient one.</P><P>One way to calculate 
+the energy transfer is by measuring or sizing the energy at one trophic level 
+and then at the next. Calorie is a unit of measure used for energy. The energy 
+transfer from one trophic level to the next is about 10%. For example, if there 
+are 10,000 calories at one level, only 1,000 are transferred to the next. This 
+10% energy and material transfer rule can be depicted with an ecological pyramid 
+that looks like this:</P><P ALIGN="CENTER"><IMG
+                SRC="images/pyramid1.gif" NATURALSIZEFLAG="3" BORDER="0" WIDTH="470" HEIGHT="365"> 
+</P><P>This pyramid helps one visualize the fact that in an ecological system 
+there need to be many producing organisms at the bottom of the pyramid to be able 
+to sustain just a couple of organisms at the top. In looking at the pyramid, can 
+you guess how much larger the volume of each layer is as compared to the one just 
+above it? Take a guess. It might not look like it but they are close to 10 times 
+larger.</P><P ALIGN="LEFT"><FONT SIZE="4"><B>Final comments</B></FONT> </P><P><B>Oaks</B> 
+rate a position at or very near the top of the wildlife food chain (or bottom 
+of the ecological pyramid). They are the <I>&quot;staff of life&quot;</I> for 
+many wild life species. The greatest food value comes from the acorn, especially 
+during the winter season when other foods are scarce.</P><P><B>Squirrels,</B> 
+which are <A HREF="#sq_omni">omnivores</A>, are neither at the bottom or the top 
+of the food chain. Since the feed from producers as well as primary consumers, 
+one could say that they occupy two layers in the pyramid.</P><P><B>Hawks,</B> 
+which are mature birds of prey, are at the top of the their food chain and of 
+the ecological pyramid.</P><P>&nbsp; </P><HR ALIGN="CENTER" WIDTH="50%"><P>&nbsp;</P><P><B>References</B></P><P><FONT SIZE="2"><A NAME="note1"></A></FONT>[Note 
+1] -- Carbon, the sixth element in the Periodic Table, is fundamental when talking 
+about organic and inorganic matter. Here is a <A HREF="http://www.webelements.com/webelements/elements/text/key/C.html">reference</A> 
+to learn a lot about Carbon. </P><P><FONT SIZE="2"><A NAME="note2"></A></FONT>[Note 
+2] -- This food web is a <I>real one</I> from the Wetlands in Bunbury which is 
+in the west coast of Australia. It was developed by Newton Moore Senior High School 
+Biology students as part of a great project to rehabilitate the wetlands that 
+were becoming a dumping ground for garden refuse. Make sure to <A HREF="http://wetlands.newton.wa.edu.au/wetlands" TARGET="">visit 
+their Wetlands site</A> which describes the wonderful project with great detail 
+or the continuation of the original one <A HREF="http://wetlands.newton.wa.edu.au/wonderland">Wetlands 
+Wonderland</A>. As an additional note, the food web shown in the picture is not 
+complete because of lack of space. It is missing several species such as: butterflies, 
+wattle birds, black ducks, mosquito larvae, earthworms, and more.</P><P>[Reference 
+1] <B>--Environment Protection:</B> You can click on this <A HREF="http://www.google.com/search?q=environment+protection+&amp;hl=en&amp;safe=off&amp;start=10&amp;sa=N">link</A> 
+that will use <A HREF="www.google.com">google</A>'s search engine to give you 
+a list of sites with information on ways to protect the environment.</P><P>&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="facts_hawks.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="facts_hawks.html" TARGET="">Facts 
+about Hawks</A></P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="facts_math.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="facts_math.html" TARGET="">Facts 
+about Population Growth Mathematical Models</A></P></TD></TR></TABLE></CENTER><P>&nbsp;</P><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

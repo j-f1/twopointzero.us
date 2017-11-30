@@ -1,0 +1,35 @@
+CACHE MANIFEST
+# Last modified 2016-06-21T10:23:22Z
+
+CACHE:
+
+//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js
+//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js
+//cdn.rawgit.com/kayahr/jquery-fullscreen-plugin/f979546695cf183758b2de79f161b0224e921c15/jquery.fullscreen.js
+
+//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css
+//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js
+//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/themes/default/assets/fonts/icons.woff
+
+//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment-with-locales.min.js
+
+//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js
+//cdn.rawgit.com/LeaVerou/prefixfree/7d717c9c4abdfc6c400c6856000da8fcd692523d/plugins/prefixfree.viewport-units.js
+
+fonts/fonts.css
+fonts/ssp.eot
+fonts/ssp.ttf
+fonts/ssp.woff
+fonts/ssp.woff2
+fonts/sspb.eot
+fonts/sspb.ttf
+fonts/sspb.woff
+fonts/sspb.woff2
+
+main.css
+spinny.css
+
+main.js
+
+# NETWORK:
+# *

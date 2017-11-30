@@ -1,0 +1,11 @@
+QUESTION
+How many acorns are needed per year per squirrel?
+ANSWER
+Look at the previous experiment with 30 oak trees.
+After many years the yearly production reaches
+66,000 acorns and a squirrel population of about 80.
+If we divide the number of acorns into 80 we get about
+825 per squirrel each year.  In the model, it takes 
+about 57 years for a young seedling to produce about 
+825 acorns!
+END

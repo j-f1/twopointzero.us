@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: n.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: n.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file n.js
+ * @author Jed Fox
+ * @copyright Copyright © 2016 Jed Fox
+ * @license MIT
+ */
+
+(function() {
+  'use strict';
+  /**
+   * @typedef {?(function|boolean)} Action
+   * @description
+   * A callback for a button on a notification.
+   * Possible values:
+   *   * `function(event)`: passed the same arguments
+   * as the callback to `$.fn.click`.
+   * If the return value is falsy but not
+   * `undefined`, the notification will not dismiss.
+   *   * `Boolean`: This is equivalent to specifying a
+   * function that always returns this value.
+   *   * `undefined` or `null`: Equivalent to `true`.
+   */
+
+  /**
+   * @typedef {Object.&lt;string, Action>} Actions
+   * @description
+   * Object describing the buttons on the right side of a notification.
+   *   + Key: the text of the button
+   *   + Value: the callback for the button.
+   */
+
+  /**
+   * @function extend
+   * @private
+   * @description like `$.extend`: `extend(defaults, opts1, ...)`
+   * @author {@link http://youmightnotneedjquery.com/#extend} (but improved)
+   */
+  var extend = function(defaults) {
+    for (var i = 1; i &lt; arguments.length; i++) {
+      if (!arguments[i]) continue;
+
+      for (var key in arguments[i]) {
+        if (arguments[i].hasOwnProperty(key) &amp;&amp; (typeof arguments[i][key] === "string" ?
+                                                  arguments[i][key].replace(/\s/g, '').length :
+                                                  arguments[i][key])) {
+          defaults[key] = arguments[i][key];
+        }
+      }
+    }
+    return defaults;
+  };
+  var toString = function(x) {
+    switch (typeof x) {
+      case "undefined":
+        return "";
+      case "number":
+      /* falls through */
+      case "boolean":
+        return ""+x;
+      case "string":
+        return x;
+      case "object":
+      /* fall through */
+      case "array":
+        if (x === null) {return "";}
+        return JSON.stringify(x);
+      default:
+        return x.toString();
+    }
+  };
+
+  /**
+   * @namespace _NotificationCenterProto
+   * @private
+   * @lends NotificationCenter
+   */
+  var _NotificationCenterProto = Object.create(HTMLElement.prototype);
+
+  /**
+   * Add a notification to the notification center.
+   *
+   * The keys for the `opts` argument:
+   *   - `icon`: the icon to display in the notification
+   *   - `title`: the title of the notification
+   *   - `subtitle`: the subtitle of the notification
+   *   - `text`: the message in the notification
+   *   - `actions`: see {@link Actions}
+   *   - `minimal`: If this is truthy, the action buttons will slide over the body on hover, and disappear on mouseout.
+   *   - `click`: The action to run on clicking the notification. See the callbacks in `actions`.
+   *   - `template`: the template for the notification.
+   *
+   * @function addNotification
+   * @memberof NotificationCenter
+   * @instance
+   * @param {Object} opts The options for the notification.
+   * @return {NotificationBox} The created notification.
+   */
+  _NotificationCenterProto.addNotification = function(opts) {
+    opts = extend({
+        title: "\xA0",
+        actions: {"Close": null},
+        minimal: false,
+        click: false,
+        /* jshint multistr: true */
+        template: '\
+          &lt;div class="height-container">\
+            &lt;div class="main">&lt;div class="icon">\
+              &lt;img alt="">\
+            &lt;/div>\
+            &lt;div class="msg">\
+              &lt;div class="title">&lt;/div>\
+              &lt;div class="subtitle">&lt;/div>\
+              &lt;div class="text">&lt;/div>\
+            &lt;/div>\
+            &lt;div class="actions">&lt;/div>\
+          &lt;/div>'
+  /* jshint multistr: false */
+      },{
+      icon: this.defaultIcon,
+      iconHTML: this.defaultIconHTML,
+      title: this.defaultTitle,
+      subtitle: "",
+      text: "",
+      actions: this.defaultActions,
+      minimal: this.defaultToMinimal,
+      click: this.defaultClickAction,
+      template: this.notificationTemplate
+    }, opts);
+    var notif = document.createElement('notification-box');
+    notif.innerHTML = opts.template;
+
+    notif.icon = opts.icon;
+    notif.iconHTML = opts.iconHTML;
+    notif.title = opts.title;
+    notif.subtitle = opts.subtitle;
+    notif.text = (opts.text || opts.subtitle) ? opts.text : "\xA0";
+    notif.minimal = !!opts.minimal;
+    notif.actions = opts.actions;
+    notif.clickAction = opts.click;
+
+    this.insertBefore(notif, this.firstChild);
+    return notif;
+  };
+
+  /**
+   * @member {string} defaultTitle
+   * @memberof NotificationCenter
+   * @instance
+   * The default title for a notification.
+   * If no `title` key is specified in `addNotification()`’s `opts` parameter, this title will be used instead.
+   */
+  _NotificationCenterProto.defaultTitle = "Notification";
+
+  /**
+   * @member {string} defaultIcon
+   * @memberof NotificationCenter
+   * @instance
+   * The URL to the default icon for a notification.
+   * If no `icon` key is specified in `addNotification()`’s `opts` parameter, this icon will be used instead.
+   */
+  _NotificationCenterProto.defaultIcon = "";
+
+  /**
+   * @member {string} defaultIconHTML
+   * @memberof NotificationCenter
+   * @instance
+   * The default icon HTML for a notification.
+   * If no `iconHTML` key is specified in `addNotification()`’s `opts` parameter, this icon HTML will be used instead.
+   */
+  _NotificationCenterProto.defaultIconHTML = "";
+
+  /**
+   * @member {Actions} defaultActions
+   * @memberof NotificationCenter
+   * @instance
+   * The default actions for a notification.
+   * If no `actions` key is specified in `addNotification()`’s
+   * `opts` parameter, these actions will be used instead.
+   */
+  _NotificationCenterProto.defaultActions = undefined;
+
+  /**
+   * @member {string} defaultToMinimal
+   * @memberof NotificationCenter
+   * @instance
+   * If this is set to true and no `minimal` key is specified in `addNotification()`’s
+   * `opts` parameter, the action buttons will only appear when needed.
+   */
+  _NotificationCenterProto.defaultToMinimal = false;
+
+  /**
+   * @member {Action} defaultClickAction
+   * @memberof NotificationCenter
+   * @instance
+   * The default action that occurrs when clicking the body of the notification.
+   * If no `click` key is specified in `addNotification()`’s
+   * `opts` parameter, this value will be used instead.
+   */
+  _NotificationCenterProto.defaultClickAction = false;
+
+  /**
+   * @member {string} notificationTemplate
+   * @memberof NotificationCenter
+   * @instance
+   * The template to use inside of each notification box. Change this if you change the class names in the CSS.
+   */
+   _NotificationCenterProto.notificationTemplate = undefined;
+
+  /**
+   * @constructor NotificationCenter
+   * @description The constructor for a `&lt;notification-center>` tag.
+   */
+  window.NotificationCenter = document.registerElement('notification-center', {
+    prototype: _NotificationCenterProto
+  });
+
+  /**
+   * @namespace _NotificationProto
+   * @private
+   * @lends NotificationBox
+   */
+  var _NotificationProto = Object.create(HTMLElement.prototype);
+  ['icon', 'iconHTML', 'title', 'subtitle', 'text', 'minimal', 'actions'].forEach(function(key) {
+    Object.defineProperty(_NotificationProto, key, {
+      set: function(val) {
+        this['_'+key] = val;
+        try {
+          this._updateDOM(key);
+        } catch (_) {}
+      },
+      get: function() {
+        return this['_'+key];
+      }
+    });
+  });
+  /**
+   * @member {string} icon - the URL to the icon shown in the notification.
+   * @memberof NotificationBox
+   * @instance
+   */
+   _NotificationProto.icon = "";
+   /**
+    * @member {string} iconHTML - the raw HTML to display as the icon shown in the notification.
+    * @description This takes precedence over `icon`.
+    * @memberof NotificationBox
+    * @instance
+    */
+    _NotificationProto.iconHTML = "";
+   /**
+    * @member {string} title - the title of the notification
+    * @memberof NotificationBox
+    * @instance
+    */
+   _NotificationProto.title = "";
+   /**
+    * @member {string} subtitle - the subtitle of the notification
+    * @memberof NotificationBox
+    * @instance
+    */
+   _NotificationProto.subtitle = "";
+   /**
+    *
+    * @member {string} text - the body of the notification
+    * @memberof NotificationBox
+    * @instance
+    */
+   _NotificationProto.text = "";
+   /**
+    * @member {boolean} minimal - If true, the buttons only appear on hover.
+    * @memberof NotificationBox
+    * @instance
+    */
+   _NotificationProto.minimal = false;
+   /**
+    * @member {Actions} actions - the action buttons to show.
+    * @memberof NotificationBox
+    * @instance
+    */
+   _NotificationProto.actions = {};
+   /**
+    * @function createdCallback
+    * @description
+    * Called when an instance of the `NotificationBox` is created.
+    *
+    * Sets up the click action.
+    * @memberof NotificationBox
+    * @instance
+    * @private
+    */
+  _NotificationProto.createdCallback = function() {
+    this.addEventListener('click', this._handleActionClick.bind(this));
+  };
+  _NotificationProto.attachedCallback = function() {
+    if (!this.innerHTML.replace(/\s/g, '').length) {
+      console.error('The notification object %o was included in the page’s source. This is not currently supported. Please use addNotification().', this);
+    }
+  };
+  /**
+   * @function attributeChangedCallback
+   * @description
+   * Called when one of the `&lt;notification-box>` element’s attributes is changed.
+   *
+   * Changes the correspondng attribute.
+   * @memberof NotificationBox
+   * @instance
+   * @private
+   */
+  _NotificationProto.attributeChangedCallback = function(attr, oldVal, newVal) {
+    if (!attr.indexOf('n-')/* begins with `n-` */) {
+      attr = attr.slice(2).toLowerCase(); // remove n- and make lowercase.
+      if (!['icon', 'title', 'subtitle', 'text'].indexOf(attr)){
+        this[attr] = newVal;
+        self._updateDOM(attr);
+      }
+    }
+  };
+  /**
+   * @function reloadActions
+   * @description
+   * Reload the action buttons in the user interface.
+   * Please call this after modifying `actions`.
+   * @memberof NotificationBox
+   * @instance
+   */
+  _NotificationProto.reloadActions = function() {
+    this._updateDOM('actions');
+  };
+  /**
+   * @function _updateDOM
+   * @description
+   * Called when the DOM needs to be updated (after setting a property).
+   * @param {string} key The name of the key that was changed.
+   * @memberof NotificationBox
+   * @instance
+   * @private
+   */
+  _NotificationProto._updateDOM = function(key) {
+    if (key) {
+      switch (key) {
+        case 'icon':
+        case 'iconHTML':
+          this._updateIcon();
+          break;
+        case 'title':
+        /* falls through */
+        case 'subtitle':
+        /* falls through */
+        case 'text':
+          this._updateBody();
+          break;
+        case 'actions':
+          this._updateActions();
+          break;
+        default:
+          break;
+      }
+      return;
+    } else {
+      this._updateIcon();
+      this._updateBody();
+      this._updateActions();
+    }
+  };
+  _NotificationProto._updateIcon = function() {
+    var iconHolder = this.querySelector('.icon');
+    if (this.iconHTML.replace(/\s/g, '').length) {
+      iconHolder.style.backgroundImage = '';
+      iconHolder.innerHTML = toString(this.iconHTML);
+    } else {
+      iconHolder.style.backgroundImage = 'url("' + toString(this.icon).replace('"', '\\"') + '")';
+    }
+  };
+  _NotificationProto._updateBody = function() {
+    ['title', 'subtitle', 'text'].forEach(function(key) {
+      this.querySelector('.'+key).textContent = toString(this[key]);
+    }.bind(this));
+  };
+  _NotificationProto._updateActions = function() {
+    var $actions = this.querySelector('.actions');
+    $actions.innerHTML = '';
+    if (this.minimal) {
+      $actions.classList.add('minimal');
+    } else {
+      $actions.classList.remove('minimal');
+    }
+    for (var key in this.actions) {
+      if (this.actions.hasOwnProperty(key)) {
+        var $action = document.createElement('div');
+        $action.className = 'action';
+        $action.textContent = toString(key);
+        $action.addEventListener('click', this._handleActionClick.bind(this));
+        $actions.appendChild($action);
+      }
+    }
+  };
+  /**
+   * Called when the the notification (or one of its actions) is clicked.
+   * Manages the {@link Action} type’s possible values.
+   * @memberof NotificationBox
+   * @instance
+   * @private
+   */
+  _NotificationProto._handleActionClick = function(event) {
+    var cb;
+    if (event.target === this) {
+      cb = this.clickAction;
+    } else {
+      var key = event.target.textContent;
+      cb = this.actions[key];
+    }
+    var result = true;
+    if (typeof cb == "function") {
+      result = cb.apply(event.target, arguments);
+      if (result === undefined || result === null) {
+        result = true;
+      }
+    } else if (typeof cb == "boolean") {
+      result = cb;
+    }
+    if (result) {
+      var $heightContainer = this.querySelector('.height-container');
+      $heightContainer.classList.add('hide');
+      $heightContainer.addEventListener('animationend', function() {
+        try {this.parentNode.removeChild(this); } catch(_) {}
+      }.bind(this), 5000 /* animation duration */);
+    }
+    event.stopImmediatePropagation();
+  };
+  /**
+   * @constructor NotificationBox
+   * @description The constructor for a `&lt;notification-box>` tag.
+   *
+   * The constructor is private, but the methods of
+   * this class are public. This is returned from
+   * `NotificationCenter.prototype.addNotification()`
+   * or by getting any `&lt;notification-box>` element
+   * from the DOM.
+   * @private
+   */
+  var NotificationBox = document.registerElement('notification-box', {
+    prototype: _NotificationProto
+  });
+  // jQuery support:
+  if (window.jQuery) {
+    window.jQuery.fn.addNotification = function(opts) {
+      this.filter('notification-center').each(function() {
+        this.addNotification(opts);
+      });
+    };
+    /**
+     * @function n
+     * @memberof jQuery
+     * @description
+     * Takes either two arguments: (name, value) to set or one argument: (name) to get, or one argument: ({opts}) to set many.
+     * @instance
+     */
+    window.jQuery.fn.n = function(/* name, value or name or {name:value} */) {
+      var opts, $boxes = this.filter('notification-box');
+      if (arguments.count == 2) {
+        opts = {};
+        opts[arguments[0]] = arguments[1];
+      } else if (arguments.count == 1) {
+        if (typeof arguments[0] == "string") {
+          return $boxes[0][arguments[0]];
+        } else if (typeof arguments[0] == "object") {
+          opts = arguments[0];
+        }
+      }
+      $boxes.each(function() {
+        for (var key in opts) {
+          if (opts.hasOwnProperty(key)) {
+            this[key] = value;
+          }
+        }
+      });
+    };
+  }
+}());
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="NotificationCenter.html">NotificationCenter</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-demo.html">n.js Demo</a></li><li><a href="tutorial-getting-started.html">Getting Started</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Jun 12 2016 07:35:57 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

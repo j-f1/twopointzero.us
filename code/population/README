@@ -1,0 +1,16 @@
+    Instructions to install the population applet
+    =============================================
+                Jacobo Bulaevsky
+                 August 5, 2001
+               jacobo@arcytech.org
+
+You've un-zipped or extracted the files into a folder.  
+
+Make a new folder named "images" and move all the *.gif
+and *.jpg files into the "images" folder.
+
+You should now be able to read in the index.html file with
+a web browser and it should all work fine.
+
+Please let me know if you run into any problems.
+

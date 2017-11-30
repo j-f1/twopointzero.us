@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <style type="text/css">
+body {
+  background: #333;
+  height: 100vh;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2.85vmax;
+  font-family: monospace;
+}
+
+p {
+  color: #fff;
+}
+
+form {
+  margin: 1em;
+  color: #666;
+}
+
+span {
+  min-width: 7em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  word-break: break-word;
+  white-space: normal;
+  padding: 0 15px;
+  display: inline-block;
+  border-bottom: 1px solid #aaa;
+  color: #ddd;
+  word-break: break-all;
+  -webkit-transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s;
+  margin-bottom: 1px;
+}
+
+span::selection {
+  background: #aaa;
+  color: #fff;
+}
+
+span:after {
+  content: "URL";
+  color: #666;
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+span:empty:not(:focus):after {
+  opacity: 1;
+  display: initial;
+}
+
+span:focus {
+  border-bottom: 2px solid #fff;
+  outline: none;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+i {
+  font-style: inherit;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+  /* temp: */
+  display: none;
+}
+
+i.focus {
+  color: #fff;
+}
+
+form b {
+  color: #999;
+  font-weight: inherit;
+  display: inline-block;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 1em;
+  font-family: monospace;
+  padding: .3em 1em;
+  padding-top: .5em;
+  background: #eee;
+  border-radius: 5px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: inherit;
+}
+
+button:focus {
+  outline: none;
+  padding: calc(.3em - 1px) calc(1em - 1px);
+  padding-top: calc(.5em - 1px);
+  border: 1px solid white;
+}
+
+button:hover {
+  background: #ccc;
+}
+
+button:active {
+  top: 1px;
+  position: relative;
+  background: #aaa;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #666;
+}
+
+  </style>
+  <title>Sizr</title>
+  <script type='text/javascript'>//<![CDATA[
+function bytesToSize(bytes) {
+  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  if (bytes === 0) return '0 Bytes';
+  var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1000)));
+  return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
+}
+function reload() {
+	$('p').html('Loading&hellip;');
+  $.ajax({
+    method: 'HEAD',
+    url: 'https://cors-anywhere.herokuapp.com/' + $('span').text(),
+    success: function(x, y, XHR) {
+      $('p').text(bytesToSize(+XHR.getResponseHeader('Content-Length')));
+    }
+  });
+  return false;
+}
+$(function () {
+  $('span').on('keydown', function(event) {
+    if (event.keyCode == 13) {
+    	reload();
+      event.preventDefault();
+      return false;
+    }
+  });
+  $('form').on('submit', reload);
+});
+//]]>
+
+</script>
+
+
+</head>
+
+<body>
+  <form>
+  <span contenteditable></span><br>
+  <button type="submit">Get Size</button>
+  <p></p>
+</form>
+
+
+</body>
+
+</html>

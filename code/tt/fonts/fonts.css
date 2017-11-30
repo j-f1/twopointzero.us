@@ -1,0 +1,22 @@
+/* from https://css-tricks.com/snippets/css/using-font-face/ */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('ssp.eot');
+  src: url('ssp.eot?#iefix') format('embedded-opentype'),
+       url('ssp.woff2') format('woff2'),
+       url('ssp.woff') format('woff'),
+       url('ssp.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: bold;
+  src: url('sspb.eot');
+  src: url('sspb.eot?#iefix') format('embedded-opentype'),
+       url('sspb.woff2') format('woff2'),
+       url('sspb.woff') format('woff'),
+       url('sspb.ttf')  format('truetype');
+}

@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>Calculate</title>
+		<meta name="apple-itunes-app" content="app-id=944819335">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+		    .border-button, .border-button>* {
+                text-decoration:none;
+                border: 1px solid #0088ff;
+                color: #0088ff;
+                padding: 4px 5px;
+                display: inline-block;
+                margin-top: 20px;
+                border-radius: 3px;
+                margin:auto;
+                -webkit-transition: color 0.1s, border-color 0.1s;
+                -moz-transition: color 0.1s, border-color 0.1s;
+                -ms-transition: color 0.1s, border-color 0.1s;
+                -o-transition: color 0.1s, border-color 0.1s;
+                transition: color 0.1s, border-color 0.1s;
+		    }
+		    .border-button>* {
+		        border:none;
+		        margin-top:0;
+		    }
+		    .visited-check {
+		        background-color:#0088ff;
+		        color:white;
+		        border-radius:100%;
+		    }
+		    .visited-check:visited {
+		        display:none;
+		    }
+		    .border-button:active {
+		        border-color:#22aaff;
+		        color: #22aaff;
+		    }
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h1>Name2Face</h1>
+		</div>
+		<div class="spacer" style="height:100px;"></div>
+		<blockquote style="max-width:700px; margin:auto; text-align:left;">
+            Name2Face is a tool to help you learn new faces.<br />
+            <ul>
+                <li>You use Name2Face to create a set of faces and names to quiz yourself with.</li>
+                <li>Name2Face keeps track of your success and displays the faces you have the most difficulty identifying.</li>
+                <li>Name2Face strengthens retention by requiring you to type the name in.</li>
+                <li>Name2Face was originally designed to be used by teachers to learn the names of students in their class.</li>
+            </ul><br />
+            <div class="border-button"><a href="&#x6D;&#x61;&#x69;&#108;&#116;&#111;:&#x73;&#117;&#x70;&#112;&#x6F;&#x72;&#x74;&#64;&#x74;w&#x6F;&#x70;&#111;&#x69;&#x6E;&#x74;z&#x65;&#114;&#x6F;&#46;u&#x73;">Contact Support</a></div>
+            <a id="appstore" href="https://appsto.re/us/fXVt4.i" style="display: inline-block; position: relative; top: 15px; margin-left: 20%;"><img src="./downloadOnAppStore.svg" /></a>
+		</blockquote>
+		<div class="mouseprint">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.</div>
+		<script>
+			// hide "download on the App Store" button on iOS.
+			if (navigator.userAgent.match(/iphone/i)) {
+				var element = document.getElementById('appstore');
+				element.parentElement.removeChild(element);
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="//twopointzero.us/twoPOINTzero.css" />
+	</body>
+</html>

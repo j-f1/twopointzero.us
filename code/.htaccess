@@ -1,0 +1,7 @@
+Options All +Indexes
+
+Header set Cache-Control: "no-cache, must-revalidate"
+
+#<Directory /code/njs.git>
+#Options All -Indexes
+#</Directory>

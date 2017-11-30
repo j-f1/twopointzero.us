@@ -1,0 +1,9 @@
+QUESTION
+Slide open the box cover only if you need a hint 
+(or two)
+ANSWER
+If you set the model up such that there is a single
+oak tree, it is easier to find out the acorn production
+per tree.  To find out the exact acorn production you
+can bring up the table in the model.
+END

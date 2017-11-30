@@ -1,0 +1,31 @@
+.border-button, .border-button>* {
+    text-decoration:none;
+    border: 1px solid #0088ff;
+    color: #0088ff;
+    padding: 4px 5px;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 3px;
+    margin:auto;
+    -webkit-transition: color 0.1s, border-color 0.1s;
+    -moz-transition: color 0.1s, border-color 0.1s;
+    -ms-transition: color 0.1s, border-color 0.1s;
+    -o-transition: color 0.1s, border-color 0.1s;
+    transition: color 0.1s, border-color 0.1s;
+}
+.border-button>* {
+    border:none;
+    margin-top:0;
+}
+.visited-check {
+    background-color:#0088ff;
+    color:white;
+    border-radius:100%;
+}
+.visited-check:visited {
+    display:none;
+}
+.border-button:active {
+    border-color:#22aaff;
+    color: #22aaff;
+}

@@ -1,0 +1,113 @@
+/* GLOBAL STYLES */
+body {
+	text-align:center;
+	background-color:#DDDDCC;
+	font-family:'Helvetica Neue Light', sans-serif;
+	color:#444433;
+	margin:0;
+}
+
+h1,h2,h3,h4,h5,h6,.emboss {
+	text-shadow:-1px -1px white;
+}
+
+a {
+    text-decoration:none;
+}
+
+a:visited {
+    color:blue;
+}
+
+div.header {
+	background-color:rgba(200, 200, 183, 0.8);
+	box-shadow:0 0 10px 10px rgba(200, 200, 183, 0.8);
+	position:fixed;
+	width:100%;
+	top:-20px;
+	padding-top:20px;
+	z-index:999;
+}
+
+.copyright {
+	background-color:rgba(200, 200, 183, 0.8);
+	box-shadow:0 0 10px 10px rgba(200, 200, 183, 0.8);
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	padding-bottom:10px;
+	/*width:100%;*/
+}
+
+/* STYLERS */
+
+.disabled {
+	-webkit-filter: blur(.1px) opacity(0.3);
+	filter: blur(.1px) opacity(0.3);
+	pointer-events: none;
+}
+
+.mouseprint {
+/*    position:absolute;
+    bottom:0;
+    right:0;*/
+    opacity:0.5;
+    font-size:10px;
+}
+
+/* UI ELEMENTS */
+.button {
+	background-color: rgb(200, 200, 183);
+	background:-webkit-linear-gradient(rgb(200, 200, 183), rgb(179, 179, 162));
+	background:-o-linear-gradient(rgb(200, 200, 183), rgb(179, 179, 162));
+	background:-moz-linear-gradient(rgb(200, 200, 183), rgb(179, 179, 162));
+	background:linear-gradient(rgb(200, 200, 183), rgb(179, 179, 162));
+	border:none;
+	border-radius:12px;/*20000px;/* Get Good Radius at any height*/
+	min-height:24px;
+}
+.button:active {
+	background-color:rgb(179, 179, 162);
+	background:-webkit-linear-gradient(rgb(179, 179, 162), rgb(200, 200, 183));	
+	background:-o-linear-gradient(rgb(179, 179, 162), rgb(200, 200, 183));	
+	background:-moz-linear-gradient(rgb(179, 179, 162), rgb(200, 200, 183));	
+	background:linear-gradient(rgb(179, 179, 162), rgb(200, 200, 183));	
+}
+
+select {
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	border:none;
+	outline:none;
+	background:transparent;
+	min-height:24px;
+	padding-bottom:2px;
+	padding-left:10px;
+}
+
+.select {
+	-webkit-user-select:none;
+	user-select:none;
+	padding:5px 0 0;
+	padding-right:10px;
+}
+
+/*.select:after {
+	content:"\21F3";
+}*/
+
+
+/*
+input[type="checkbox"]:checked {
+	background-color:white;
+}
+input[type="checkbox"] {
+	-webkit-appearance:none;
+	width:12px;
+	height:12px;
+	background:rgb(179, 179, 162);
+	border:1px solid black;
+	margin-bottom: 0px;
+}*/ /* Needs Work */

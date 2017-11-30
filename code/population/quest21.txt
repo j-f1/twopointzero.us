@@ -1,0 +1,11 @@
+QUESTION
+Why is it that when the balance breaks one can end up
+with only squirrels but not with only hawks?
+ANSWER
+The squirrels do not depend on the hawks for survival,
+quite the opposite. If all the hawks disappear, the
+squirrel population increases in numbers.  The reverse
+is not true as the hawks, under the conditions
+considered in the model, depend on squirrels for
+survival.  No squirrels, no hawks!
+END

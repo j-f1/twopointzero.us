@@ -1,0 +1,10 @@
+QUESTION
+How many hawks does it take to impact the squirrel
+population balance?
+ANSWER
+As soon as you try two hawks, you'll notice that they
+impact the squirrel population.  The reason is that the
+hawks will reproduce (as it assumes one to be a male
+and the other a female) and as their number increases,
+so does their need for more prey.
+END

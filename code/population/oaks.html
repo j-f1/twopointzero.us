@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Get Acquainted with Model through Hands-on Experiments</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="First set of experiments to learn and practice the use of the population growth and balance computer model.  Uses a forest of oak trees for these experiments.">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, exponential, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Get Acquainted with Model through Hands-on Experiments">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="First set of experiments to learn and practice the use of the population growth and balance computer model.  Uses a forest of oak trees for these experiments.">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["seedling"] = new description (
+"Seedling", "A young and small plant grown from a seed.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+
+function popWindow (url, winname, features)  {
+    window.open (url, winname, features);
+}
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B>Get 
+Acquainted with Model through Hands-on Experiments</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P>&nbsp;We 
+are now ready to start using the model to get familiar with it as well as to start 
+discovering and learning facts about oak trees, gray squirrels, and red-tail hawks. 
+If you haven't read the <A HREF="instructions.html">instructions</A> on how to 
+use the model, please read them before continuing.</P><TABLE BORDER="0" WIDTH="85%"><TR VALIGN="TOP"><TD WIDTH="18%"> 
+<A HREF="javascript:popWindow ('population.html', 'populationApplet', 'width=633,height=380,scrollbars,toolbar')"> 
+<IMG SRC="images/modelicon.gif" WIDTH="48"
+HEIGHT="23" NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></A></TD><TD WIDTH="82%">As 
+mentioned before, you can start the model on a separate window by clicking on 
+the symbol on the left.</TD></TR></TABLE><P><B>NOTE:</B> Please note that the 
+first stage of each experiment is called Observation, although in some cases it 
+is only stating a problem or question.</P><P><IMG
+                SRC="images/exp_1.gif" WIDTH="325"
+                HEIGHT="40" NATURALSIZEFLAG="3" BORDER="0" ALIGN="MIDDLE"><B><I><FONT SIZE="+2"> 
+-- Oak Trees Growth</FONT></I></B></P><TABLE BORDER="1" WIDTH="90%" CELLPADDING="3"><TR><TD WIDTH="20" VALIGN="TOP"><IMG
+                SRC="images/observation.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Remember that 
+you are sitting on the ground in the <A HREF="popmodel.html#physical">middle of 
+the forest</A> leaning on one of the huge trees. You notice that some trees look 
+healthy, leafy, and their leaves have great green colors, while others don't look 
+that good. Actually, some have quite a few yellowish leaves. Figure out what it 
+takes to grow a healthy oak tree.<APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="126"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest22.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/hypothesis.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Take a look 
+at the setup in the population model, under the Oak Setup Menu heading, and take 
+a guess at how much water a single oak tree needs to grow healthy. It might be 
+easier to guess how much water the tree needs per day and multiply that by 365 
+days. Additionally, look at the list of all the available nutrients and guess 
+which ones the trees might need. You may want to write down your guesses on a 
+piece of paper to be able to compare them with the correct answers later.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/experiment.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Define an 
+experiment to verify your hypothesis and use the population model to run it. If 
+you are unable to prove or disprove your hypothesis, and you are sure that you 
+have read the <A HREF="instructions.html">instructions</A>, you may have to re-define 
+your experiment and try again.<BR><BR><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="143"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest4.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/theory.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>The experiment 
+should have given you the answers to the problem. Did the answers match your guesses?<BR><BR><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="262"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest5.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR></TABLE><P>A final comment regarding the nutrients is 
+that people tend to call the nutrients plant food when in reality it has nothing 
+to do with food. Food is something that an organism needs to process to extract 
+minerals, proteins, etc. In the case of trees, the nutrients that are dissolved 
+in the water are ready to get into the system to be used in the vital processes 
+to spur growth and health. You should also be aware that not all trees need the 
+same variety or amounts of nutrients.</P><P><IMG
+                SRC="images/exp_2.gif" WIDTH="325"
+                HEIGHT="40" NATURALSIZEFLAG="3" BORDER="0" ALIGN="MIDDLE"><B><I><FONT SIZE="+2"> 
+-- Acorn Production</FONT></I></B></P><P>I hope that you had a successful first 
+experiment. Let's now move to the second one. Since we will use the same format 
+in all experiments, the descriptions will become less wordy.</P><TABLE BORDER="1" WIDTH="90%" CELLPADDING="3"><TR><TD WIDTH="20" VALIGN="TOP"><IMG
+                SRC="images/observation.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>You are still 
+sitting on the ground and are now focusing on the acorns. You notice that the 
+young trees don't have acorns while the much larger ones have many of them. Figure 
+out how many years it takes before an oak tree starts producing acorns. Will it 
+take one, two, three years? Take a guess.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/hypothesis.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Come up with 
+a hypothesis for the question.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/experiment.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Define an 
+experiment to corroborate your hypothesis and run it on the population model.<BR><BR><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="126"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest6.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/theory.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>The experiment 
+should have given you the answer to the problem. Did the answer match your guess?<BR><BR><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="160"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest7.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR></TABLE><P><IMG
+                SRC="images/exp_3.gif" WIDTH="325"
+                HEIGHT="40" NATURALSIZEFLAG="3" BORDER="0" ALIGN="MIDDLE"><B><I><FONT SIZE="+2"> 
+-- More on Acorn Production</FONT></I></B></P><TABLE BORDER="1" WIDTH="90%" CELLPADDING="3"><TR><TD WIDTH="20" VALIGN="TOP"><IMG
+                SRC="images/observation.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>You are now 
+trying to figure out the rate at which oak trees produce acorns. In other words, 
+draw a graph that shows the number of acorns produced each year starting the year 
+the <a href="javascript:dictionary.startIt('seedling')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('seedling')"
+onMouseOut="dictionary.clearIt ()">seedling</a> starts growing. We are interested 
+in the shape of the curve as well as on the absolute numbers.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/hypothesis.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Come up with 
+a hypothesis for this question and draw the acorn production graph. This graph 
+should plot the number of acorns produced on the Y-axis and the years (or time) 
+on the X-axis.</TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/experiment.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>Define an 
+experiment to confirm your hypothesis and run it on the population model.<BR><BR><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="143"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest8.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR><TR><TD VALIGN="TOP"><IMG
+                SRC="images/theory.gif"
+                NATURALSIZEFLAG="3" BORDER="0" ALIGN="TOP"></TD><TD>How close 
+were your guesses to what the model showed?<BR><BR><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="360" HEIGHT="126"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest9.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></TD></TR></TABLE><P>As you can see from the model, the yearly 
+acorn production yields a perfect line when you graph the data. You can actually 
+see the chart in the model itself. </P><P ALIGN="CENTER"><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="375" HEIGHT="245"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest10.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></P><P>Even though the acorn production in the model is very close 
+to reality, the acorn production of a real oak tree is more complicated. Check 
+out the <A HREF="facts_oaks.html#acornprod" TARGET="">Facts about Oak Trees</A> 
+page to see a closer approximation and a more complicated equation. </P><P ALIGN="CENTER"><APPLET
+CODE="QuesNans" CODEBASE="./"
+WIDTH="375" HEIGHT="228"
+ALT="If you had a java-enabled browser, you would see an applet here." ALIGN="ABSMIDDLE"
+NAME="QuesNans"> <PARAM NAME="ctrlfile" VALUE="quest11.txt"><DIV ALIGN="CENTER"> 
+</DIV></APPLET></P><P ALIGN="CENTER">&nbsp;</P><P ALIGN="CENTER">&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="instructions.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="instructions.html" TARGET="">Instructions 
+to use Model</A> </P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="squirrels.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="squirrels.html" TARGET="">Discover 
+Population Balance Using the Model </A></P></TD></TR></TABLE></CENTER><DIV ALIGN="LEFT"></DIV><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

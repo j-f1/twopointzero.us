@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<TITLE>Interesting Facts about Oak Trees</TITLE>
+<META NAME="resource-type" CONTENT="document">
+<LINK REV=made HREF="mailto:jacobo@arcytech.org">
+<META NAME="description" CONTENT="This page contains interesting facts about Oak trees">
+<META NAME="keywords" CONTENT="java, applets, java applets, education, educational, interdisciplinary, child-initiated, child-centered, hands-on, multi-disciplinary, math, mathematics, problem solving, problem-solving, educational java, scientific method, home schooling, population, population growth, population balance, computer model, model, biology, chart, growth, oak, oak tree, squirrel, hawk, red-tail hawk, food chain, immigration, emigration, conservation, environment protection">
+<META NAME="copyright" CONTENT="Copyright 2000 Arcytech. All rights reserved.">
+<META NAME="author" CONTENT="Jacobo Bulaevsky">
+<META NAME="distribution" CONTENT="global">
+<META NAME="robots" CONTENT="All">
+<META NAME="rating" CONTENT="General">
+<META NAME="DC.Title" CONTENT="Interesting Facts about Oak Trees">
+<META NAME="DC.Creator" CONTENT="Jacobo Bulaevsky">
+<META NAME="DC.Subject" CONTENT="Java applet model and complete lesson on population growth and balance">
+<META NAME="DC.Description" CONTENT="This page contains interesting facts about Oak trees">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+<!--Designed and developed by Jacobo Bulaevsky-->
+<!--Copyright © 2000 Arcytech. All rights reserved.-->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var descr = new Array ();
+
+descr["fungi"] = new description (
+"Fungi", "Fungi is the plural of fungus. Fungus is a small plant without chlorophyll, a green substance that helps plants make food.  Examples are molds, mushrooms, and yeasts.  Since fungi can't make food, they grow on other plants that they eat.");
+
+descr["defoliate"] = new description (
+"Defoliate", "To remove most or all of the folliage (or leaves) of a tree");
+
+descr["blight"] = new description (
+"Blight", "To deteriorate or destroy");
+
+descr["decimate"] = new description (
+"Decimate", "To destroy a large part of something");
+
+descr["larvae"] = new description (
+"Larvae", "An immature and wingless stage of an insect's life, between egg and pupa (right before the adult) stage.");
+
+descr["inert"] = new description (
+"Inert", "Nitrogen is referred to as an inert gas because it simply does not participate in any reactions at room temperature.  It requires extremely high temperatures.");
+
+descr["gallons"] = new description (
+"Gallons", "One gallon is equal to 3.785 liters.");
+
+var dictionary = new box ("dictionary", descr);
+
+function description (word, description) {
+   this.word = word;
+   this.description = description;
+   return this;
+}
+
+new description ();
+description.prototype.show = show;
+
+function show () {
+    var wincontents = "<TABLE BORDER='0' WIDTH='100%' CELLSPACING='5'" +
+             "CELLPADDING='5' ALIGN='LEFT'>" +
+             "<TR><TD BGCOLOR='#94005A' ALIGN='CENTER'" +
+             "VALIGN='MIDDLE' HEIGHT='38'>" +
+             "<FONT COLOR='#FFFFFF' SIZE='5'><B>" + this.word + 
+             "</B></FONT></TD></TR><TR><TD><FONT COLOR='#94005A'>" +
+             this.description + "</FONT></TD></TR></TABLE>";
+    return wincontents;
+}
+function box (name, message) {
+    this.name = name;
+    this.message = message;
+    this.timerH = null;
+    this.winH = null;
+    return this;
+}
+
+function startIt (msgindex) {
+    var cmdstr="top." + this.name + ".showIt ('" + msgindex + "')";
+    this.timerH = setTimeout (cmdstr, 100);
+}
+function showIt (msgindex) {
+    if (!this.winH || !this.winH.name || this.winH.name=="")
+        this.winH = window.open ("",  "DictionaryWindow", 
+            "toolbar=no," + "location=no," + "directories=no," + "status=no," +
+            "menubar=no," + "scrollbars=no," + "resizable=no," + 
+            "width=300," + "height=200" );
+    else
+        this.winH.focus();
+        this.winH.document.open();
+        var to_page =
+        "<HTML>\n" +
+        "<BODY BGCOLOR='#FFFFFF'><P>" +
+        this.message[msgindex].show() +
+        "</BODY></HTML>\n";
+        this.winH.document.write (to_page);
+        this.winH.document.close ();
+}
+function clearIt () {
+    clearTimeout(this.timerH);
+    if (this.winH && this.winH.name) {
+        this.winH.close ();
+        this.winH=null;
+   }
+}
+new box ();
+box.prototype.startIt = startIt;
+box.prototype.showIt  = showIt;
+box.prototype.clearIt = clearIt;
+</SCRIPT>
+
+</head>
+<body background="../images/back_s.gif" TEXT="#94005A" LINK="#3333FF" VLINK="#663399">
+<P> <!--#exec cgi="counter.cgi" --></P><TABLE BORDER="0" WIDTH="90%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="8%" VALIGN="TOP"><IMG SRC="../images/logo_s.gif" ALIGN="TOP"></TD><TD WIDTH="92%" ALIGN="CENTER"><FONT SIZE="+2"><B><I>Interesting</I> 
+Facts about Oak Trees</B></FONT></TD></TR></TABLE><BLOCKQUOTE><P> In addition 
+to interesting facts about oak trees, this page includes a description of the 
+differences between the assumptions made in the population model applet and the 
+real thing. At the end of the page you'll find references to other sites to learn 
+more about trees and forests.</P><P ALIGN="CENTER"><IMG SRC="images/oaktree2.jpg" ALIGN="TOP" WIDTH="181" HEIGHT="166" BORDER="5"></P><P ALIGN="LEFT"><B>Names 
+and definitions</B> -- Oak trees are a type of deciduous tree. These are broad-leaved 
+trees that shed all their leaves during one season. Forests which are primarily 
+composed of deciduous trees are called deciduous forests. The oak tree is a member 
+of the Beech family and its scientific name is <I>Quercus</I> or <I>Lithocarpus</I>. 
+The best type of soil for a healthy and nutritious growth of deciduous trees is 
+referred to as podzol (also spelled podsol).</P><P ALIGN="LEFT"><B>How old do 
+they live?</B> -- Oak trees can live 200 or more years. The largest oak tree of 
+record is the Wye oak in the community of Wye Mills in Talbot County on Maryland's 
+eastern shore in the U.S.A. It is believed to be more than 400 years old, and 
+it measures 9 meters (~ 32 feet) in circumference, it is 31 meters (~ 105 feet) 
+tall with a crown spread of 48.1 meters (~ 158 feet).</P><P ALIGN="LEFT"><B>Nutrients 
+</B> -- It is common to refer to the nutrients given to plants as plant food, 
+although that is not technically correct. Plants need basic inorganic elements 
+which they use to manufacture usable food and lock in the sun's energy into it. 
+Here is a list of the different mineral nutrients needed by oak trees and their 
+basic functions:</P><DIV ALIGN="CENTER"><TABLE BORDER="1" WIDTH="75%" CELLSPACING="2" CELLPADDING="2"><TR><TD><DIV ALIGN="CENTER"><B>Mineral 
+Nutrients </B></DIV></TD><TD><DIV ALIGN="CENTER"><B>Function</B></DIV></TD></TR><TR><TD>Magnesium</TD><TD>Produces 
+green chlorophyll </TD></TR><TR><TD>Calcium</TD><TD>Gives rigidity to cell walls</TD></TR><TR><TD>Potassium</TD><TD>Regulatory 
+functions </TD></TR><TR><TD>Nitrogen<SUP><A HREF="#ref1">1</A></SUP></TD><TD>Provides 
+proteins</TD></TR><TR><TD>Phosphorus</TD><TD>Provides proteins </TD></TR><TR><TD>Sulfur</TD><TD>Provides 
+proteins</TD></TR></TABLE></DIV><P ALIGN="LEFT">To manufacture food, plants need: 
+The nutrients <FONT SIZE="+1">+</FONT> soil moisture from water <FONT SIZE="+1">+</FONT> 
+Carbon dioxide from the air <FONT SIZE="+1">+</FONT> the sun's energy.</P><P ALIGN="LEFT">A 
+mature oak tree can draw up to 50 or more <a href="javascript:dictionary.startIt('gallons')" STYLE="text-decoration:none" onMouseOver="dictionary.startIt ('gallons')"
+onMouseOut="dictionary.clearIt ()">gallons</a>
+of water per day. Trees take 
+up water through their root system. Some of the water evaporates from the leaves 
+in a process called transpiration.</P><TABLE BORDER="0" WIDTH="85%" ALIGN="LEFT"><TR><TD WIDTH="7%" VALIGN="TOP"><IMG SRC="images/arrow.gif" WIDTH="19" HEIGHT="13" ALIGN="TOP" BORDER="0"></TD><TD WIDTH="93%">In 
+the population program if you don't select all the nutrients and all the water 
+required for proper growth, the tree leaves will grow yellow (more yellow the 
+less water and nutrients). Under these conditions, the acorn production will only 
+reach a percentage of their full potential. At some point because of lack of nutrients 
+and/or water, the trees will not grow at all and will not produce any acorns. 
+After looking at the previous table you now know that lacking a specific nutrient 
+affects a different aspect of the tree development. Also, when not enough water 
+or not all nutrients are available, the trees will grow much slower and smaller 
+but will not stop growing.</TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><P ALIGN="LEFT">&nbsp;</P><P ALIGN="LEFT">&nbsp;</P><P ALIGN="LEFT">&nbsp;</P><P ALIGN="LEFT">&nbsp;</P><P ALIGN="LEFT"><B><A NAME="acornprod"></A>Acorn 
+Production</B> -- Oak trees can start producing acorns when they are 20 years 
+old, but sometimes can go all the way to 50 years for the first production. By 
+the time the tree is 70 to 80 years old it will produce thousands of acorns.</P><P ALIGN="LEFT">The 
+oak trees produce acorns once a year during the fall. Acorn production varies 
+year to year and normally alternates. Not even the healthiest and largest oak 
+can accumulate enough food and energy to produce strong crops two years in succession. 
+Real strong acorn productions might happen every four to ten years. In addition, 
+a late spring frost can <A HREF="javascript:dictionary.startIt('blight')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('blight')"
+ONMOUSEOUT="dictionary.clearIt ()">blight</A> the flowers which prevents acorn 
+development. Droughts and insect ravages can <A HREF="javascript:dictionary.startIt('decimate')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('decimate')"
+ONMOUSEOUT="dictionary.clearIt ()">decimate</A> crops.</P><P ALIGN="LEFT"> Acorn 
+production will increase year after year; following a similar pattern as the size 
+of the tree's canopy. The following graph shows what a typical production for 
+an oak tree might be -- assuming no drastic jumps, which happen from time to time. 
+The chart shows that production starts very slowly at around the 25<SUP>th</SUP> 
+year, the number of acorns produced then accelerates, and when the tree reaches 
+about 100 years of age, it starts slowing down until it reaches a yearly production 
+of about 2,200 acorns per year.</P><P ALIGN="CENTER"><IMG
+        SRC="images/acornprod.gif" ALIGN="MIDDLE" HSPACE="0"
+        WIDTH="476" HEIGHT="383" NATURALSIZEFLAG="3"></P><P ALIGN="LEFT">The mathematical 
+formula that relates the acorn production (A) to the age in years of the tree 
+(Y) as depicted in the previous graph is:</P><P ALIGN="CENTER"><IMG
+        SRC="images/acorn_eq.gif" ALIGN="MIDDLE" HSPACE="0"
+        WIDTH="278" HEIGHT="84" NATURALSIZEFLAG="3"></P><P ALIGN="LEFT">As you 
+can see, it is not a simple formula. You probably recognize the 25 and the 2200 
+representing the year when the production starts and the maximum acorn production 
+respectively. You may be wondering why the curve in the graph does not look smooth, 
+as one would expect. The reason is that randomness was added when producing the 
+graph to make it more realistic. In reality the variations from year to year are 
+much larger. This equation which produces a sigmoid or S-shaped curve is called 
+the <I>Logistic </I>equation. You can find more information about this in the 
+<A HREF="facts_math.html">Facts about Population Growth Mathematical Models</A> 
+page.</P><TABLE BORDER="0" WIDTH="85%" ALIGN="LEFT"><TR><TD WIDTH="7%" VALIGN="TOP"><IMG SRC="images/arrow.gif" WIDTH="19" HEIGHT="13" ALIGN="TOP" BORDER="0"></TD><TD WIDTH="93%">The 
+program does not use this exact mathematical model to represent the acorn yearly 
+production. It uses instead a simplified version using only lines. This method 
+of replacing nice but complicated continuous functions with a collection of lines 
+is referred to as a <I>piece-wise linear</I> approximation.</TD></TR></TABLE><P>&nbsp; 
+</P><P>&nbsp;</P><P>&nbsp;</P><TABLE BORDER="0" WIDTH="85%" ALIGN="LEFT"><TR><TD WIDTH="7%" VALIGN="TOP"><IMG SRC="images/arrow.gif" WIDTH="19" HEIGHT="13" ALIGN="TOP" BORDER="0"></TD><TD WIDTH="93%">In 
+the population program if one doesn't select all the nutrients and all the water 
+required for proper growth, the acorn production will decrease proportionally. 
+At some point acorns would not be produced at all. That is really not the case 
+with real oak trees. Lack of different nutrients has different impacts. </TD></TR></TABLE><P>&nbsp;</P><P>&nbsp;</P><P ALIGN="LEFT">&nbsp;</P><P ALIGN="CENTER"><IMG
+        SRC="images/acorns.jpg" ALIGN="MIDDLE" HSPACE="0"
+        WIDTH="180" HEIGHT="135" NATURALSIZEFLAG="3" BORDER="5"></P><P ALIGN="LEFT">&nbsp;</P><P ALIGN="LEFT"><B>Acorn 
+tales --</B> We now have a few interesting tales about acorns.</P><P ALIGN="LEFT"><B>Acorn 
+tale 1: Chances of making it</B> -- In a good year the oak tree will have many 
+flowers -- up to several thousand. With the right humidity, the right temperature, 
+no late frost in the spring, and sufficient rainfall in the summer, tiny scale-covered 
+acorns (called nubbins at that point) begin to grow. They will mature to become 
+full grown and ripe acorns by late summer. The chances of one acorn making it 
+to become an oak tree are very slim -- less than 1/10,000. That means that for 
+every 10,000 acorns, only one will become a tree!</P><P ALIGN="LEFT"><B>Acorn 
+tale 2: Beetles destroying Acorns</B> -- Little insects called weevils like to 
+plant their seeds inside acorns before they mature -- during the late summer months. 
+Up to 90% of the acorns in a region can be destroyed by the <A HREF="javascript:dictionary.startIt('larvae')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('larvae')"
+ONMOUSEOUT="dictionary.clearIt ()">larvae</A> of the weevils. On the other hand, 
+if there are not enough acorns, that can impact the weevils' population.</P><P ALIGN="LEFT"><B>Acorn 
+Tale 3: About hiding those Acorns</B> -- It is well known that squirrels hide 
+acorns to last them through the winter season, when food is scarce. They might 
+hide them in their homes, but they also bury them in the ground. In addition to 
+squirrels, bluejays and woodpeckers also hide acorns underground. The number of 
+acorns hidden by animals is pretty small; however, most of the acorns get hidden 
+by the oak trees. When the oak trees shed their leaves during the autumn, they 
+end up covering (and thus hiding) most of the acorns. It is interesting to know 
+that many of the hidden acorns get rotten by mold and can not serve as food for 
+the animals that hid them. In addition, many acorns are found by other animals, 
+such as deer and wild turkeys, who benefit from them.</P><P ALIGN="CENTER"><IMG
+        SRC="images/oakleave.jpg" ALIGN="MIDDLE" HSPACE="0"
+        WIDTH="180" HEIGHT="135" NATURALSIZEFLAG="3" BORDER="5"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oak 
+tree leave</P><P ALIGN="LEFT"><B>What can destroy oak trees?</B> -- One common 
+element that destroys oak trees is fire. When fire, caused by lightning or by 
+a careless human being, hits a tree, the fire can spread and burn several trees. 
+Another common destruction is caused by developments and the use of trees for 
+wood.</P><P ALIGN="LEFT">Another common cause of oak tree deaths is beetles, fungi, 
+and bad weather. As I am finishing developing this lesson (Jun 2000)&nbsp;I&nbsp;heard 
+on the radio the following amazing story. Oak trees in Marin&nbsp;County (which 
+is north of San Francisco) are dying at a rate that has reached <I>epidemic</I> 
+proportions, and scientists still don't know the cause of this<SUP><A HREF="#ref2">2</A>,<A HREF="#ref3">3</A></SUP>. 
+Oaks, which typically take a year or so to die from infections, have been reported 
+to die in just two to three weeks. Such massive die back of live oaks has never 
+been reported in California, and a severe environmental crisis is expected in 
+the months and years to come.</P><P ALIGN="LEFT"><B>Balancing Tales -- </B>For 
+a forest to grow and develop into such nice habitats, there needs to be an almost 
+perfect balance between the different species that live in the forest. Here are 
+a few examples where the intricate forest balance can be upset:</P><P ALIGN="LEFT"><B>Balancing 
+tale 1: Can insects destroy trees? </B> -- Leaf-eating insects, such as walking 
+sticks, can damage a tree. However, these insects are eaten many times by birds; 
+thus balancing things.</P><P ALIGN="LEFT"><B>Balancing tale 2: Can fungi destroy 
+trees? </B> -- <A HREF="javascript:dictionary.startIt('fungi')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('fungi')"
+ONMOUSEOUT="dictionary.clearIt ()">Fungi</A> can invade the trunks and limbs of 
+old trees with wounds. They soften and prepare the wood so that beetles, wasp 
+larvae, and carpenter ants build tunnels, which further weakens the tree.</P><P ALIGN="LEFT"><B>Balancing 
+tale 3: Can caterpillars destroy trees? </B> -- Caterpillars, when they grow in 
+big numbers, can <A HREF="javascript:dictionary.startIt('defoliate')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('defoliate')"
+ONMOUSEOUT="dictionary.clearIt ()">defoliate</A> an oak tree. However, there is 
+a type of parasitic wasp that destroys the caterpillar moth's eggs. If there are 
+enough wasps that eat a good number of the eggs, there will be less caterpillars, 
+and the trees will be happy. Three or four defoliates can destroy a tree!</P><P ALIGN="LEFT"><B>Balancing 
+tale 4: Can worms help trees? </B> -- A crucial and unsung hero is the earthworm. 
+During warm rainy periods it stays above ground, but during the cold winter, it 
+wriggles downward as far as it can to avoid freezing. It spends most of the winter 
+one to four inches below the surface. In doing so it conditions the soil for shallow 
+probing oak roots by literally eating his way around. This is very helpful, and 
+many times necessary, for the tree growth.</P><P ALIGN="LEFT"><B>Sizes</B> -- 
+A trunk's circumference can be as big as 9 or more meters (32 feet), which corresponds 
+to a trunk's diameter of 2.8 m (~ 9.5 ft). The height can reach up to 30 m (~ 
+100 ft). The spread of the canopy of a full grown oak tree ranges from 25 to 40 
+meters (85 to 135 feet) or more in diameter. </P><HR ALIGN="CENTER" WIDTH="50%"><P ALIGN="LEFT"><B>References</B> 
+--</P><P ALIGN="LEFT"><A NAME="ref1"></A>[Note 1] -- Nitrogen is not really a 
+nutrient. It is an <A HREF="javascript:dictionary.startIt('inert')" STYLE="text-decoration:none" ONMOUSEOVER="dictionary.startIt ('inert')"
+ONMOUSEOUT="dictionary.clearIt ()">inert</A> gas that is required by <I>all</I> 
+living things to live. Nitrogen helps plants grow large and healthy! You can visit 
+this site to find out more interesting information about Nitrogen: <A HREF="http://www.webelements.com/webelements/elements/text/key/N.html">http://www.webelements.com/webelements/elements/text/key/N.html</A>.</P><P ALIGN="LEFT"><A NAME="ref2"></A>[Note 
+2] -- <A HREF="http://himalaya.cnr.berkeley.edu/oaks/">http://himalaya.cnr.berkeley.edu/oaks/</A> 
+- This site monitors the sudden oak death in coastal California and has a great 
+description, pictures, and information about this major problem.</P><P ALIGN="LEFT"><A NAME="ref3"></A>[Note 
+3] -- <A HREF="http://himalaya.cnr.berkeley.edu/oaks/"></A><A HREF="http://phytosphere.com/tanoak.html">http://phytosphere.com/tanoak.html</A> 
+- Very good description of the oak tree mortality in Marin County.</P><P> [Reference 
+1] -- <A HREF="http://www.nationalgeographic.com/features/96/forest/" TARGET="">http://www.nationalgeographic.com/features/96/forest/</A> 
+- An interactive site by National Geographic that allows students to explore what's 
+in a forest.</P><P> [Reference 2] -- <A HREF="http://www.californiaoaks.org">http://www.californiaoaks.org</A> 
+- The California oak Foundation's site is a very interesting site with lots of 
+good information about oaks in California, how to preserve them, how to take care 
+of them, etc.</P><P>&nbsp;</P><CENTER><TABLE BORDER="0" WIDTH="80%" CELLPADDING="5"><TR ALIGN="CENTER"><TD WIDTH="31%" ALIGN="LEFT"><P><A HREF="facts_math.html"><IMG
+                SRC="images/prev.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="facts_math.html" TARGET="">Facts 
+about Population Growth Mathematical Models</A></P></TD><TD WIDTH="44%"><P><A HREF="index.html"><IMG
+                SRC="images/top.gif" WIDTH="24"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="index.html" TARGET="">Table 
+of Contents</A></P></TD><TD WIDTH="25%" ALIGN="RIGHT"><P><A HREF="facts_squirrels.html"><IMG
+                SRC="images/next.gif" WIDTH="75"
+                HEIGHT="33" NATURALSIZEFLAG="3" BORDER="0"></A><BR><A HREF="facts_squirrels.html" TARGET="">Facts 
+about Squirrels</A></P></TD></TR></TABLE></CENTER><P>&nbsp;</P><P><FONT
+        COLOR="#94005A"><I><FONT SIZE="-1">Last Updated: <!--#flastmod file="instructions.html" --></FONT></I></FONT></P><HR ALIGN="left"> 
+<TABLE BORDER="0" CELLPADDING="0" WIDTH="60%"
+        HEIGHT="107"> <TR><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="http://www.arcytech.org/"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="http://www.arcytech.org/" TARGET="">Arcytech</A></TD><TD VALIGN="top" WIDTH="50%" HEIGHT="102"><A
+                HREF="../java.shtml"><IMG
+                SRC="../images/arcyhome.gif" WIDTH="36"
+                HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../java.shtml" TARGET="">Java 
+Home<BR> Page</A></TD><TD VALIGN="top" WIDTH="50%"><A
+                HREF="../mailform.html"><IMG
+                SRC="../images/mail.gif" ALIGN="middle"
+                WIDTH="36" HEIGHT="36" NATURALSIZEFLAG="3"></A><BR> <A HREF="../mailform.html">Provide<BR> 
+Feedback</A></TD></TR> </TABLE><P></P></BLOCKQUOTE>
+</body>
+</html>

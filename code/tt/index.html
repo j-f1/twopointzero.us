@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+<head>
+  <meta charset="utf-8">
+  <title>Test Timer</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" charset="utf-8"></script>
+  <script src="//cdn.rawgit.com/kayahr/jquery-fullscreen-plugin/f979546695cf183758b2de79f161b0224e921c15/jquery.fullscreen.js" charset="utf-8"></script>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" charset="utf-8">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js" charset="utf-8"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment-with-locales.min.js" charset="utf-8"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js" charset="utf-8"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" charset="utf-8"></script>
+  <script src="//cdn.rawgit.com/LeaVerou/prefixfree/7d717c9c4abdfc6c400c6856000da8fcd692523d/plugins/prefixfree.viewport-units.js" charset="utf-8"></script>
+
+  <link rel="stylesheet" href="fonts/fonts.css" charset="utf-8">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="spinny.css">
+</head>
+<body>
+  <div class="loader">
+    <svg class="circular" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="20" />
+    </svg>
+    <p>Loading&hellip;</p>
+  </div>
+  <main style="display: none;">
+    <div class="bar"></div>
+    <div style="z-index: 1;">
+      <section class="big start">
+        <h1>The test started at</h1>
+        <time></time>
+      </section>
+      <section class="big now">
+        <h1>It is now</h1>
+        <time></time>
+      </section>
+      <section class="big stop">
+        <h1>The test ends at</h1>
+        <time></time>
+      </section>
+      <section class="mini must">
+        <h1 class="small">You <b>must</b> leave <time></time>.</h1>
+        <h1 class="large" style="display: none"><small>&ldquo;Pencils down!&rdquo;</small>You must leave now.</h1>
+      </section>
+      <section class="mini may">
+        <div class="bar"></div>
+        <h1>You may leave <time></time>.</h1>
+      </section>
+    </div>
+  </main>
+  <div class="ui setup modal">
+    <div class="header">Setup</div>
+    <div class="content">
+      <p>
+        <span class="ui fitted toggle checkbox" style="visibility: hidden;"><input type="checkbox" checked><label></label></span> <!-- spacing -->
+        <label>Test duration:</label>
+        <span class="time-input">
+          <span class="ui small transparent input"><input class="must h" placeholder="hh" size="2" value="03"></span>
+          <span class="ui basic label">:</span>
+          <span class="ui small transparent input"><input class="must m" placeholder="mm" size="2" value="00"></span>
+        </span>
+      </p>
+      <p>
+        <span class="ui fitted toggle checkbox"><input type="checkbox" checked><label></label></span>
+        <label class="maymay">Students can leave after:</label>
+        <span class="maymay time-input">
+          <span class="ui small transparent input"><input class="may h" placeholder="hh" size="2" value="02"></span>
+          <span class="ui basic label">:</span>
+          <span class="ui small transparent input"><input class="may m" placeholder="mm" size="2" value="00"></span>
+        </span>
+      </p>
+    </div>
+    <div class="actions">
+      <button class="ui huge positive bottom attached launch button"><i class="external icon"></i> Launch</button>
+    </div>
+  </div>
+  <script src="main.js" charset="utf-8"></script>
+</body>
+</html>

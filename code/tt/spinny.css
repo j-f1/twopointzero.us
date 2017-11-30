@@ -1,0 +1,42 @@
+.circular {
+  animation: spinny-rotate 2s linear infinite;
+  height: 10em;
+  position: relative;
+  width: 10em;
+  margin-bottom: -3em;
+}
+
+.circular circle {
+  fill: none;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-miterlimit: 10;
+  stroke-width: 6;
+  stroke: #3f89ff;
+  animation: spinny-dash 1.5s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes spinny-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinny-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  75% {
+    stroke-dashoffset: -110;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}

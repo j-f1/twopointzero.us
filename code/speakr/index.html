@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.2.3.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" charset="utf-8">
+  <style type="text/css">
+    body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: white;
+  font-family: sans-serif;
+  text-align: center; }
+
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.8);
+    transition: opacity 0.4s;
+    opacity: 0; }
+
+    a {
+      cursor: pointer; }
+
+      p:not(.active) {
+        pointer-events: none; }
+
+        p.active {
+          opacity: 1; }
+
+          p a:first-child {
+            margin-right: 2em; }
+
+            form {
+              width: calc(100vw - 2em); }
+              form input {
+                display: block;
+                font-family: monospace;
+                font-size: 2em;
+                background: #f0f0f0;
+                border: none;
+                text-align: center;
+                width: 100%; }
+                form input:focus {
+                  outline: none;
+                  background: #e6e6e6; }
+              form ul {
+                padding: 0;
+                overflow: auto;
+                height: 45vh;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none; }
+                form ul li {
+                  list-style-position: inside;
+                  list-style-type: none;
+                  cursor: pointer;
+                  font-size: 1.5em;
+                  padding: 0.5em 0; }
+                  form ul li:nth-child(even) {
+                    background: #f6f6f6; }
+                    form ul li:hover {
+                      background: #efefef; }
+                      form ul li:active {
+                        background: #ddd; }
+                        form ul li.selected {
+                          font-weight: bold; }
+
+  </style>
+
+  <title></title>
+
+
+
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+window.onload=function(){
+function loadVoices(voices) {
+  [].forEach.call(voices, function(voice) {
+    var $li = $('<li>');
+    $li.text(voice.name + (voice.default ? ' [default]' : ''));
+    $li.attr('title', 'Language: ' + voice.lang + (voice.localService ? '\nOffline capable' : '') + '\nURI: ' + voice.voiceURI);
+    $li.click(function() {
+      window.currentVoice = voice;
+      $('li').removeClass('selected');
+      $(this).addClass('selected');
+    });
+    $('ul').append($li);
+    if (voice.default) {
+        $li.addClass('selected');
+    }
+  });
+}
+window.previous = [];
+window.cursor = 0;
+var changed = function() {
+  var voices = window.speechSynthesis.getVoices();
+  window.currentVoice = undefined;
+  loadVoices(voices);
+  $('form').on('submit', function() {
+    var speech = new SpeechSynthesisUtterance($('input').val());
+    speech.voice = window.currentVoice;
+    window.previous.push($('input').val());
+    window.cursor = window.previous.length;
+
+    speech.onend = function() {
+      $('p').removeClass('active');
+      $('input').val('');
+    };
+    window.speechSynthesis.speak(speech);
+    //$('p').addClass('active');
+    return false;
+  });
+  $('input').on('keydown', function(e) {
+    var key = e.which || e.keyCode;
+    if ([38, 40].indexOf(key) != -1) {
+      if (key == 38 /* up */) {
+        if (window.cursor <= 0) {return false;}
+        window.cursor--;
+      } else if (key == 40 /* down */) {
+        if (window.cursor >= window.previous.length) {return false;}
+        window.cursor++;
+      }
+      if (window.cursor < 0) {window.cursor = 0;}
+      if (window.cursor > window.previous.length) {window.cursor = window.previous.length;}
+      if (window.cursor == window.previous.length) {
+        $('input').val('');
+      } else {
+          $('input').val(window.previous[window.cursor]);
+      }
+      return false;
+    }
+  });
+  $('#pause').click(function() {
+    var $this = $(this).find('i');
+    if ($this.hasClass('fa-pause-circle-o')) {
+      $this.removeClass('fa-pause-circle-o').addClass('fa-play-circle-o');
+      speechSynthesis.pause();
+    } else {
+      $this.removeClass('fa-play-circle-o').addClass('fa-pause-circle-o');
+      speechSynthesis.resume();
+    }
+  });
+//  $('#stop').click(function() {speechSynthesis.cancel()})
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = null;
+}
+};
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = changed;
+} else {
+  changed();
+}
+};
+//]]>
+</script>
+</head>
+
+<body>
+  <p>
+  <a id="pause"><i class="fa fa-pause-circle-o fa-5x"></i></a>
+  <a id="stop"><i class="fa fa-stop-circle-o fa-5x"></i></a>
+</p>
+<form>
+  <input autofocus placeholder="Type & Press enter to speak">
+  <ul>
+  </ul>
+</form>
+</body>
+</html>

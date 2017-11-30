@@ -1,0 +1,6 @@
+QUESTION
+Can you describe this formula in words?
+ANSWER
+The squirrels population on any given year is equal
+to double the squirrels population the previous year.
+END

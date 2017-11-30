@@ -1,0 +1,10 @@
+QUESTION
+How many years does it take before a new oak tree
+starts producing acorns?
+ANSWER
+If you were really sitting in the forest waiting for
+an oak tree to start producing acorns you would have
+to be very patient.  In the model it takes 22 years
+before the seedlings produce the first acorns.  In 
+reality, it might take anywhere between 20 and 40 years!
+END

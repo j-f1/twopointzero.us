@@ -1,0 +1,11 @@
+RewriteEngine on
+RewriteBase /math
+
+#user:jedfox pass:mathfactsmachine
+AuthType Basic
+AuthName "The Math Fact Generator"
+AuthUserFile /kunden/homepages/5/d530063984/htdocs/twopointzero/twopointzero.us/math/.htpassword
+Require valid-user
+
+
+RewriteRule ^$							facts.html			[L,NC]

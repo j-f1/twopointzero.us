@@ -1,0 +1,138 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+body.bad {
+  user-select: none;
+}
+*:not(i.icon) {
+  font-family: Source Sans Pro, sans-serif !important;
+}
+.loader {
+  text-align: center;
+}
+
+.launch.button {
+  width: 100%;
+  margin: 0 !important;
+}
+.setup.modal .actions {
+  padding: 0 !important;
+}
+.modal label {
+  font-weight: bold;
+}
+label.disabled {
+  opacity: 0.5;
+}
+.modal p {
+  display: flex;
+  align-items: center;
+}
+.modal p>:not(:last-child){
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.modals.dimmer {
+  background: white !important;
+}
+
+.time-input {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: .3em;
+  border: 1px solid rgba(34, 36, 38, .15);
+  height: 2.5em;
+}
+.time-input .label {
+  padding-top: 0.75em;
+  margin: 0 .5em;
+  border-radius: 0;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+.time-input .input:first-child input {
+  text-align: right;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.time-input .input:last-child input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+main {
+  width: 100vw;
+  line-height: 1;
+  cursor: none;
+  /*pointer-events: none;*/
+  z-index: 1;
+  user-select: none;
+  background-color: white; /* fix bug in FF where the background is black. (?!?!?!?!) */
+}
+
+main .big {
+  height: 23vh;
+  text-transform: uppercase;
+}
+main .big time {
+  position: relative;
+  top: -3vh;
+  font-size: 18vh;
+}
+main .big.now {
+  height: 32vh;
+  text-align: center;
+}
+main .big.now time {
+  font-size: 27vh;
+}
+main .big.stop {
+  text-align: right;
+}
+main h1 {
+  font-size: 5vh;
+  margin: 0;
+  font-weight: normal;
+  position: relative; /* It’s the strangest thing — It makes the bar not go over the h1s, but z-index doesn’t help(!) */
+}
+main .mini {
+  position: relative;
+  height: 11vh;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+.must h1.large {
+  font-size: 25vh;
+  line-height: 1;
+  text-align: center;
+  margin: auto;
+  position: relative;
+}
+.must .large small {
+  display: block;
+  font-size: 25%;
+}
+.maynt main .must {
+  height: 22vh;
+  align-items: flex-end;
+  padding-bottom: 2vh;
+}
+.maynt main .may {
+  display: none;
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  background: #ddd;
+  transition: width 0.2s;
+  z-index: -1;
+}
