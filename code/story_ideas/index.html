@@ -122,8 +122,8 @@
 //<![CDATA[
   function getData() {
     $('body').removeClass('ready');
-    $.get('http://twopointzero.us/code/story_ideas/data.json', function(data) {
-      window.story = JSON.parse(data);
+    $.get('/code/story_ideas/data.json', function(data) {
+      window.story = data;
       $('body').addClass('ready');
       $('button').click();
     });
